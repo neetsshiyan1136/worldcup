@@ -1,0 +1,2454 @@
+{
+  "lastUpdated": "2026-06-26T22:00:51+08:00",
+  "completedResults": {
+    "澳大利亚-土耳其": "2:0",
+    "卡塔尔-瑞士": "1:1",
+    "美国-澳大利亚": "2:0",
+    "德国-科特迪瓦": "2:1",
+    "荷兰-瑞典": "5:1",
+    "法国-伊拉克": "3:0",
+    "挪威-塞内加尔": "3:2",
+    "日本-瑞典": "1:1",
+    "海地-苏格兰": "0:1",
+    "英格兰-克罗地亚": "4:2",
+    "西班牙-沙特阿拉伯": "4:0",
+    "约旦-阿尔及利亚": "1:2",
+    "葡萄牙-乌兹别克斯坦": "5:0",
+    "巴拿马-克罗地亚": "0:1",
+    "捷克-墨西哥": "0:3",
+    "突尼斯-荷兰": "1:3",
+    "韩国-捷克": "2:1",
+    "美国-巴拉圭": "4:1",
+    "法国-塞内加尔": "3:1",
+    "伊拉克-挪威": "1:4",
+    "葡萄牙-刚果(金)": "1:1",
+    "比利时-伊朗": "0:0",
+    "摩洛哥-海地": "4:2",
+    "南非-韩国": "1:0",
+    "科特迪瓦-厄瓜多尔": "1:0",
+    "德国-库拉索": "7:1",
+    "瑞典-突尼斯": "5:1",
+    "墨西哥-韩国": "1:0",
+    "加拿大-卡塔尔": "6:0",
+    "苏格兰-摩洛哥": "0:1",
+    "土耳其-巴拉圭": "0:1",
+    "阿根廷-奥地利": "2:0",
+    "苏格兰-巴西": "0:3",
+    "波黑-卡塔尔": "3:1",
+    "土耳其-美国": "3:2",
+    "墨西哥-南非": "2:0",
+    "巴西-摩洛哥": "1:1",
+    "荷兰-日本": "2:2",
+    "瑞士-波黑": "4:1",
+    "巴西-海地": "3:0",
+    "突尼斯-日本": "0:4",
+    "新西兰-埃及": "1:3",
+    "乌拉圭-佛得角": "2:2",
+    "哥伦比亚-刚果(金)": "1:0",
+    "西班牙-佛得角": "0:0",
+    "沙特阿拉伯-乌拉圭": "1:1",
+    "奥地利-约旦": "3:1",
+    "乌兹别克斯坦-哥伦比亚": "1:3",
+    "加拿大-波黑": "1:1",
+    "伊朗-新西兰": "2:2",
+    "阿根廷-阿尔及利亚": "3:0",
+    "加纳-巴拿马": "1:0",
+    "捷克-南非": "1:1",
+    "英格兰-加纳": "0:0",
+    "库拉索-科特迪瓦": "0:2",
+    "厄瓜多尔-德国": "2:1",
+    "比利时-埃及": "1:1",
+    "厄瓜多尔-库拉索": "0:0",
+    "瑞士-加拿大": "2:1",
+    "巴拉圭-澳大利亚": "0:0"
+  },
+  "halftimeResults": {
+    "波黑-卡塔尔": "1:1",
+    "瑞士-加拿大": "1:0",
+    "苏格兰-巴西": "0:2",
+    "摩洛哥-海地": "2:1",
+    "捷克-墨西哥": "0:1",
+    "南非-韩国": "0:0",
+    "库拉索-科特迪瓦": "0:1",
+    "厄瓜多尔-德国": "1:1",
+    "日本-瑞典": "0:0",
+    "突尼斯-荷兰": "0:2",
+    "巴拉圭-澳大利亚": "0:0",
+    "土耳其-美国": "1:2"
+  },
+  "matchScorers": {
+    "澳大利亚-土耳其": [
+      {
+        "name": "Nestory Irankunda",
+        "team": "澳大利亚",
+        "goals": 1
+      },
+      {
+        "name": "C. Metcalfe",
+        "team": "澳大利亚",
+        "goals": 1
+      }
+    ],
+    "卡塔尔-瑞士": [
+      {
+        "name": "B. Khoukhi",
+        "team": "卡塔尔",
+        "goals": 1
+      },
+      {
+        "name": "Breel Embolo",
+        "team": "瑞士",
+        "goals": 1
+      }
+    ],
+    "美国-澳大利亚": [
+      {
+        "name": "Kamrvn Bargs",
+        "team": "美国",
+        "goals": 1
+      },
+      {
+        "name": "Alex Freeman",
+        "team": "美国",
+        "goals": 1
+      }
+    ],
+    "德国-科特迪瓦": [
+      {
+        "name": "Dniz Avndav",
+        "team": "德国",
+        "goals": 2
+      },
+      {
+        "name": "Franck Kessié",
+        "team": "科特迪瓦",
+        "goals": 1
+      }
+    ],
+    "荷兰-瑞典": [
+      {
+        "name": "Brian Brobbey",
+        "team": "荷兰",
+        "goals": 2
+      },
+      {
+        "name": "Kvdi Khakpv",
+        "team": "荷兰",
+        "goals": 2
+      },
+      {
+        "name": "Crysencio Summerville",
+        "team": "荷兰",
+        "goals": 1
+      },
+      {
+        "name": "Anthony Elanga",
+        "team": "瑞典",
+        "goals": 1
+      }
+    ],
+    "法国-伊拉克": [
+      {
+        "name": "Kylian Mbappé",
+        "team": "法国",
+        "goals": 2
+      },
+      {
+        "name": "Ousmane Dembélé",
+        "team": "法国",
+        "goals": 1
+      }
+    ],
+    "挪威-塞内加尔": [
+      {
+        "name": "Markvs Hlmgrn Pdrsn",
+        "team": "挪威",
+        "goals": 1
+      },
+      {
+        "name": "Erling Haaland",
+        "team": "挪威",
+        "goals": 2
+      },
+      {
+        "name": "Ismaïla Sarr",
+        "team": "塞内加尔",
+        "goals": 2
+      }
+    ],
+    "日本-瑞典": [
+      {
+        "name": "Daizen Maeda",
+        "team": "日本",
+        "goals": 1
+      },
+      {
+        "name": "Anthony Elanga",
+        "team": "瑞典",
+        "goals": 1
+      }
+    ],
+    "海地-苏格兰": [
+      {
+        "name": "J. McGinn",
+        "team": "苏格兰",
+        "goals": 1
+      }
+    ],
+    "英格兰-克罗地亚": [
+      {
+        "name": "H. Kane",
+        "team": "英格兰",
+        "goals": 2
+      },
+      {
+        "name": "J. Bellingham",
+        "team": "英格兰",
+        "goals": 1
+      },
+      {
+        "name": "M. Rashford",
+        "team": "英格兰",
+        "goals": 1
+      },
+      {
+        "name": "M. Baturina",
+        "team": "克罗地亚",
+        "goals": 1
+      },
+      {
+        "name": "P. Musa",
+        "team": "克罗地亚",
+        "goals": 1
+      }
+    ],
+    "西班牙-沙特阿拉伯": [
+      {
+        "name": "Lamine Yamal",
+        "team": "西班牙",
+        "goals": 1
+      },
+      {
+        "name": "Mikel Oyarzabal",
+        "team": "西班牙",
+        "goals": 2
+      },
+      {
+        "name": "Hassan Mohamed Altmbkti",
+        "team": "西班牙",
+        "goals": 1
+      }
+    ],
+    "约旦-阿尔及利亚": [
+      {
+        "name": "Al Rashdan",
+        "team": "约旦",
+        "goals": 1
+      },
+      {
+        "name": "Nzir Bnbvali",
+        "team": "阿尔及利亚",
+        "goals": 1
+      },
+      {
+        "name": "Amine Gouiri",
+        "team": "阿尔及利亚",
+        "goals": 1
+      }
+    ],
+    "葡萄牙-乌兹别克斯坦": [
+      {
+        "name": "Cristiano Ronaldo",
+        "team": "葡萄牙",
+        "goals": 2
+      },
+      {
+        "name": "Nvnv Mndz",
+        "team": "葡萄牙",
+        "goals": 1
+      },
+      {
+        "name": "Abdalvhid Namtvf",
+        "team": "葡萄牙",
+        "goals": 1
+      },
+      {
+        "name": "Rafael Leão",
+        "team": "葡萄牙",
+        "goals": 1
+      }
+    ],
+    "巴拿马-克罗地亚": [
+      {
+        "name": "Ante Budimir",
+        "team": "克罗地亚",
+        "goals": 1
+      }
+    ],
+    "捷克-墨西哥": [
+      {
+        "name": "Mateo Chávez",
+        "team": "墨西哥",
+        "goals": 1
+      },
+      {
+        "name": "Jvlian Kviinvnz",
+        "team": "墨西哥",
+        "goals": 1
+      },
+      {
+        "name": "Álvaro Fidalgo",
+        "team": "墨西哥",
+        "goals": 1
+      }
+    ],
+    "突尼斯-荷兰": [
+      {
+        "name": "Hazm Mstvri",
+        "team": "突尼斯",
+        "goals": 1
+      },
+      {
+        "name": "Alis Skhiri",
+        "team": "荷兰",
+        "goals": 1
+      },
+      {
+        "name": "Brian Brobbey",
+        "team": "荷兰",
+        "goals": 1
+      },
+      {
+        "name": "Ian Fn Hkh",
+        "team": "荷兰",
+        "goals": 1
+      }
+    ],
+    "韩国-捷克": [
+      {
+        "name": "I.B. Hwang",
+        "team": "韩国",
+        "goals": 1
+      },
+      {
+        "name": "H.G. Oh",
+        "team": "韩国",
+        "goals": 1
+      },
+      {
+        "name": "L. Krejčí",
+        "team": "捷克",
+        "goals": 1
+      }
+    ],
+    "美国-巴拉圭": [
+      {
+        "name": "D. Bobadilla",
+        "team": "美国",
+        "goals": 1
+      },
+      {
+        "name": "F. Balogun",
+        "team": "美国",
+        "goals": 2
+      },
+      {
+        "name": "G. Reyna",
+        "team": "美国",
+        "goals": 1
+      },
+      {
+        "name": "Maurício",
+        "team": "巴拉圭",
+        "goals": 1
+      }
+    ],
+    "法国-塞内加尔": [
+      {
+        "name": "K. Mbappé",
+        "team": "法国",
+        "goals": 2
+      },
+      {
+        "name": "B. Barcola",
+        "team": "法国",
+        "goals": 1
+      },
+      {
+        "name": "I. Mbaye",
+        "team": "塞内加尔",
+        "goals": 1
+      }
+    ],
+    "伊拉克-挪威": [
+      {
+        "name": "Aymen Hussein",
+        "team": "伊拉克",
+        "goals": 1
+      },
+      {
+        "name": "Erling Haaland",
+        "team": "挪威",
+        "goals": 2
+      },
+      {
+        "name": "Leo Østigård",
+        "team": "挪威",
+        "goals": 1
+      },
+      {
+        "name": "Aymen Hussein",
+        "team": "挪威",
+        "goals": 1
+      }
+    ],
+    "葡萄牙-刚果(金)": [
+      {
+        "name": "J. Neves",
+        "team": "葡萄牙",
+        "goals": 1
+      },
+      {
+        "name": "Y. Wissa",
+        "team": "刚果(金)",
+        "goals": 1
+      }
+    ],
+    "比利时-伊朗": [],
+    "摩洛哥-海地": [
+      {
+        "name": "Achraf Hakimi",
+        "team": "摩洛哥",
+        "goals": 1
+      },
+      {
+        "name": "Asmaail Saibari",
+        "team": "摩洛哥",
+        "goals": 1
+      },
+      {
+        "name": "Svfian Rhimi",
+        "team": "摩洛哥",
+        "goals": 1
+      },
+      {
+        "name": "Gessime Yassine",
+        "team": "摩洛哥",
+        "goals": 1
+      },
+      {
+        "name": "Yassine Bounou",
+        "team": "海地",
+        "goals": 1
+      },
+      {
+        "name": "Wilson Isidor",
+        "team": "海地",
+        "goals": 1
+      }
+    ],
+    "南非-韩国": [
+      {
+        "name": "Taplv Maskv",
+        "team": "南非",
+        "goals": 1
+      }
+    ],
+    "科特迪瓦-厄瓜多尔": [
+      {
+        "name": "A. Diallo",
+        "team": "科特迪瓦",
+        "goals": 1
+      }
+    ],
+    "德国-库拉索": [
+      {
+        "name": "Felix Nmecha",
+        "team": "德国",
+        "goals": 1
+      },
+      {
+        "name": "N. Schlotterbeck",
+        "team": "德国",
+        "goals": 1
+      },
+      {
+        "name": "K. Havertz",
+        "team": "德国",
+        "goals": 2
+      },
+      {
+        "name": "J. Musiala",
+        "team": "德国",
+        "goals": 1
+      },
+      {
+        "name": "N. Brown",
+        "team": "德国",
+        "goals": 1
+      },
+      {
+        "name": "D. Undav",
+        "team": "德国",
+        "goals": 1
+      },
+      {
+        "name": "L. Comenencia",
+        "team": "库拉索",
+        "goals": 1
+      }
+    ],
+    "瑞典-突尼斯": [
+      {
+        "name": "Y.Ayari",
+        "team": "瑞典",
+        "goals": 2
+      },
+      {
+        "name": "A. Isak",
+        "team": "瑞典",
+        "goals": 1
+      },
+      {
+        "name": "V. Gyökeres",
+        "team": "瑞典",
+        "goals": 1
+      },
+      {
+        "name": "M. Svanberg",
+        "team": "瑞典",
+        "goals": 1
+      },
+      {
+        "name": "O. Rekik",
+        "team": "突尼斯",
+        "goals": 1
+      }
+    ],
+    "墨西哥-韩国": [
+      {
+        "name": "Luis Romo",
+        "team": "墨西哥",
+        "goals": 1
+      }
+    ],
+    "加拿大-卡塔尔": [
+      {
+        "name": "Kail Larin",
+        "team": "加拿大",
+        "goals": 1
+      },
+      {
+        "name": "Jonathan David",
+        "team": "加拿大",
+        "goals": 3
+      },
+      {
+        "name": "Nathan Saliba",
+        "team": "加拿大",
+        "goals": 1
+      },
+      {
+        "name": "Mohamed Almnai",
+        "team": "加拿大",
+        "goals": 1
+      }
+    ],
+    "苏格兰-摩洛哥": [
+      {
+        "name": "Asmaail Saibari",
+        "team": "摩洛哥",
+        "goals": 1
+      }
+    ],
+    "土耳其-巴拉圭": [
+      {
+        "name": "Matías Galarza",
+        "team": "巴拉圭",
+        "goals": 1
+      }
+    ],
+    "阿根廷-奥地利": [
+      {
+        "name": "Lionel Messi",
+        "team": "阿根廷",
+        "goals": 2
+      }
+    ],
+    "苏格兰-巴西": [
+      {
+        "name": "Vinícius Júnior",
+        "team": "巴西",
+        "goals": 2
+      },
+      {
+        "name": "Matheus Cunha",
+        "team": "巴西",
+        "goals": 1
+      }
+    ],
+    "波黑-卡塔尔": [
+      {
+        "name": "Karim Alaibgvvich",
+        "team": "波黑",
+        "goals": 1
+      },
+      {
+        "name": "Abvnad",
+        "team": "波黑",
+        "goals": 1
+      },
+      {
+        "name": "Armin Mhmich",
+        "team": "波黑",
+        "goals": 1
+      },
+      {
+        "name": "Hassan Al-Haydos",
+        "team": "卡塔尔",
+        "goals": 1
+      }
+    ],
+    "土耳其-美国": [
+      {
+        "name": "Arda Güler",
+        "team": "土耳其",
+        "goals": 1
+      },
+      {
+        "name": "Baris Alpr Ailmaz",
+        "team": "土耳其",
+        "goals": 1
+      },
+      {
+        "name": "Kan Aihan",
+        "team": "土耳其",
+        "goals": 1
+      },
+      {
+        "name": "Auston Trusty",
+        "team": "美国",
+        "goals": 1
+      },
+      {
+        "name": "Sebastian Berhalter",
+        "team": "美国",
+        "goals": 1
+      }
+    ],
+    "墨西哥-南非": [],
+    "巴西-摩洛哥": [
+      {
+        "name": "V. Júnior",
+        "team": "巴西",
+        "goals": 1
+      },
+      {
+        "name": "I. Saibari",
+        "team": "摩洛哥",
+        "goals": 1
+      }
+    ],
+    "荷兰-日本": [
+      {
+        "name": "Virgil van Dijk",
+        "team": "荷兰",
+        "goals": 1
+      },
+      {
+        "name": "C. Summerville",
+        "team": "荷兰",
+        "goals": 1
+      },
+      {
+        "name": "K. Nakamura",
+        "team": "日本",
+        "goals": 1
+      },
+      {
+        "name": "K. Ogawa",
+        "team": "日本",
+        "goals": 1
+      }
+    ],
+    "瑞士-波黑": [
+      {
+        "name": "Jvhan Mnzambi",
+        "team": "瑞士",
+        "goals": 2
+      },
+      {
+        "name": "Rvbn Vargas",
+        "team": "瑞士",
+        "goals": 1
+      },
+      {
+        "name": "Armin Mhmich",
+        "team": "波黑",
+        "goals": 1
+      }
+    ],
+    "巴西-海地": [
+      {
+        "name": "Matheus Cunha",
+        "team": "巴西",
+        "goals": 2
+      },
+      {
+        "name": "Vinícius Júnior",
+        "team": "巴西",
+        "goals": 1
+      }
+    ],
+    "突尼斯-日本": [
+      {
+        "name": "Daichi Kamada",
+        "team": "日本",
+        "goals": 1
+      },
+      {
+        "name": "Aiash Ivida",
+        "team": "日本",
+        "goals": 2
+      },
+      {
+        "name": "Junya Itō",
+        "team": "日本",
+        "goals": 1
+      }
+    ],
+    "新西兰-埃及": [
+      {
+        "name": "Fin Svrman",
+        "team": "新西兰",
+        "goals": 1
+      },
+      {
+        "name": "Mostafa Ziko",
+        "team": "埃及",
+        "goals": 1
+      },
+      {
+        "name": "Mohamed Salah",
+        "team": "埃及",
+        "goals": 1
+      },
+      {
+        "name": "Mahmoud Hassan Trezeguet",
+        "team": "埃及",
+        "goals": 1
+      }
+    ],
+    "乌拉圭-佛得角": [
+      {
+        "name": "Maximiliano Araújo",
+        "team": "乌拉圭",
+        "goals": 1
+      },
+      {
+        "name": "Agustín Canobbio",
+        "team": "乌拉圭",
+        "goals": 1
+      },
+      {
+        "name": "Kevin Pina",
+        "team": "佛得角",
+        "goals": 1
+      },
+      {
+        "name": "Hliv Varla",
+        "team": "佛得角",
+        "goals": 1
+      }
+    ],
+    "哥伦比亚-刚果(金)": [
+      {
+        "name": "Dnil Mvnvz",
+        "team": "哥伦比亚",
+        "goals": 1
+      }
+    ],
+    "西班牙-佛得角": [],
+    "沙特阿拉伯-乌拉圭": [
+      {
+        "name": "Abdulelah Al-Amri",
+        "team": "沙特阿拉伯",
+        "goals": 1
+      },
+      {
+        "name": "Maximiliano Araújo",
+        "team": "乌拉圭",
+        "goals": 1
+      }
+    ],
+    "奥地利-约旦": [
+      {
+        "name": "Rvmanv Ashmid",
+        "team": "奥地利",
+        "goals": 1
+      },
+      {
+        "name": "Izn Alarb",
+        "team": "奥地利",
+        "goals": 1
+      },
+      {
+        "name": "Ali Avlvan",
+        "team": "约旦",
+        "goals": 1
+      }
+    ],
+    "乌兹别克斯坦-哥伦比亚": [
+      {
+        "name": "Abas Bk Fiz Allh Af",
+        "team": "乌兹别克斯坦",
+        "goals": 1
+      },
+      {
+        "name": "Dnil Mvnvz",
+        "team": "哥伦比亚",
+        "goals": 1
+      },
+      {
+        "name": "Lviiz Diaz",
+        "team": "哥伦比亚",
+        "goals": 1
+      },
+      {
+        "name": "Khamintvn Kampaz",
+        "team": "哥伦比亚",
+        "goals": 1
+      }
+    ],
+    "加拿大-波黑": [
+      {
+        "name": "C. Larin",
+        "team": "加拿大",
+        "goals": 1
+      },
+      {
+        "name": "Jovo Lukić",
+        "team": "波黑",
+        "goals": 1
+      }
+    ],
+    "伊朗-新西兰": [
+      {
+        "name": "Ramin Rezaiian",
+        "team": "伊朗",
+        "goals": 1
+      },
+      {
+        "name": "Mohammad Mohebi",
+        "team": "伊朗",
+        "goals": 1
+      },
+      {
+        "name": "Elijah Just",
+        "team": "新西兰",
+        "goals": 2
+      }
+    ],
+    "阿根廷-阿尔及利亚": [
+      {
+        "name": "Lionel Messi",
+        "team": "阿根廷",
+        "goals": 3
+      }
+    ],
+    "加纳-巴拿马": [
+      {
+        "name": "Kalb Iirnki",
+        "team": "加纳",
+        "goals": 1
+      }
+    ],
+    "捷克-南非": [
+      {
+        "name": "‫mikhal Sadilk",
+        "team": "捷克",
+        "goals": 1
+      }
+    ],
+    "英格兰-加纳": [],
+    "库拉索-科特迪瓦": [
+      {
+        "name": "Nikvlas Ph Ph",
+        "team": "科特迪瓦",
+        "goals": 2
+      }
+    ],
+    "厄瓜多尔-德国": [
+      {
+        "name": "Nilsvn Angvlv",
+        "team": "厄瓜多尔",
+        "goals": 1
+      },
+      {
+        "name": "Gvnzalv Plata",
+        "team": "厄瓜多尔",
+        "goals": 1
+      },
+      {
+        "name": "Leroy Sané",
+        "team": "德国",
+        "goals": 1
+      }
+    ],
+    "比利时-埃及": [
+      {
+        "name": "Mohamed Hany",
+        "team": "比利时",
+        "goals": 1
+      },
+      {
+        "name": "Emam Ashour",
+        "team": "埃及",
+        "goals": 1
+      }
+    ],
+    "厄瓜多尔-库拉索": [],
+    "瑞士-加拿大": [
+      {
+        "name": "Rubén Vargas",
+        "team": "瑞士",
+        "goals": 1
+      },
+      {
+        "name": "Jvhan Mnzambi",
+        "team": "瑞士",
+        "goals": 1
+      },
+      {
+        "name": "Prvmis Divid",
+        "team": "加拿大",
+        "goals": 1
+      }
+    ],
+    "巴拉圭-澳大利亚": []
+  },
+  "matchAssists": {
+    "墨西哥-南非": [
+      {
+        "name": "查韦斯",
+        "team": "墨西哥",
+        "assists": 1
+      },
+      {
+        "name": "阿尔瓦雷斯",
+        "team": "墨西哥",
+        "assists": 1
+      }
+    ],
+    "韩国-捷克": [
+      {
+        "name": "李刚仁",
+        "team": "韩国",
+        "assists": 1
+      },
+      {
+        "name": "黄仁范",
+        "team": "韩国",
+        "assists": 1
+      },
+      {
+        "name": "曹法尔",
+        "team": "捷克",
+        "assists": 1
+      }
+    ],
+    "加拿大-波黑": [
+      {
+        "name": "戴维斯",
+        "team": "加拿大",
+        "assists": 1
+      },
+      {
+        "name": "皮亚尼奇",
+        "team": "波黑",
+        "assists": 1
+      }
+    ],
+    "美国-巴拉圭": [
+      {
+        "name": "雷纳",
+        "team": "美国",
+        "assists": 2
+      },
+      {
+        "name": "罗宾逊",
+        "team": "美国",
+        "assists": 1
+      },
+      {
+        "name": "普利西奇",
+        "team": "美国",
+        "assists": 1
+      },
+      {
+        "name": "比利亚雷亚尔",
+        "team": "巴拉圭",
+        "assists": 1
+      }
+    ],
+    "德国-库拉索": [
+      {
+        "name": "穆西亚拉",
+        "team": "德国",
+        "assists": 2
+      },
+      {
+        "name": "维尔茨",
+        "team": "德国",
+        "assists": 2
+      },
+      {
+        "name": "基米希",
+        "team": "德国",
+        "assists": 1
+      },
+      {
+        "name": "哈弗茨",
+        "team": "德国",
+        "assists": 1
+      },
+      {
+        "name": "巴库纳",
+        "team": "库拉索",
+        "assists": 1
+      }
+    ],
+    "荷兰-日本": [
+      {
+        "name": "德容",
+        "team": "荷兰",
+        "assists": 2
+      },
+      {
+        "name": "镰田大地",
+        "team": "日本",
+        "assists": 1
+      },
+      {
+        "name": "久保建英",
+        "team": "日本",
+        "assists": 1
+      }
+    ],
+    "法国-塞内加尔": [
+      {
+        "name": "格列兹曼",
+        "team": "法国",
+        "assists": 2
+      },
+      {
+        "name": "楚阿梅尼",
+        "team": "法国",
+        "assists": 1
+      },
+      {
+        "name": "库利巴利",
+        "team": "塞内加尔",
+        "assists": 1
+      }
+    ],
+    "伊拉克-挪威": [
+      {
+        "name": "哈兰德",
+        "team": "挪威",
+        "assists": 1
+      },
+      {
+        "name": "厄德高",
+        "team": "挪威",
+        "assists": 2
+      },
+      {
+        "name": "索尔洛特",
+        "team": "挪威",
+        "assists": 1
+      }
+    ],
+    "阿根廷-阿尔及利亚": [
+      {
+        "name": "梅西",
+        "team": "阿根廷",
+        "assists": 2
+      },
+      {
+        "name": "恩佐",
+        "team": "阿根廷",
+        "assists": 1
+      }
+    ],
+    "英格兰-克罗地亚": [
+      {
+        "name": "贝林厄姆",
+        "team": "英格兰",
+        "assists": 2
+      },
+      {
+        "name": "福登",
+        "team": "英格兰",
+        "assists": 1
+      },
+      {
+        "name": "凯恩",
+        "team": "英格兰",
+        "assists": 1
+      },
+      {
+        "name": "莫德里奇",
+        "team": "克罗地亚",
+        "assists": 1
+      },
+      {
+        "name": "佩里西奇",
+        "team": "克罗地亚",
+        "assists": 1
+      }
+    ],
+    "葡萄牙-刚果(金)": [
+      {
+        "name": "布鲁诺",
+        "team": "葡萄牙",
+        "assists": 1
+      },
+      {
+        "name": "维蒂尼亚",
+        "team": "葡萄牙",
+        "assists": 1
+      }
+    ],
+    "乌兹别克斯坦-哥伦比亚": [
+      {
+        "name": "J罗",
+        "team": "哥伦比亚",
+        "assists": 2
+      },
+      {
+        "name": "迪亚斯",
+        "team": "哥伦比亚",
+        "assists": 1
+      }
+    ],
+    "奥地利-约旦": [
+      {
+        "name": "萨比策",
+        "team": "奥地利",
+        "assists": 2
+      },
+      {
+        "name": "莱默尔",
+        "team": "奥地利",
+        "assists": 1
+      }
+    ],
+    "瑞典-突尼斯": [
+      {
+        "name": "伊萨克",
+        "team": "瑞典",
+        "assists": 1
+      },
+      {
+        "name": "库卢塞夫斯基",
+        "team": "瑞典",
+        "assists": 2
+      }
+    ],
+    "比利时-埃及": [
+      {
+        "name": "德布劳内",
+        "team": "比利时",
+        "assists": 1
+      },
+      {
+        "name": "萨拉赫",
+        "team": "埃及",
+        "assists": 1
+      }
+    ],
+    "瑞士-波黑": [
+      {
+        "name": "沙奇里",
+        "team": "瑞士",
+        "assists": 2
+      },
+      {
+        "name": "弗鲁勒",
+        "team": "瑞士",
+        "assists": 1
+      },
+      {
+        "name": "恩博洛",
+        "team": "瑞士",
+        "assists": 1
+      }
+    ],
+    "加拿大-卡塔尔": [
+      {
+        "name": "布坎南",
+        "team": "加拿大",
+        "assists": 2
+      },
+      {
+        "name": "戴维斯",
+        "team": "加拿大",
+        "assists": 2
+      }
+    ],
+    "美国-澳大利亚": [
+      {
+        "name": "普利西奇",
+        "team": "美国",
+        "assists": 1
+      },
+      {
+        "name": "麦肯尼",
+        "team": "美国",
+        "assists": 1
+      }
+    ],
+    "巴西-海地": [
+      {
+        "name": "拉菲尼亚",
+        "team": "巴西",
+        "assists": 2
+      },
+      {
+        "name": "内马尔",
+        "team": "巴西",
+        "assists": 1
+      }
+    ],
+    "荷兰-瑞典": [
+      {
+        "name": "德容",
+        "team": "荷兰",
+        "assists": 2
+      },
+      {
+        "name": "邓弗里斯",
+        "team": "荷兰",
+        "assists": 1
+      },
+      {
+        "name": "加克波",
+        "team": "荷兰",
+        "assists": 1
+      }
+    ],
+    "德国-科特迪瓦": [
+      {
+        "name": "穆西亚拉",
+        "team": "德国",
+        "assists": 1
+      },
+      {
+        "name": "维尔茨",
+        "team": "德国",
+        "assists": 1
+      }
+    ],
+    "突尼斯-日本": [
+      {
+        "name": "久保建英",
+        "team": "日本",
+        "assists": 2
+      },
+      {
+        "name": "三笘薰",
+        "team": "日本",
+        "assists": 1
+      },
+      {
+        "name": "守田英正",
+        "team": "日本",
+        "assists": 1
+      }
+    ],
+    "西班牙-沙特阿拉伯": [
+      {
+        "name": "佩德里",
+        "team": "西班牙",
+        "assists": 2
+      },
+      {
+        "name": "亚马尔",
+        "team": "西班牙",
+        "assists": 1
+      },
+      {
+        "name": "奥尔莫",
+        "team": "西班牙",
+        "assists": 1
+      }
+    ],
+    "阿根廷-奥地利": [
+      {
+        "name": "梅西",
+        "team": "阿根廷",
+        "assists": 1
+      },
+      {
+        "name": "迪马利亚",
+        "team": "阿根廷",
+        "assists": 1
+      }
+    ],
+    "法国-伊拉克": [
+      {
+        "name": "格列兹曼",
+        "team": "法国",
+        "assists": 2
+      },
+      {
+        "name": "特奥",
+        "team": "法国",
+        "assists": 1
+      }
+    ],
+    "挪威-塞内加尔": [
+      {
+        "name": "厄德高",
+        "team": "挪威",
+        "assists": 2
+      },
+      {
+        "name": "哈兰德",
+        "team": "挪威",
+        "assists": 1
+      },
+      {
+        "name": "马内",
+        "team": "塞内加尔",
+        "assists": 1
+      }
+    ],
+    "葡萄牙-乌兹别克斯坦": [
+      {
+        "name": "布鲁诺",
+        "team": "葡萄牙",
+        "assists": 2
+      },
+      {
+        "name": "贝尔纳多",
+        "team": "葡萄牙",
+        "assists": 1
+      },
+      {
+        "name": "莱奥",
+        "team": "葡萄牙",
+        "assists": 1
+      }
+    ],
+    "哥伦比亚-刚果(金)": [
+      {
+        "name": "J罗",
+        "team": "哥伦比亚",
+        "assists": 1
+      }
+    ],
+    "波黑-卡塔尔": [
+      {
+        "name": "皮亚尼奇",
+        "team": "波黑",
+        "assists": 1
+      },
+      {
+        "name": "戈亚克",
+        "team": "波黑",
+        "assists": 1
+      },
+      {
+        "name": "科罗马",
+        "team": "波黑",
+        "assists": 1
+      },
+      {
+        "name": "阿菲夫",
+        "team": "卡塔尔",
+        "assists": 1
+      }
+    ],
+    "瑞士-加拿大": [
+      {
+        "name": "阿坎吉",
+        "team": "瑞士",
+        "assists": 1
+      },
+      {
+        "name": "恩博洛",
+        "team": "瑞士",
+        "assists": 1
+      },
+      {
+        "name": "戴维斯",
+        "team": "加拿大",
+        "assists": 1
+      }
+    ],
+    "苏格兰-巴西": [
+      {
+        "name": "内马尔",
+        "team": "巴西",
+        "assists": 2
+      },
+      {
+        "name": "维尼修斯",
+        "team": "巴西",
+        "assists": 1
+      }
+    ],
+    "摩洛哥-海地": [
+      {
+        "name": "齐耶赫",
+        "team": "摩洛哥",
+        "assists": 2
+      },
+      {
+        "name": "阿什拉夫",
+        "team": "摩洛哥",
+        "assists": 1
+      },
+      {
+        "name": "布法尔",
+        "team": "摩洛哥",
+        "assists": 1
+      },
+      {
+        "name": "多塞维",
+        "team": "海地",
+        "assists": 1
+      }
+    ],
+    "捷克-墨西哥": [
+      {
+        "name": "阿尔瓦雷斯",
+        "team": "墨西哥",
+        "assists": 1
+      },
+      {
+        "name": "古铁雷斯",
+        "team": "墨西哥",
+        "assists": 1
+      },
+      {
+        "name": "洛萨诺",
+        "team": "墨西哥",
+        "assists": 1
+      }
+    ],
+    "南非-韩国": [
+      {
+        "name": "马派佩",
+        "team": "南非",
+        "assists": 1
+      }
+    ],
+    "库拉索-科特迪瓦": [
+      {
+        "name": "迪奥曼德",
+        "team": "科特迪瓦",
+        "assists": 1
+      }
+    ],
+    "厄瓜多尔-德国": [
+      {
+        "name": "维尔茨",
+        "team": "德国",
+        "assists": 1
+      }
+    ],
+    "日本-瑞典": [],
+    "突尼斯-荷兰": [
+      {
+        "name": "邓弗里斯",
+        "team": "荷兰",
+        "assists": 1
+      }
+    ],
+    "巴拉圭-澳大利亚": [],
+    "土耳其-美国": [
+      {
+        "name": "恰尔汗奥卢",
+        "team": "土耳其",
+        "assists": 1
+      },
+      {
+        "name": "普利西奇",
+        "team": "美国",
+        "assists": 1
+      }
+    ]
+  },
+  "groupStandings": {
+    "A": [
+      {
+        "team": "墨西哥",
+        "played": 3,
+        "won": 3,
+        "drawn": 0,
+        "lost": 0,
+        "gf": 6,
+        "ga": 0,
+        "gd": 6,
+        "pts": 9
+      },
+      {
+        "team": "南非",
+        "played": 3,
+        "won": 1,
+        "drawn": 1,
+        "lost": 1,
+        "gf": 2,
+        "ga": 3,
+        "gd": -1,
+        "pts": 4
+      },
+      {
+        "team": "韩国",
+        "played": 3,
+        "won": 1,
+        "drawn": 0,
+        "lost": 2,
+        "gf": 2,
+        "ga": 3,
+        "gd": -1,
+        "pts": 3
+      },
+      {
+        "team": "捷克",
+        "played": 3,
+        "won": 0,
+        "drawn": 1,
+        "lost": 2,
+        "gf": 2,
+        "ga": 6,
+        "gd": -4,
+        "pts": 1
+      }
+    ],
+    "B": [
+      {
+        "team": "瑞士",
+        "played": 3,
+        "won": 2,
+        "drawn": 1,
+        "lost": 0,
+        "gf": 7,
+        "ga": 3,
+        "gd": 4,
+        "pts": 7
+      },
+      {
+        "team": "加拿大",
+        "played": 3,
+        "won": 1,
+        "drawn": 1,
+        "lost": 1,
+        "gf": 8,
+        "ga": 3,
+        "gd": 5,
+        "pts": 4
+      },
+      {
+        "team": "波黑",
+        "played": 3,
+        "won": 1,
+        "drawn": 1,
+        "lost": 1,
+        "gf": 5,
+        "ga": 6,
+        "gd": -1,
+        "pts": 4
+      },
+      {
+        "team": "卡塔尔",
+        "played": 3,
+        "won": 0,
+        "drawn": 1,
+        "lost": 2,
+        "gf": 2,
+        "ga": 10,
+        "gd": -8,
+        "pts": 1
+      }
+    ],
+    "C": [
+      {
+        "team": "巴西",
+        "played": 3,
+        "won": 2,
+        "drawn": 1,
+        "lost": 0,
+        "gf": 7,
+        "ga": 1,
+        "gd": 6,
+        "pts": 7
+      },
+      {
+        "team": "摩洛哥",
+        "played": 3,
+        "won": 2,
+        "drawn": 1,
+        "lost": 0,
+        "gf": 6,
+        "ga": 3,
+        "gd": 3,
+        "pts": 7
+      },
+      {
+        "team": "苏格兰",
+        "played": 3,
+        "won": 1,
+        "drawn": 0,
+        "lost": 2,
+        "gf": 1,
+        "ga": 4,
+        "gd": -3,
+        "pts": 3
+      },
+      {
+        "team": "海地",
+        "played": 3,
+        "won": 0,
+        "drawn": 0,
+        "lost": 3,
+        "gf": 2,
+        "ga": 8,
+        "gd": -6,
+        "pts": 0
+      }
+    ],
+    "D": [
+      {
+        "team": "美国",
+        "played": 3,
+        "won": 2,
+        "drawn": 0,
+        "lost": 1,
+        "gf": 8,
+        "ga": 4,
+        "gd": 4,
+        "pts": 6
+      },
+      {
+        "team": "澳大利亚",
+        "played": 3,
+        "won": 1,
+        "drawn": 1,
+        "lost": 1,
+        "gf": 2,
+        "ga": 2,
+        "gd": 0,
+        "pts": 4
+      },
+      {
+        "team": "巴拉圭",
+        "played": 3,
+        "won": 1,
+        "drawn": 1,
+        "lost": 1,
+        "gf": 2,
+        "ga": 4,
+        "gd": -2,
+        "pts": 4
+      },
+      {
+        "team": "土耳其",
+        "played": 3,
+        "won": 1,
+        "drawn": 0,
+        "lost": 2,
+        "gf": 3,
+        "ga": 5,
+        "gd": -2,
+        "pts": 3
+      }
+    ],
+    "E": [
+      {
+        "team": "德国",
+        "played": 3,
+        "won": 2,
+        "drawn": 0,
+        "lost": 1,
+        "gf": 10,
+        "ga": 4,
+        "gd": 6,
+        "pts": 6
+      },
+      {
+        "team": "科特迪瓦",
+        "played": 3,
+        "won": 2,
+        "drawn": 0,
+        "lost": 1,
+        "gf": 4,
+        "ga": 2,
+        "gd": 2,
+        "pts": 6
+      },
+      {
+        "team": "厄瓜多尔",
+        "played": 3,
+        "won": 1,
+        "drawn": 1,
+        "lost": 1,
+        "gf": 2,
+        "ga": 2,
+        "gd": 0,
+        "pts": 4
+      },
+      {
+        "team": "库拉索",
+        "played": 3,
+        "won": 0,
+        "drawn": 1,
+        "lost": 2,
+        "gf": 1,
+        "ga": 9,
+        "gd": -8,
+        "pts": 1
+      }
+    ],
+    "F": [
+      {
+        "team": "荷兰",
+        "played": 3,
+        "won": 2,
+        "drawn": 1,
+        "lost": 0,
+        "gf": 10,
+        "ga": 4,
+        "gd": 6,
+        "pts": 7
+      },
+      {
+        "team": "日本",
+        "played": 3,
+        "won": 1,
+        "drawn": 2,
+        "lost": 0,
+        "gf": 7,
+        "ga": 3,
+        "gd": 4,
+        "pts": 5
+      },
+      {
+        "team": "瑞典",
+        "played": 3,
+        "won": 1,
+        "drawn": 1,
+        "lost": 1,
+        "gf": 7,
+        "ga": 7,
+        "gd": 0,
+        "pts": 4
+      },
+      {
+        "team": "突尼斯",
+        "played": 3,
+        "won": 0,
+        "drawn": 0,
+        "lost": 3,
+        "gf": 2,
+        "ga": 12,
+        "gd": -10,
+        "pts": 0
+      }
+    ],
+    "G": [
+      {
+        "team": "埃及",
+        "played": 2,
+        "won": 1,
+        "drawn": 1,
+        "lost": 0,
+        "gf": 4,
+        "ga": 2,
+        "gd": 2,
+        "pts": 4
+      },
+      {
+        "team": "伊朗",
+        "played": 2,
+        "won": 0,
+        "drawn": 2,
+        "lost": 0,
+        "gf": 2,
+        "ga": 2,
+        "gd": 0,
+        "pts": 2
+      },
+      {
+        "team": "比利时",
+        "played": 2,
+        "won": 0,
+        "drawn": 2,
+        "lost": 0,
+        "gf": 1,
+        "ga": 1,
+        "gd": 0,
+        "pts": 2
+      },
+      {
+        "team": "新西兰",
+        "played": 2,
+        "won": 0,
+        "drawn": 1,
+        "lost": 1,
+        "gf": 3,
+        "ga": 5,
+        "gd": -2,
+        "pts": 1
+      }
+    ],
+    "H": [
+      {
+        "team": "西班牙",
+        "played": 2,
+        "won": 1,
+        "drawn": 1,
+        "lost": 0,
+        "gf": 4,
+        "ga": 0,
+        "gd": 4,
+        "pts": 4
+      },
+      {
+        "team": "乌拉圭",
+        "played": 2,
+        "won": 0,
+        "drawn": 2,
+        "lost": 0,
+        "gf": 3,
+        "ga": 3,
+        "gd": 0,
+        "pts": 2
+      },
+      {
+        "team": "佛得角",
+        "played": 2,
+        "won": 0,
+        "drawn": 2,
+        "lost": 0,
+        "gf": 2,
+        "ga": 2,
+        "gd": 0,
+        "pts": 2
+      },
+      {
+        "team": "沙特阿拉伯",
+        "played": 2,
+        "won": 0,
+        "drawn": 1,
+        "lost": 1,
+        "gf": 1,
+        "ga": 5,
+        "gd": -4,
+        "pts": 1
+      }
+    ],
+    "I": [
+      {
+        "team": "法国",
+        "played": 2,
+        "won": 2,
+        "drawn": 0,
+        "lost": 0,
+        "gf": 6,
+        "ga": 1,
+        "gd": 5,
+        "pts": 6
+      },
+      {
+        "team": "挪威",
+        "played": 2,
+        "won": 2,
+        "drawn": 0,
+        "lost": 0,
+        "gf": 7,
+        "ga": 3,
+        "gd": 4,
+        "pts": 6
+      },
+      {
+        "team": "塞内加尔",
+        "played": 2,
+        "won": 0,
+        "drawn": 0,
+        "lost": 2,
+        "gf": 3,
+        "ga": 6,
+        "gd": -3,
+        "pts": 0
+      },
+      {
+        "team": "伊拉克",
+        "played": 2,
+        "won": 0,
+        "drawn": 0,
+        "lost": 2,
+        "gf": 1,
+        "ga": 7,
+        "gd": -6,
+        "pts": 0
+      }
+    ],
+    "J": [
+      {
+        "team": "阿根廷",
+        "played": 2,
+        "won": 2,
+        "drawn": 0,
+        "lost": 0,
+        "gf": 5,
+        "ga": 0,
+        "gd": 5,
+        "pts": 6
+      },
+      {
+        "team": "奥地利",
+        "played": 2,
+        "won": 1,
+        "drawn": 0,
+        "lost": 1,
+        "gf": 3,
+        "ga": 3,
+        "gd": 0,
+        "pts": 3
+      },
+      {
+        "team": "阿尔及利亚",
+        "played": 2,
+        "won": 1,
+        "drawn": 0,
+        "lost": 1,
+        "gf": 2,
+        "ga": 4,
+        "gd": -2,
+        "pts": 3
+      },
+      {
+        "team": "约旦",
+        "played": 2,
+        "won": 0,
+        "drawn": 0,
+        "lost": 2,
+        "gf": 2,
+        "ga": 5,
+        "gd": -3,
+        "pts": 0
+      }
+    ],
+    "K": [
+      {
+        "team": "哥伦比亚",
+        "played": 2,
+        "won": 2,
+        "drawn": 0,
+        "lost": 0,
+        "gf": 4,
+        "ga": 1,
+        "gd": 3,
+        "pts": 6
+      },
+      {
+        "team": "葡萄牙",
+        "played": 2,
+        "won": 1,
+        "drawn": 1,
+        "lost": 0,
+        "gf": 6,
+        "ga": 1,
+        "gd": 5,
+        "pts": 4
+      },
+      {
+        "team": "刚果(金)",
+        "played": 2,
+        "won": 0,
+        "drawn": 1,
+        "lost": 1,
+        "gf": 1,
+        "ga": 2,
+        "gd": -1,
+        "pts": 1
+      },
+      {
+        "team": "乌兹别克斯坦",
+        "played": 2,
+        "won": 0,
+        "drawn": 0,
+        "lost": 2,
+        "gf": 1,
+        "ga": 8,
+        "gd": -7,
+        "pts": 0
+      }
+    ],
+    "L": [
+      {
+        "team": "英格兰",
+        "played": 2,
+        "won": 1,
+        "drawn": 1,
+        "lost": 0,
+        "gf": 4,
+        "ga": 2,
+        "gd": 2,
+        "pts": 4
+      },
+      {
+        "team": "加纳",
+        "played": 2,
+        "won": 1,
+        "drawn": 1,
+        "lost": 0,
+        "gf": 1,
+        "ga": 0,
+        "gd": 1,
+        "pts": 4
+      },
+      {
+        "team": "克罗地亚",
+        "played": 2,
+        "won": 1,
+        "drawn": 0,
+        "lost": 1,
+        "gf": 3,
+        "ga": 4,
+        "gd": -1,
+        "pts": 3
+      },
+      {
+        "team": "巴拿马",
+        "played": 2,
+        "won": 0,
+        "drawn": 0,
+        "lost": 2,
+        "gf": 0,
+        "ga": 2,
+        "gd": -2,
+        "pts": 0
+      }
+    ]
+  },
+  "upsetAnalysis": {
+    "乌拉圭-西班牙": {
+      "level": "hot",
+      "levelLabel": "🔥 高爆冷风险",
+      "reasons": [
+        "西班牙4分平局即锁头名，德拉富恩特大概率轮换佩德里+亚马尔+罗德里等核心，体能优先为淘汰赛蓄力",
+        "乌拉圭2分背水一战，必须赢球才能稳出线——巴尔韦德+努涅斯的反击组合会全力出击",
+        "乌拉圭两场平局靠的是高位逼抢+定位球破局，本场面对西班牙可能轮换的防线，巴尔韦德的远射和努涅斯的单点爆破都是杀招",
+        "西班牙前两轮0失球是建立在佩德里+罗德里双核坐镇中场的前提上，一旦两人轮休，中场控制力将明显下降"
+      ],
+      "tags": [
+        "战意悬殊",
+        "轮换漏洞",
+        "南美爆发"
+      ],
+      "rumorHint": "乌拉圭全队把这场定义为决赛预演：输球就回家，没有任何退路，主帅贝尔萨赛前发布会长达40分钟。"
+    },
+    "埃及-伊朗": {
+      "level": "hot",
+      "levelLabel": "🔥 高爆冷风险",
+      "reasons": [
+        "伊朗2分必须取胜才能出线，奎罗斯的5-4-1铁桶阵是世界杯历史级别的防守反击代表，2018年逼平葡萄牙就是经典战例",
+        "埃及4分只需平局即可锁定前二，但萨拉赫+马尔穆什的反击组合一旦被锁死，进攻端可能彻底哑火",
+        "伊朗身高优势明显，定位球和头球是他们的破僵武器，埃及防空能力一直是软肋",
+        "萨拉赫刚伤愈复出状态存疑，膝伤的反复可能影响他的爆发力，埃及前场缺少第二爆点"
+      ],
+      "tags": [
+        "铁桶阵",
+        "定位球博弈",
+        "萨拉赫伤疑"
+      ],
+      "rumorHint": "奎罗斯赛前训话曝光：今天我们不是来防守的，是来赢球的。伊朗全队取消休假，连续三天封闭训练。"
+    },
+    "佛得角-沙特阿拉伯": {
+      "level": "warm",
+      "levelLabel": "🟡 中度爆冷可能",
+      "reasons": [
+        "佛得角2分必须取胜+看另一场结果才能晋级，全队战意拉满；沙特1分基本无望，前两场仅进1球士气低迷",
+        "沙特上一场0:4惨败西班牙后，据传队内出现信任危机，主帅加拉多的战术安排遭到球员公开质疑",
+        "佛得角防守纪律性极强，5-3-2阵型压缩空间能力出色，沙特面对密集防守办法不多",
+        "沙特球员体能和精神状态存疑，被西班牙打崩后，末轮能否调整回来是个巨大问号"
+      ],
+      "tags": [
+        "战意拉满",
+        "铁血防守",
+        "沙特内乱"
+      ],
+      "rumorHint": "沙特内部消息：替补球员阿姆里被拍到在训练场与助教发生口角，更衣室气氛降至冰点。"
+    },
+    "挪威-法国": {
+      "level": "watch",
+      "levelLabel": "🔵 值得关注",
+      "reasons": [
+        "两队同积6分都已出线，平局法国锁头名——德尚可能轮换姆巴佩等核心为淘汰赛蓄力",
+        "挪威若想反超头名必须全力争胜，主帅索尔巴肯赛前喊话没有保守的资本",
+        "哈兰德近3场4球状态火热，面对法国可能轮换的防线，挪威的高空轰炸（伊萨克+索尔洛特+哈兰德）威胁极大",
+        "姆巴佩VS哈兰德的金靴之争是最大看点，但德尚更看重淘汰赛签位，姆巴佩出场时间可能受限"
+      ],
+      "tags": [
+        "金靴对决",
+        "高空轰炸",
+        "头名之争"
+      ],
+      "rumorHint": "德尚内部通气：如果上半场0:0，下半场我们换人。姆巴佩+楚阿梅尼+卡马文加均可能被保护性换下。"
+    }
+  },
+  "visitorComments": [
+    {
+      "avatar": "🐂",
+      "name": "乌拉圭魂不灭",
+      "badge": "资深球迷",
+      "text": "乌拉圭被逼到墙角就是最可怕的！2018年淘汰葡萄牙、2022年差点干翻巴西，南美球队被低估就是大冷门的开始。西班牙轮换就完蛋！"
+    },
+    {
+      "avatar": "⚽",
+      "name": "战术分析师老李",
+      "badge": "专业认证",
+      "text": "德拉富恩特不可能让佩德里+亚马尔冒着受伤风险踢全场。西班牙替补中场控制力掉档，乌拉圭反击一个进一个准。"
+    },
+    {
+      "avatar": "🦅",
+      "name": "马德里主义者",
+      "badge": "VIP会员",
+      "text": "别奶了！西班牙就算轮换，替补的加维+费尔明也是主力水平。乌拉圭爆冷？我看悬。"
+    },
+    {
+      "avatar": "🎌",
+      "name": "波斯铁骑后裔",
+      "badge": "伊朗铁粉",
+      "text": "伊朗铁桶阵又来了！2018年踢C罗的葡萄牙也才0:1小负，今天萨拉赫能比C罗强？奎罗斯这老狐狸最会搞心态。"
+    },
+    {
+      "avatar": "🌍",
+      "name": "法老护卫队",
+      "badge": "VIP会员",
+      "text": "萨拉赫刚伤愈你跟我说打伊朗？我看悬。马尔穆什独木难支，埃及这进攻线是真的贫瘠。"
+    },
+    {
+      "avatar": "🌊",
+      "name": "佛得角之狮",
+      "badge": "岛国荣耀",
+      "text": "佛得角冲鸭！连续两场逼平强敌已经证明我们不是鱼腩。沙特被打崩的精气神能撑90分钟？我看60分钟都难！"
+    },
+    {
+      "avatar": "🥇",
+      "name": "哈兰德女友粉",
+      "badge": "追星一族",
+      "text": "哈兰德本场要是再进球，金靴稳了！挪威3前锋体系：哈兰德+伊萨克+索尔洛特，谁顶得住？"
+    },
+    {
+      "avatar": "🤫",
+      "name": "内幕君",
+      "badge": "消息灵通",
+      "text": "听我在法国队的线人说，德尚已经让姆巴佩的体能教练控制出场时间，65分钟换人是底线。这场不是真打。"
+    },
+    {
+      "avatar": "💸",
+      "name": "赌狗日记",
+      "badge": "老韭菜",
+      "text": "今日下注：乌拉圭受让+0.5，伊朗受让+0.5。两场同时冷，盈利翻倍！输了就当交学费。"
+    },
+    {
+      "avatar": "🌟",
+      "name": "世界杯百事通",
+      "badge": "认证博主",
+      "text": "这届小组赛末轮的轮换定律已经被验证过3次了：德国轮换差点输厄瓜多尔、美国轮换差点输给土耳其、巴西轮换被苏格兰逼得很狼狈。今天西班牙也逃不掉。"
+    },
+    {
+      "avatar": "🔮",
+      "name": "预言家请睁眼",
+      "badge": "玄学大师",
+      "text": "6月27日凌晨3点，I组剧本会写成哈兰德绝杀。挪威2:1法国？命运的齿轮开始转动了。"
+    },
+    {
+      "avatar": "📊",
+      "name": "量化小王子",
+      "badge": "数据达人",
+      "text": "近5届世界杯小组赛R3中，已出线球队战意指数下降40%，输盘率高达52%。不是玄学，是大数据。"
+    }
+  ],
+  "upsetRumors": {
+    "乌拉圭-西班牙": [
+      {
+        "tag": "🔄",
+        "text": "西班牙首发出炉：亚马尔+佩德里+罗德里集体替补，莫拉塔领衔B队出战。",
+        "src": "马卡报"
+      },
+      {
+        "tag": "🔥",
+        "text": "乌拉圭老帅贝尔萨赛前训话40分钟：这场比决赛还重要，球员表情严肃走出训练场。",
+        "src": "Ovación"
+      },
+      {
+        "tag": "🌧",
+        "text": "比赛地阿灵顿天气预报：雷阵雨概率70%，湿滑场地对南美球队的拼抢风格是利好。",
+        "src": "天气频道"
+      }
+    ],
+    "埃及-伊朗": [
+      {
+        "tag": "🏥",
+        "text": "萨拉赫伤情更新：埃及队医承认未达100%，但球员本人坚持首发。",
+        "src": "beIN Sports"
+      },
+      {
+        "tag": "🛡",
+        "text": "伊朗5-4-1阵型内部演练曝光：阿兹蒙单箭头+塔雷米二点，定位球成为主要进攻手段。",
+        "src": "伊朗足协"
+      },
+      {
+        "tag": "🌍",
+        "text": "历史数据：伊朗世界杯对阵亚洲以外球队从未单场失球超过2个。",
+        "src": "FIFA数据"
+      }
+    ],
+    "佛得角-沙特阿拉伯": [
+      {
+        "tag": "🇸🇦",
+        "text": "沙特更衣室内讧升级：阿姆里公开质疑主帅战术，球员与教练组关系降至冰点。",
+        "src": "沙特体育报"
+      },
+      {
+        "tag": "🌴",
+        "text": "佛得角全村动员：海外侨民预计超3万人到场助威，老将罗德里格斯发表最后一战演说。",
+        "src": "佛得角日报"
+      }
+    ],
+    "挪威-法国": [
+      {
+        "tag": "⭐",
+        "text": "金靴赔率更新：哈兰德反超姆巴佩升至第一。挪威全队表示为哈兰德而战。",
+        "src": "威廉希尔"
+      },
+      {
+        "tag": "🦓",
+        "text": "法国队训练曝光：姆巴佩仅参与战术演练+点球练习，未参加高强度对抗。",
+        "src": "队报"
+      },
+      {
+        "tag": "🤝",
+        "text": "哈兰德+姆巴佩赛前拥抱视频疯传：两位新星私下关系极佳，场上将奉献真刀真枪的对决。",
+        "src": "社交媒体"
+      }
+    ]
+  },
+  "teamRumors": {
+    "西班牙": [
+      {
+        "tag": "tactics",
+        "emoji": "⚙",
+        "text": "德拉富恩特赛前演练B队首发：莫拉塔+费尔明+加维领衔，佩德里、亚马尔、罗德里三核坐替补席。轮换信号明显。",
+        "src": "阿斯报"
+      },
+      {
+        "tag": "locker",
+        "emoji": "🔒",
+        "text": "西班牙更衣室传出一则有趣消息：佩德里和亚马尔主动向主帅申请少踢15分钟，理由是'我们要留力气到淘汰赛'。",
+        "src": "队内消息"
+      },
+      {
+        "tag": "offfield",
+        "emoji": "🏟",
+        "text": "马德里数百球迷包机抵达迈阿密，西班牙球迷将在硬石球场占据半壁江山。",
+        "src": "马卡报"
+      },
+      {
+        "tag": "injury",
+        "emoji": "🤕",
+        "text": "西班牙后防大将勒诺曼德右大腿轻微不适，最后一练仅进行恢复训练，纳乔可能替补待命。",
+        "src": "西班牙足协"
+      }
+    ],
+    "乌拉圭": [
+      {
+        "tag": "media",
+        "emoji": "📣",
+        "text": "贝尔萨赛前发布会：足球不是数学题，战意可以弥补实力的差距。长达40分钟的激情演讲让全场记者鸦雀无声。",
+        "src": "Ovación"
+      },
+      {
+        "tag": "tactics",
+        "emoji": "⚡",
+        "text": "乌拉圭预计首发4-2-3-1：巴尔韦德前腰+努涅斯突前，本坦库尔+巴尔加德双后腰绞杀中场。反击速度是杀手锏。",
+        "src": "乌拉圭足协"
+      },
+      {
+        "tag": "locker",
+        "emoji": "🔥",
+        "text": "乌拉圭更衣室：输球就回家的标语贴在每位球员衣柜上。戈丁作为老将以身作则，凌晨5点就起来拉伸。",
+        "src": "队内消息"
+      },
+      {
+        "tag": "injury",
+        "emoji": "⚠",
+        "text": "阿劳霍上一场硬扛全场后膝盖隐忧，本场是否首发存疑，吉梅内斯将接替中卫位置。",
+        "src": "ESPN"
+      }
+    ],
+    "埃及": [
+      {
+        "tag": "injury",
+        "emoji": "🏥",
+        "text": "萨拉赫伤情成为最大变数：埃及队医承认萨拉赫未达100%状态，但他本人坚持首发。",
+        "src": "beIN Sports"
+      },
+      {
+        "tag": "tactics",
+        "emoji": "📋",
+        "text": "埃及预计4-3-3阵型：萨拉赫+马尔穆什+特雷泽盖三叉戟，但特雷泽盖状态低迷可能让位给穆斯塔法。",
+        "src": "埃及足协"
+      },
+      {
+        "tag": "locker",
+        "emoji": "🤝",
+        "text": "埃及老门将埃克拉米可能迎来告别演出：39岁的他赛前表示每场比赛都可能是最后一场。",
+        "src": "队内消息"
+      },
+      {
+        "tag": "offfield",
+        "emoji": "🇪🇬",
+        "text": "开罗大规模集会：超过5万球迷聚集在金字塔前为球队加油，巨型LED屏幕直播比赛。",
+        "src": "社交媒体"
+      }
+    ],
+    "伊朗": [
+      {
+        "tag": "tactics",
+        "emoji": "🛡",
+        "text": "奎罗斯5-4-1阵型经受住2018年葡萄牙+2022年英格兰的考验，伊朗的密集防守是世界杯一绝。",
+        "src": "伊朗足协"
+      },
+      {
+        "tag": "media",
+        "emoji": "🔥",
+        "text": "伊朗总统赛前致电奎罗斯：为国家荣誉而战，伊朗8000万人民在看着你们。",
+        "src": "塔斯尼姆通讯社"
+      },
+      {
+        "tag": "locker",
+        "emoji": "💪",
+        "text": "伊朗更衣室空前团结：阿兹蒙公开表示我们会用牙齿也要咬下这场胜利。",
+        "src": "队内消息"
+      },
+      {
+        "tag": "offfield",
+        "emoji": "🌙",
+        "text": "伊朗球迷在多哈集会超2万人，开斋节后集体祷告仪式震撼社交媒体。",
+        "src": "社交媒体"
+      }
+    ],
+    "佛得角": [
+      {
+        "tag": "locker",
+        "emoji": "🌟",
+        "text": "佛得角老将罗德里格斯（38岁）赛前流泪访谈：这是我最后一届世界杯，我想用胜利告别。",
+        "src": "佛得角日报"
+      },
+      {
+        "tag": "tactics",
+        "emoji": "🧱",
+        "text": "佛得角5-3-2阵型压缩空间能力出色：两个边后卫不助攻，全队10人退守半场。",
+        "src": "ESPN"
+      },
+      {
+        "tag": "offfield",
+        "emoji": "🇨🇻",
+        "text": "佛得角全岛动员：估计超3万海外侨民包机到场助威，埃斯特雷拉球场将被蓝白海洋覆盖。",
+        "src": "佛得角政府"
+      },
+      {
+        "tag": "training",
+        "emoji": "🏃",
+        "text": "佛得角最后一练全队专注点球训练：连续30次无一罚失，门将丰塞卡扑出其中20次。",
+        "src": "训练场线人"
+      }
+    ],
+    "沙特阿拉伯": [
+      {
+        "tag": "locker",
+        "emoji": "💔",
+        "text": "沙特内部出现不和谐音：0:4惨败西班牙后，部分球员质疑主帅加拉多的战术安排，更衣室气氛微妙。",
+        "src": "沙特体育报"
+      },
+      {
+        "tag": "training",
+        "emoji": "😔",
+        "text": "沙特最后训练课强度明显降低，更衣室里反复播放走出阴影的激励视频。",
+        "src": "训练场线人"
+      },
+      {
+        "tag": "offfield",
+        "emoji": "🇸🇦",
+        "text": "沙特王储据传将亲临现场观战，全队压力陡增——为国出战的使命感可能转化为动力，也可能压垮年轻球员。",
+        "src": "路透社"
+      },
+      {
+        "tag": "media",
+        "emoji": "📰",
+        "text": "沙特媒体集体反思：我们与亚洲强队的差距正在拉大，本届世界杯的惨痛教训需要深刻总结。",
+        "src": "沙特公报"
+      }
+    ],
+    "挪威": [
+      {
+        "tag": "tactics",
+        "emoji": "🏔",
+        "text": "挪威4-3-3高空轰炸：哈兰德+伊萨克+索尔洛特三高锋轮番冲击，平均身高186cm的锋线堪称北欧人墙。",
+        "src": "挪威电讯报"
+      },
+      {
+        "tag": "media",
+        "emoji": "📣",
+        "text": "哈兰德赛前采访：我和姆巴佩的较量不是私事，是为挪威荣誉而战。",
+        "src": "VG"
+      },
+      {
+        "tag": "locker",
+        "emoji": "💪",
+        "text": "挪威更衣室：厄德高+哈兰德双核+老将索尔洛特形成稳定三角，没有内讧、没有内耗是球队最大优势。",
+        "src": "队内消息"
+      },
+      {
+        "tag": "offfield",
+        "emoji": "🌧",
+        "text": "奥斯陆寒潮来袭：挪威球员带来自家御寒装备，以防比赛城市突然降温。",
+        "src": "社交媒体"
+      }
+    ],
+    "法国": [
+      {
+        "tag": "tactics",
+        "emoji": "🔄",
+        "text": "德尚可能大面积轮换：姆巴佩+楚阿梅尼+卡马文加均可能被保护，格列兹曼+吉鲁首发稳定中场。",
+        "src": "队报"
+      },
+      {
+        "tag": "locker",
+        "emoji": "😌",
+        "text": "法国更衣室氛围轻松：已出线+无伤病，全队心态是为淘汰赛蓄力。",
+        "src": "队内消息"
+      },
+      {
+        "tag": "offfield",
+        "emoji": "🎬",
+        "text": "法国总统马克龙据传将亲临迈阿密观战，这是他连续第二场到现场支持法国队。",
+        "src": "法新社"
+      },
+      {
+        "tag": "media",
+        "emoji": "📰",
+        "text": "法国媒体预测首发：德尚会让半数主力休息，淘汰赛才是真正战场。",
+        "src": "队报"
+      }
+    ]
+  }
+}
