@@ -761,7 +761,24 @@ const ALL_MATCHES = [
   {id:70,date:"2026-06-28",cst_time:"08:30",home:"刚果(金)",away:"乌兹别克斯坦",group:"K",stadium:"亚特兰大",round:"小组赛R3",stadium_tz:-4},
   {id:71,date:"2026-06-28",cst_time:"10:00",home:"约旦",away:"阿根廷",group:"J",stadium:"阿灵顿",round:"小组赛R3",stadium_tz:-5},
   {id:72,date:"2026-06-28",cst_time:"10:00",home:"阿尔及利亚",away:"奥地利",group:"J",stadium:"堪萨斯城",round:"小组赛R3",stadium_tz:-5},
-  // Knockouts to follow...
+
+  // === ROUND OF 32 (1/16决赛) 北京时间 ===
+  {id:73,date:"2026-06-29",cst_time:"03:00",home:"南非",away:"加拿大",group:"KO",stadium:"洛杉矶·SoFi体育场",round:"1/16决赛",stadium_tz:-7},
+  {id:74,date:"2026-06-30",cst_time:"01:00",home:"巴西",away:"日本",group:"KO",stadium:"休斯顿",round:"1/16决赛",stadium_tz:-5},
+  {id:75,date:"2026-06-30",cst_time:"04:30",home:"德国",away:"巴拉圭",group:"KO",stadium:"波士顿",round:"1/16决赛",stadium_tz:-4},
+  {id:76,date:"2026-06-30",cst_time:"09:00",home:"荷兰",away:"摩洛哥",group:"KO",stadium:"蒙特雷",round:"1/16决赛",stadium_tz:-6},
+  {id:77,date:"2026-07-01",cst_time:"01:00",home:"科特迪瓦",away:"挪威",group:"KO",stadium:"达拉斯",round:"1/16决赛",stadium_tz:-5},
+  {id:78,date:"2026-07-01",cst_time:"05:00",home:"法国",away:"瑞典",group:"KO",stadium:"新泽西",round:"1/16决赛",stadium_tz:-4},
+  {id:79,date:"2026-07-01",cst_time:"09:00",home:"墨西哥",away:"厄瓜多尔",group:"KO",stadium:"墨西哥城·阿兹特克",round:"1/16决赛",stadium_tz:-6},
+  {id:80,date:"2026-07-02",cst_time:"00:00",home:"英格兰",away:"刚果(金)",group:"KO",stadium:"亚特兰大",round:"1/16决赛",stadium_tz:-4},
+  {id:81,date:"2026-07-02",cst_time:"04:00",home:"比利时",away:"塞内加尔",group:"KO",stadium:"西雅图",round:"1/16决赛",stadium_tz:-7},
+  {id:82,date:"2026-07-02",cst_time:"08:00",home:"美国",away:"波黑",group:"KO",stadium:"旧金山",round:"1/16决赛",stadium_tz:-7},
+  {id:83,date:"2026-07-03",cst_time:"03:00",home:"西班牙",away:"奥地利",group:"KO",stadium:"洛杉矶",round:"1/16决赛",stadium_tz:-7},
+  {id:84,date:"2026-07-03",cst_time:"07:00",home:"葡萄牙",away:"克罗地亚",group:"KO",stadium:"多伦多",round:"1/16决赛",stadium_tz:-4},
+  {id:85,date:"2026-07-03",cst_time:"11:00",home:"瑞士",away:"阿尔及利亚",group:"KO",stadium:"温哥华",round:"1/16决赛",stadium_tz:-7},
+  {id:86,date:"2026-07-04",cst_time:"02:00",home:"澳大利亚",away:"埃及",group:"KO",stadium:"达拉斯",round:"1/16决赛",stadium_tz:-5},
+  {id:87,date:"2026-07-04",cst_time:"06:00",home:"阿根廷",away:"佛得角",group:"KO",stadium:"迈阿密",round:"1/16决赛",stadium_tz:-4},
+  {id:88,date:"2026-07-04",cst_time:"09:30",home:"哥伦比亚",away:"加纳",group:"KO",stadium:"堪萨斯城",round:"1/16决赛",stadium_tz:-5},
 ];
 
 // ============================================================
@@ -1377,27 +1394,15 @@ function getCSTTimeStr(d) {
 
 // Find matches to show in main view:
 // - today's matches (ALL, regardless of kickoff time passed)
-// - future dates' matches not yet kicked off
+// - upcoming future matches (not yet kicked off)
 function getUpcomingMatches(cstNow) {
   const nowStr = getCSTDateStr(cstNow);
   const nowTime = cstNow.getHours() * 60 + cstNow.getMinutes();
 
-  // Check if today has any matches
-  const todayMatches = ALL_MATCHES.filter(m => m.date === nowStr);
-  if (todayMatches.length > 0) {
-    // Show all of today's matches
-    return todayMatches;
-  }
-
-  // No matches today — find the next match day
+  // Show today's matches + all future matches
   return ALL_MATCHES.filter(m => {
-    if (m.date < nowStr) return false;
-    if (m.date === nowStr) {
-      const [h, mi] = m.cst_time.split(':').map(Number);
-      const matchMins = h * 60 + mi;
-      return matchMins > nowTime;
-    }
-    return true;
+    if (m.date < nowStr) return false; // past dates excluded
+    return true; // today + future dates all included
   });
 }
 
@@ -1425,7 +1430,7 @@ function renderMatches(matches) {
 
   let html = '';
   const dateKeys = Object.keys(groups);
-  const displayDates = dateKeys.slice(0, 1);
+  const displayDates = dateKeys.slice(0, 3);
 
   displayDates.forEach(dateKey => {
     const dateMatches = groups[dateKey];
@@ -1478,7 +1483,7 @@ function renderMatches(matches) {
           <span class="match-time">${m.cst_time}</span>
           <span class="match-teams"><span class="team-flag">${getFlag(m.home)}</span> ${m.home} vs ${m.away} <span class="team-flag">${getFlag(m.away)}</span></span>
           ${scoreHtml}
-          <span class="match-group">${m.group}组</span>
+          <span class="match-group">${m.group === 'KO' ? '淘汰赛' : m.group + '组'}</span>
           ${badgeHtml}
         </div>
         <div class="match-meta">
@@ -1531,7 +1536,7 @@ function renderLatestResults() {
   const weekdays = ['周日','周一','周二','周三','周四','周五','周六'];
   const wd = weekdays[new Date(resultsDate).getDay()];
 
-  let html = `<div class="section-title">${parseInt(rm)}月${parseInt(rd)}日 ${wd} · 小组赛R3 赛果</div>`;
+  let html = `<div class="section-title">${parseInt(rm)}月${parseInt(rd)}日 ${wd} · ${matches[0].round} 赛果</div>`;
 
   matches.forEach(m => {
     const key1 = `${m.home}-${m.away}`;
@@ -1583,7 +1588,7 @@ function renderLatestResults() {
         <span class="match-teams"><span class="team-flag">${getFlag(m.home)}</span> ${m.home} vs ${m.away} <span class="team-flag">${getFlag(m.away)}</span></span>
         ${scoreHtml}
         ${halfHtml}
-        <span class="match-group">${m.group}组</span>
+        <span class="match-group">${m.group === 'KO' ? '淘汰赛' : m.group + '组'}</span>
         ${statusBadge}
       </div>
       <div class="match-meta">
@@ -1654,7 +1659,17 @@ function updateClock() {
   const timeStr = `${cst.getFullYear()}.${String(cst.getMonth()+1).padStart(2,'0')}.${String(cst.getDate()).padStart(2,'0')} ${String(cst.getHours()).padStart(2,'0')}:${String(cst.getMinutes()).padStart(2,'0')}:${String(cst.getSeconds()).padStart(2,'0')}`;
   const sub = document.querySelector('.hero-subtitle');
   if (sub) {
-    sub.textContent = `北京时间 ${timeStr} CST · 小组赛第三轮激战正酣`;
+    // Dynamic stage label based on date
+    const month = cst.getMonth() + 1;
+    const day = cst.getDate();
+    let stage = '2026美加墨世界杯';
+    if (month === 6 && day <= 28) stage = '小组赛激战正酣';
+    else if ((month === 6 && day >= 29) || (month === 7 && day <= 4)) stage = '1/16决赛 淘汰赛开启';
+    else if (month === 7 && day <= 8) stage = '1/8决赛';
+    else if (month === 7 && day <= 12) stage = '1/4决赛';
+    else if (month === 7 && day <= 15) stage = '半决赛';
+    else if (month === 7 && day <= 19) stage = '决赛之战';
+    sub.textContent = `北京时间 ${timeStr} CST · ${stage}`;
   }
 }
 
