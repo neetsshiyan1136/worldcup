@@ -1424,10 +1424,14 @@ function getUpcomingMatches(cstNow) {
   const nowStr = getCSTDateStr(cstNow);
   const nowTime = cstNow.getHours() * 60 + cstNow.getMinutes();
 
-  // Show today's matches + all future matches
+  // Show today's unplayed matches + all future matches (exclude completed matches)
   return ALL_MATCHES.filter(m => {
     if (m.date < nowStr) return false; // past dates excluded
-    return true; // today + future dates all included
+    // Exclude matches that already have results
+    const key1 = `${m.home}-${m.away}`;
+    const key2 = `${m.away}-${m.home}`;
+    if (COMPLETED_RESULTS[key1] || COMPLETED_RESULTS[key2]) return false;
+    return true; // today (unplayed) + future dates all included
   });
 }
 
