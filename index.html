@@ -803,7 +803,7 @@ const ALL_MATCHES = [
   // === THIRD PLACE + FINAL (季军赛+决赛) 北京时间 ===
   {id:103,date:"2026-07-19",cst_time:"05:00",home:"待定",away:"待定",group:"KO",stadium:"迈阿密",round:"季军赛",stadium_tz:-4},
   {id:104,date:"2026-07-20",cst_time:"03:00",home:"待定",away:"待定",group:"KO",stadium:"新泽西·大都会人寿",round:"决赛",stadium_tz:-4},
-];];
+];
 
 
 // ============================================================
@@ -2115,11 +2115,35 @@ async function loadRemoteData() {
     if (remote.halftimeResults) Object.assign(HALFTIME_RESULTS, remote.halftimeResults);
     if (remote.matchScorers) Object.assign(MATCH_SCORERS, remote.matchScorers);
     if (remote.matchAssists) Object.assign(MATCH_ASSISTS, remote.matchAssists);
-    if (remote.groupStandings) Object.assign(GROUP_STANDINGS, remote.groupStandings);
+
+    // groupStandings: data.json uses array format [{team, pts,...}], convert to object {teamName: {pts,...}}
+    if (remote.groupStandings) {
+      for (const [group, teams] of Object.entries(remote.groupStandings)) {
+        if (Array.isArray(teams)) {
+          GROUP_STANDINGS[group] = {};
+          teams.forEach(t => {
+            GROUP_STANDINGS[group][t.team] = { pts: t.pts, gf: t.gf, ga: t.ga, gd: t.gd };
+          });
+        } else if (typeof teams === 'object') {
+          GROUP_STANDINGS[group] = teams;
+        }
+      }
+    }
+
     if (remote.upsetAnalysis) Object.assign(UPSET_ANALYSIS, remote.upsetAnalysis);
     if (remote.visitorComments) { VISITOR_COMMENTS.length = 0; VISITOR_COMMENTS.push(...remote.visitorComments); }
-    if (remote.upsetRumors) Object.assign(UPSET_RUMORS, remote.upsetRumors);
-    if (remote.teamRumors) Object.assign(TEAM_RUMORS, remote.teamRumors);
+
+    // upsetRumors: data.json is array, built-in is match-keyed object — merge only if remote uses same format
+    if (remote.upsetRumors && !Array.isArray(remote.upsetRumors)) {
+      Object.assign(UPSET_RUMORS, remote.upsetRumors);
+    }
+    // teamRumors: merge team objects
+    if (remote.teamRumors && typeof remote.teamRumors === 'object' && !Array.isArray(remote.teamRumors)) {
+      for (const [team, rumors] of Object.entries(remote.teamRumors)) {
+        if (!TEAM_RUMORS[team]) TEAM_RUMORS[team] = [];
+        if (Array.isArray(rumors)) TEAM_RUMORS[team].push(...rumors);
+      }
+    }
 
     console.log('[DATA] ✅ 远程数据加载成功，更新时间：' + (remote.lastUpdated || '未知'));
   } catch (err) {
