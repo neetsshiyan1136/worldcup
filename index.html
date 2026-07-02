@@ -1427,6 +1427,12 @@ function getUpcomingMatches(cstNow) {
   // Show today's unplayed matches + all future matches (exclude completed matches)
   return ALL_MATCHES.filter(m => {
     if (m.date < nowStr) return false; // past dates excluded
+    // For today's matches, hide if kickoff was more than 2.5 hours ago (match likely finished)
+    if (m.date === nowStr) {
+      const [h, min] = m.time.split(':').map(Number);
+      const matchStart = h * 60 + min;
+      if (nowTime > matchStart + 150) return false; // 2.5h after kickoff = finished
+    }
     // Exclude matches that already have results
     const key1 = `${m.home}-${m.away}`;
     const key2 = `${m.away}-${m.home}`;
