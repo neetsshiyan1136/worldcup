@@ -1534,7 +1534,7 @@ function getUpcomingMatches(cstNow) {
 
 // Get ALL matches for a specific date (for results view)
 function getMatchesByDate(dateStr) {
-  return ALL_MATCHES.filter(m => m.date === dateStr);
+  return ALL_MATCHES.filter(m => m.date === dateStr && m.home !== '待定' && m.away !== '待定');
 }
 
 // ============================================================
