@@ -1514,9 +1514,10 @@ function getUpcomingMatches(cstNow) {
   const nowStr = getCSTDateStr(cstNow);
   const nowTime = cstNow.getHours() * 60 + cstNow.getMinutes();
 
-  // Show today's unplayed matches + all future matches (exclude completed matches)
+  // Show today's unplayed matches + all future matches (exclude completed and 待定)
   return ALL_MATCHES.filter(m => {
     if (m.date < nowStr) return false; // past dates excluded
+    if (m.home === '待定' || m.away === '待定') return false; // skip unconfirmed opponents
     // For today's matches, hide if kickoff was more than 2.5 hours ago (match likely finished)
     if (m.date === nowStr) {
       const [h, min] = m.cst_time.split(':').map(Number);
