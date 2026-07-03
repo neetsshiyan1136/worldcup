@@ -209,6 +209,77 @@
   .prediction-panel.active { display: block; }
   @keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
 
+  /* Match Selector Modal */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal-content {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 16px; width: 92%; max-width: 520px; max-height: 85vh;
+    display: flex; flex-direction: column; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    animation: modalIn 0.3s ease;
+  }
+  @keyframes modalIn { from{opacity:0;transform:scale(0.92)} to{opacity:1;transform:scale(1)} }
+  .modal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 20px; border-bottom: 1px solid var(--border);
+  }
+  .modal-header h3 {
+    margin: 0; font-size: 16px; color: var(--gold-light); font-weight: 700;
+  }
+  .modal-close {
+    background: none; border: none; color: var(--text-dim); font-size: 18px;
+    cursor: pointer; padding: 4px 8px; border-radius: 6px; transition: all 0.2s;
+  }
+  .modal-close:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+  .modal-body {
+    padding: 12px 16px; overflow-y: auto; flex: 1;
+  }
+  .match-select-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px; border-radius: 10px; margin-bottom: 6px;
+    background: rgba(30,43,56,0.4); border: 1px solid transparent;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .match-select-row:hover { border-color: var(--gold-dim); background: rgba(30,43,56,0.7); }
+  .match-select-row.selected { border-color: var(--gold); background: rgba(200,169,81,0.08); }
+  .match-select-row input[type="checkbox"] {
+    width: 18px; height: 18px; accent-color: var(--gold); cursor: pointer; flex-shrink: 0;
+  }
+  .match-select-row .match-select-info { flex: 1; }
+  .match-select-row .match-select-time { color: var(--gold-light); font-size: 13px; font-weight: 600; }
+  .match-select-row .match-select-teams { color: var(--text); font-size: 14px; margin-top: 2px; }
+  .match-select-row .match-select-round { color: var(--text-dim); font-size: 11px; }
+  .match-select-row .match-select-date { color: var(--text-dim); font-size: 11px; margin-left: 4px; }
+  .modal-footer {
+    display: flex; gap: 8px; padding: 14px 16px; border-top: 1px solid var(--border);
+    justify-content: flex-end;
+  }
+  .btn-secondary {
+    background: rgba(255,255,255,0.06); color: var(--text-dim); border: 1px solid var(--border);
+    padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 13px; transition: all 0.2s;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.1); color: var(--text); }
+  .btn-cancel {
+    background: rgba(255,255,255,0.06); color: var(--text-dim); border: 1px solid var(--border);
+    padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 13px; transition: all 0.2s;
+  }
+  .btn-cancel:hover { background: rgba(255,255,255,0.1); }
+  .btn-confirm {
+    background: linear-gradient(135deg, #c8a951, #a8882f); color: #1a1a1a;
+    border: none; padding: 8px 20px; border-radius: 8px; cursor: pointer;
+    font-size: 13px; font-weight: 700; transition: all 0.2s;
+  }
+  .btn-confirm:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(200,169,81,0.3); }
+  .btn-confirm:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+  .modal-empty {
+    text-align: center; padding: 40px 20px; color: var(--text-dim); font-size: 14px;
+  }
+
   .pred-table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); }
   .pred-table { width: 100%; border-collapse: collapse; font-size: 14px; }
   .pred-table thead th {
@@ -629,6 +700,25 @@
   <!-- 预测按钮 -->
   <div class="predict-section">
     <button class="btn-predict" id="btnPredict" onclick="showPredictions()">⚽ 比赛预测</button>
+  </div>
+
+  <!-- 比赛选择器模态框 -->
+  <div class="modal-overlay" id="matchSelectorModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>选择要预测的比赛</h3>
+        <button class="modal-close" onclick="closeMatchSelector()">✕</button>
+      </div>
+      <div class="modal-body" id="matchSelectorBody">
+        <!-- 动态填充 -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="selectAllMatches(true)">全选</button>
+        <button class="btn-secondary" onclick="selectAllMatches(false)">全不选</button>
+        <button class="btn-cancel" onclick="closeMatchSelector()">取消</button>
+        <button class="btn-confirm" id="btnConfirmPredict" onclick="runSelectedPredictions()">开始预测</button>
+      </div>
+    </div>
   </div>
 
   <!-- 预测面板 -->
@@ -1723,32 +1813,115 @@ function showPredictions() {
     return;
   }
 
-  // Get current upcoming matches (only those not yet played, and only first day)
-  let predictionMatches = currentMatches.filter(m => {
+  // Open match selector instead of predicting immediately
+  openMatchSelector();
+}
+
+function getDateLabel(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00');
+  const today = new Date(getBeijingTime().toDateString());
+  const diff = Math.round((d - today) / 86400000);
+  const weekdays = ['周日','周一','周二','周三','周四','周五','周六'];
+  const weekday = weekdays[d.getDay()];
+  if (diff === 0) return `今天（${dateStr} ${weekday}）`;
+  if (diff === 1) return `明天（${dateStr} ${weekday}）`;
+  if (diff === -1) return `昨天（${dateStr} ${weekday}）`;
+  return `${dateStr} ${weekday}`;
+}
+
+function openMatchSelector() {
+  const modal = document.getElementById('matchSelectorModal');
+  const body = document.getElementById('matchSelectorBody');
+  const confirmBtn = document.getElementById('btnConfirmPredict');
+
+  // Get all matches that can be predicted (not yet completed)
+  let selectableMatches = currentMatches.filter(m => {
     const key1 = `${m.home}-${m.away}`;
     const key2 = `${m.away}-${m.home}`;
     return !(COMPLETED_RESULTS[key1] || COMPLETED_RESULTS[key2]);
   });
-  // Only show matches from the nearest day
-  if (predictionMatches.length > 0) {
-    const firstDate = predictionMatches[0].date;
-    predictionMatches = predictionMatches.filter(m => m.date === firstDate);
+
+  if (selectableMatches.length === 0) {
+    body.innerHTML = '<div class="modal-empty">所有当前展示的比赛已经结束，暂无需要预测的比赛。</div>';
+    confirmBtn.disabled = true;
+  } else {
+    confirmBtn.disabled = false;
+    let html = '';
+    // Group by date
+    const byDate = {};
+    selectableMatches.forEach(m => {
+      if (!byDate[m.date]) byDate[m.date] = [];
+      byDate[m.date].push(m);
+    });
+
+    Object.keys(byDate).sort().forEach(date => {
+      const dateLabel = getDateLabel(date);
+      html += `<div style="color:var(--gold-light);font-size:13px;font-weight:600;margin:10px 0 6px;padding-left:4px;">${dateLabel}</div>`;
+      byDate[date].forEach(m => {
+        const matchId = `pred-${m.id}`;
+        html += `
+        <div class="match-select-row" onclick="toggleMatchSelect('${matchId}')">
+          <input type="checkbox" id="${matchId}" value="${m.id}" onclick="event.stopPropagation()">
+          <div class="match-select-info">
+            <div>
+              <span class="match-select-time">${m.cst_time}</span>
+              <span class="match-select-round">${m.round}</span>
+            </div>
+            <div class="match-select-teams">${m.home} vs ${m.away}</div>
+          </div>
+        </div>`;
+      });
+    });
+    body.innerHTML = html;
+
+    // Auto-select all by default
+    selectAllMatches(true);
   }
 
-  if (predictionMatches.length === 0) {
-    btn.innerHTML = '⚽ 比赛预测';
-    alert('所有当前展示的比赛已经结束，暂无需要预测的比赛。');
+  modal.classList.add('active');
+}
+
+function toggleMatchSelect(id) {
+  const cb = document.getElementById(id);
+  if (cb) {
+    cb.checked = !cb.checked;
+    cb.closest('.match-select-row').classList.toggle('selected', cb.checked);
+  }
+}
+
+function closeMatchSelector() {
+  document.getElementById('matchSelectorModal').classList.remove('active');
+}
+
+function selectAllMatches(checked) {
+  document.querySelectorAll('#matchSelectorBody input[type="checkbox"]').forEach(cb => {
+    cb.checked = checked;
+    cb.closest('.match-select-row').classList.toggle('selected', checked);
+  });
+}
+
+function runSelectedPredictions() {
+  const checked = document.querySelectorAll('#matchSelectorBody input[type="checkbox"]:checked');
+  if (checked.length === 0) {
+    alert('请至少选择一场比赛进行预测。');
     return;
   }
+
+  const selectedIds = Array.from(checked).map(cb => parseInt(cb.value));
+  const predictionMatches = currentMatches.filter(m => selectedIds.includes(m.id));
+
+  closeMatchSelector();
+
+  const panel = document.getElementById('predictionPanel');
+  const btn = document.getElementById('btnPredict');
+  const predBody = document.getElementById('predBody');
+  const analysisSection = document.getElementById('analysisSection');
 
   // Loading animation
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span> AI分析中...';
 
   setTimeout(() => {
-    const predBody = document.getElementById('predBody');
-    const analysisSection = document.getElementById('analysisSection');
-
     let predHtml = '';
     const predictions = [];
 
