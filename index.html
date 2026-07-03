@@ -1819,14 +1819,18 @@ function showPredictions() {
 
 function getDateLabel(dateStr) {
   const d = new Date(dateStr + 'T00:00:00');
-  const today = new Date(getBeijingTime().toDateString());
+  const bt = getBeijingTime();
+  const today = new Date(bt.getFullYear(), bt.getMonth(), bt.getDate());
   const diff = Math.round((d - today) / 86400000);
   const weekdays = ['周日','周一','周二','周三','周四','周五','周六'];
   const weekday = weekdays[d.getDay()];
-  if (diff === 0) return `今天（${dateStr} ${weekday}）`;
-  if (diff === 1) return `明天（${dateStr} ${weekday}）`;
-  if (diff === -1) return `昨天（${dateStr} ${weekday}）`;
-  return `${dateStr} ${weekday}`;
+  const month = d.getMonth() + 1;
+  const day = d.getDate();
+  const dateLabel = `${month}月${day}日 ${weekday}`;
+  if (diff === 0) return `今天（${dateLabel}）`;
+  if (diff === 1) return `明天（${dateLabel}）`;
+  if (diff === -1) return `昨天（${dateLabel}）`;
+  return dateLabel;
 }
 
 function openMatchSelector() {
