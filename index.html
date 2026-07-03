@@ -1626,31 +1626,33 @@ function renderMatches(matches) {
 // ============================================================
 //  RENDER — Latest Results View (上期赛果)
 // ============================================================
-function getLatestResultsDate() {
-  // Find the most recent date <= today that has any completed matches
+function getLatestResultsDates(count = 5) {
+  // Find the most recent dates <= today that have completed matches
   const cst = getBeijingTime();
   const today = getCSTDateStr(cst);
   const dates = [...new Set(ALL_MATCHES.map(m => m.date))].sort();
-  let latestDate = today;
+  const resultDates = [];
   for (let i = dates.length - 1; i >= 0; i--) {
     if (dates[i] > today) continue;
-    const matches = ALL_MATCHES.filter(m => m.date === dates[i]);
+    const matches = ALL_MATCHES.filter(m => m.date === dates[i] && m.home !== '待定' && m.away !== '待定');
     const hasResults = matches.some(m => {
       const k1 = `${m.home}-${m.away}`;
       const k2 = `${m.away}-${m.home}`;
       return COMPLETED_RESULTS[k1] || COMPLETED_RESULTS[k2];
     });
-    if (hasResults) { latestDate = dates[i]; break; }
+    if (hasResults) {
+      resultDates.push(dates[i]);
+      if (resultDates.length >= count) break;
+    }
   }
-  return latestDate;
+  return resultDates;
 }
 
 function renderLatestResults() {
   const container = document.getElementById('matchList');
-  const resultsDate = getLatestResultsDate();
-  const matches = getMatchesByDate(resultsDate);
+  const resultDates = getLatestResultsDates(5);
 
-  if (!matches || matches.length === 0) {
+  if (!resultDates || resultDates.length === 0) {
     container.innerHTML = '<div class="empty-state"><div class="icon">🏆</div><p>暂无上期比赛数据</p></div>';
     return;
   }
@@ -1658,70 +1660,71 @@ function renderLatestResults() {
   const cst = getBeijingTime();
   const nowStr = getCSTDateStr(cst);
   const nowMins = cst.getHours() * 60 + cst.getMinutes();
-  const [ry, rm, rd] = resultsDate.split('-');
   const weekdays = ['周日','周一','周二','周三','周四','周五','周六'];
-  const wd = weekdays[new Date(resultsDate).getDay()];
 
-  let html = `<div class="section-title">${parseInt(rm)}月${parseInt(rd)}日 ${wd} · ${matches[0].round} 赛果</div>`;
+  let html = '';
 
-  matches.forEach(m => {
-    const key1 = `${m.home}-${m.away}`;
-    const key2 = `${m.away}-${m.home}`;
-    const result = COMPLETED_RESULTS[key1] || COMPLETED_RESULTS[key2];
-    const halfResult = HALFTIME_RESULTS[key1] || HALFTIME_RESULTS[key2];
+  resultDates.forEach(resultsDate => {
+    const matches = getMatchesByDate(resultsDate);
+    if (!matches || matches.length === 0) return;
 
-    const [mh, mm] = m.cst_time.split(':').map(Number);
-    const matchStartMins = mh * 60 + mm;
-    const matchEndMins = matchStartMins + 120; // ~2 hours including halftime
+    const [ry, rm, rd] = resultsDate.split('-');
+    const wd = weekdays[new Date(resultsDate).getDay()];
+    html += `<div class="section-title">${parseInt(rm)}月${parseInt(rd)}日 ${wd} · ${matches[0].round} 赛果</div>`;
 
-    let statusHtml = '';
-    let scoreHtml = '';
-    let halfHtml = '';
-    let statusClass = '';
-    let statusBadge = '';
+    matches.forEach(m => {
+      const key1 = `${m.home}-${m.away}`;
+      const key2 = `${m.away}-${m.home}`;
+      const result = COMPLETED_RESULTS[key1] || COMPLETED_RESULTS[key2];
+      const halfResult = HALFTIME_RESULTS[key1] || HALFTIME_RESULTS[key2];
 
-    if (result) {
-      // Match finished — show final + half score
-      statusClass = ' played';
-      const [hs, as] = result.split(':');
-      scoreHtml = `<span class="match-score">${hs}:${as}</span>`;
-      if (halfResult) {
-        halfHtml = `<span class="half-score">（半场 ${halfResult}）</span>`;
-      }
-      statusBadge = '<span style="display:inline-block;background:#1e3a1e;color:var(--green);font-size:10px;padding:2px 8px;border-radius:10px;margin-left:8px;">已完赛</span>';
-    } else {
-      // Match not in completed results — check if it's currently live or not started
-      if (nowStr === resultsDate && nowMins >= matchStartMins && nowMins < matchEndMins) {
-        // Match is LIVE
-        statusClass = ' live';
-        scoreHtml = '<span style="color:var(--red);font-size:18px;font-weight:700;">进行中</span>';
-        statusBadge = '<span class="live-badge" style="animation:pulse-badge 0.8s infinite;">LIVE</span>';
-      } else if (nowStr < resultsDate || (nowStr === resultsDate && nowMins < matchStartMins)) {
-        // Match hasn't started yet
-        scoreHtml = '<span style="color:var(--text-dim);font-size:14px;">未开赛</span>';
-        statusBadge = '<span style="display:inline-block;background:#1e1e2a;color:var(--text-dim);font-size:10px;padding:2px 8px;border-radius:10px;margin-left:8px;">待开赛</span>';
+      const [mh, mm] = m.cst_time.split(':').map(Number);
+      const matchStartMins = mh * 60 + mm;
+      const matchEndMins = matchStartMins + 120;
+
+      let scoreHtml = '';
+      let halfHtml = '';
+      let statusClass = '';
+      let statusBadge = '';
+
+      if (result) {
+        statusClass = ' played';
+        const [hs, as] = result.split(':');
+        scoreHtml = `<span class="match-score">${hs}:${as}</span>`;
+        if (halfResult) {
+          halfHtml = `<span class="half-score">（半场 ${halfResult}）</span>`;
+        }
+        statusBadge = '<span style="display:inline-block;background:#1e3a1e;color:var(--green);font-size:10px;padding:2px 8px;border-radius:10px;margin-left:8px;">已完赛</span>';
       } else {
-        // After match time but no result — waiting for data
-        scoreHtml = '<span style="color:var(--orange);font-size:14px;">数据待更新</span>';
-        statusBadge = '<span style="display:inline-block;background:#2a2a15;color:var(--orange);font-size:10px;padding:2px 8px;border-radius:10px;margin-left:8px;">等待中</span>';
+        if (nowStr === resultsDate && nowMins >= matchStartMins && nowMins < matchEndMins) {
+          statusClass = ' live';
+          scoreHtml = '<span style="color:var(--red);font-size:18px;font-weight:700;">进行中</span>';
+          statusBadge = '<span class="live-badge" style="animation:pulse-badge 0.8s infinite;">LIVE</span>';
+        } else if (nowStr < resultsDate || (nowStr === resultsDate && nowMins < matchStartMins)) {
+          scoreHtml = '<span style="color:var(--text-dim);font-size:14px;">未开赛</span>';
+          statusBadge = '<span style="display:inline-block;background:#1e1e2a;color:var(--text-dim);font-size:10px;padding:2px 8px;border-radius:10px;margin-left:8px;">待开赛</span>';
+        } else {
+          scoreHtml = '<span style="color:var(--orange);font-size:14px;">数据待更新</span>';
+          statusBadge = '<span style="display:inline-block;background:#2a2a15;color:var(--orange);font-size:10px;padding:2px 8px;border-radius:10px;margin-left:8px;">等待中</span>';
+        }
       }
-    }
 
-    html += `
-    <div class="match-card${statusClass}">
-      <div class="card-top">
-        <span class="match-time">${m.cst_time}</span>
-        <span class="match-teams"><span class="team-flag">${getFlag(m.home)}</span> ${m.home} vs ${m.away} <span class="team-flag">${getFlag(m.away)}</span></span>
-        ${scoreHtml}
-        ${halfHtml}
-        <span class="match-group">${m.group === 'KO' ? '淘汰赛' : m.group + '组'}</span>
-        ${statusBadge}
-      </div>
-      <div class="match-meta">
-        <span class="meta-item">🏟 ${m.stadium}</span>
-        <span class="meta-item">📋 ${m.round}</span>
-      </div>
-    </div>`;
+      html += `
+      <div class="match-card${statusClass}">
+        <div class="card-top">
+          <span class="match-time">${m.cst_time}</span>
+          <span class="match-teams"><span class="team-flag">${getFlag(m.home)}</span> ${m.home} vs ${m.away} <span class="team-flag">${getFlag(m.away)}</span></span>
+          ${scoreHtml}
+          ${halfHtml}
+          <span class="match-group">${m.group === 'KO' ? '淘汰赛' : m.group + '组'}</span>
+          ${statusBadge}
+        </div>
+        <div class="match-meta">
+          <span class="meta-item">🏟 ${m.stadium}</span>
+          <span class="meta-item">📋 ${m.round}</span>
+        </div>
+      </div>`;
+    });
   });
 
   container.innerHTML = html;
@@ -2225,9 +2228,9 @@ function refresh() {
 
   if (currentView === 'results') {
     // Results view: show latest completed match results
-    const resultsDate = getLatestResultsDate();
+    const resultsDates = getLatestResultsDates(5);
     renderLatestResults();
-    const resultsMatches = getMatchesByDate(resultsDate);
+    const resultsMatches = resultsDates.flatMap(d => getMatchesByDate(d));
     const completedCount = resultsMatches.filter(m => {
       const key1 = `${m.home}-${m.away}`;
       const key2 = `${m.away}-${m.home}`;
