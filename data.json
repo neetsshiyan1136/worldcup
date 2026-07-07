@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-07T20:16:21+08:00",
+  "lastUpdated": "2026-07-08T04:32:04+08:00",
   "completedResults": {
     "墨西哥-南非": "2:0",
     "韩国-捷克": "2:1",
@@ -94,7 +94,8 @@
     "巴西-挪威": "1:2",
     "墨西哥-英格兰": "2:3",
     "葡萄牙-西班牙": "0:1",
-    "美国-比利时": "1:4"
+    "美国-比利时": "1:4",
+    "阿根廷-埃及": "3:2"
   },
   "halftimeResults": {
     "波黑-卡塔尔": "1:1",
@@ -1422,6 +1423,33 @@
       {
         "name": "Romelu Lukaku",
         "team": "比利时",
+        "goals": 1
+      }
+    ],
+    "阿根廷-埃及": [
+      {
+        "name": "Cristian Romero",
+        "team": "阿根廷",
+        "goals": 1
+      },
+      {
+        "name": "Lionel Messi",
+        "team": "阿根廷",
+        "goals": 1
+      },
+      {
+        "name": "Enzo Fernández",
+        "team": "阿根廷",
+        "goals": 1
+      },
+      {
+        "name": "Yasser Ibrahim",
+        "team": "埃及",
+        "goals": 1
+      },
+      {
+        "name": "Mostafa Ziko",
+        "team": "埃及",
         "goals": 1
       }
     ]
