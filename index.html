@@ -157,7 +157,7 @@
     font-size: 22px; font-weight: 700; color: #fff; min-width: 56px;
     font-family: 'Cascadia Code','Fira Code',monospace;
   }
-  .match-teams { font-size: 18px; font-weight: 600; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .match-teams { font-size: 18px; font-weight: 600; flex: 1; }
   .match-score {
     font-size: 22px; font-weight: 700; color: var(--gold-light);
     font-family: 'Cascadia Code','Fira Code',monospace; min-width: 50px; text-align: right;
@@ -415,8 +415,7 @@
     .card-top { gap: 6px; }
     .team-flag { font-size: 16px; margin: 0 2px; }
     .match-time { font-size: 16px; min-width: 42px; }
-    .card-top { flex-wrap: nowrap; overflow-x: hidden; }
-    .match-teams { font-size: 14px; flex: 1 1 auto; min-width: 0; }
+    .match-teams { font-size: 14px; }
     .match-score { font-size: 18px; min-width: 38px; }
     .match-group { font-size: 10px; padding: 2px 8px; }
     .match-meta { font-size: 11px; gap: 8px; }
@@ -463,27 +462,6 @@
     .visitor-wall-title { font-size: 12px; }
     .visitor-comment { padding: 8px 10px; margin-bottom: 6px; }
     .visitor-comment .vc-text { font-size: 11px; }
-    /* Upset Analysis */
-    .upset-analysis-title { font-size: 13px; gap: 8px; }
-    .upset-analysis-title::before, .upset-analysis-title::after { width: 20px; }
-    .upset-analysis-tabs { gap: 6px; }
-    .upset-tab { font-size: 12px; padding: 6px 14px; }
-    .upset-stats-row { grid-template-columns: repeat(3, 1fr); gap: 6px; }
-    .upset-stat-card { padding: 10px 8px; }
-    .upset-stat-card .us-value { font-size: 18px; }
-    .upset-result-card { padding: 12px 14px; margin-bottom: 8px; }
-    .upset-result-match { font-size: 13px; }
-    .upset-result-analysis { font-size: 12px; }
-    .upset-risk-card { padding: 12px 14px; margin-bottom: 8px; }
-    .upset-risk-match { font-size: 13px; }
-    .upset-risk-analysis { font-size: 12px; }
-    /* Story cards */
-    .story-card { padding: 14px 16px; margin-bottom: 10px; }
-    .story-title { font-size: 14px; }
-    .story-body { font-size: 13px; }
-    .story-highlight { font-size: 12px; padding: 8px 12px; }
-    .story-fact { font-size: 11px; }
-    .story-tabs { flex-wrap: wrap; }
     /* Disclaimer */
     .disclaimer { font-size: 10px; padding: 14px 12px; }
   }
@@ -494,8 +472,7 @@
     .hero-text h2 { font-size: 14px !important; }
     .hero-trophy { font-size: 28px !important; }
     .match-time { font-size: 14px; min-width: 36px; }
-    .card-top { flex-wrap: nowrap; overflow-x: hidden; }
-    .match-teams { font-size: 12px; flex: 1 1 auto; min-width: 0; }
+    .match-teams { font-size: 12px; }
     .match-score { font-size: 16px; min-width: 32px; }
     .countdown-num { font-size: 18px; }
     .countdown-item { padding: 6px 8px; min-width: 44px; }
@@ -613,151 +590,6 @@
   .upset-rumor .ur-tag { display:inline-block; font-size:9px; font-weight:700; background:rgba(255,102,68,0.15); color:#ff8866; padding:2px 8px; border-radius:8px; margin-right:6px; }
   .upset-rumor .ur-source { color: #556; font-style:italic; margin-left:6px; }
 
-  /* ===== 爆冷分析独立栏目 ===== */
-  .upset-analysis-section { margin: 24px 0 8px; }
-  .upset-analysis-title {
-    font-size: 16px; color: #ff6644; letter-spacing: 3px; text-align: center;
-    margin-bottom: 16px; display: flex; align-items: center; gap: 12px; justify-content: center;
-  }
-  .upset-analysis-title::before, .upset-analysis-title::after { content:''; width:40px; height:1px; background: linear-gradient(90deg, transparent, rgba(255,102,68,0.5)); }
-
-  .upset-analysis-tabs {
-    display: flex; justify-content: center; gap: 8px; margin-bottom: 16px;
-  }
-  .upset-tab {
-    background: var(--card-bg); border: 1px solid var(--border);
-    color: var(--text-dim); font-size: 13px; padding: 8px 20px;
-    border-radius: 20px; cursor: pointer; transition: all 0.3s ease; font-family: inherit;
-  }
-  .upset-tab:hover { border-color: rgba(255,102,68,0.3); color: var(--text); }
-  .upset-tab.active {
-    background: rgba(255,68,68,0.12); border-color: rgba(255,102,68,0.5); color: #ff6644; font-weight: 600;
-  }
-
-  .upset-stats-row {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px;
-  }
-  .upset-stat-card {
-    background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
-    padding: 12px 14px; text-align: center; transition: all 0.3s ease;
-  }
-  .upset-stat-card:hover { border-color: rgba(255,102,68,0.3); }
-  .upset-stat-card .us-icon { font-size: 20px; }
-  .upset-stat-card .us-value { font-size: 22px; font-weight: 700; color: #fff; }
-  .upset-stat-card .us-label { font-size: 11px; color: var(--text-dim); }
-
-  .upset-result-card {
-    background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
-    padding: 16px 20px; margin-bottom: 10px; transition: all 0.3s ease;
-    position: relative; overflow: hidden;
-  }
-  .upset-result-card::before {
-    content:''; position:absolute; top:0; left:0; width:4px; height:100%;
-    border-radius: 2px 0 0 2px;
-  }
-  .upset-result-card.level-super::before { background: linear-gradient(180deg, #ff4444, #ff8844); }
-  .upset-result-card.level-major::before { background: linear-gradient(180deg, #ff8844, #ffaa00); }
-  .upset-result-card.level-mild::before { background: linear-gradient(180deg, #ffaa00, #88aaff); }
-  .upset-result-card:hover { border-color: rgba(255,102,68,0.3); box-shadow: 0 4px 16px rgba(0,0,0,0.3); transform: translateY(-1px); }
-
-  .upset-result-header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
-  .upset-result-match { font-size: 15px; font-weight: 600; color: #fff; }
-  .upset-result-score { font-size: 14px; font-weight: 700; color: var(--gold-light); font-family: 'Cascadia Code',monospace; }
-  .upset-result-badge {
-    font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 10px; white-space: nowrap;
-  }
-  .upset-result-badge.super { background: rgba(255,68,68,0.2); color: #ff6666; animation: pulse-badge 1.5s infinite; }
-  .upset-result-badge.major { background: rgba(255,170,0,0.15); color: #ffbb44; }
-  .upset-result-badge.mild { background: rgba(100,149,237,0.15); color: #88aaff; }
-  .upset-result-badge.normal { background: rgba(200,169,81,0.1); color: var(--gold-light); }
-
-  .upset-index-bar { display: flex; align-items: center; gap: 8px; margin: 8px 0; }
-  .upset-index-track { width: 100px; height: 8px; background: #1e2a3a; border-radius: 4px; overflow: hidden; }
-  .upset-index-fill { height: 100%; border-radius: 4px; transition: width 0.8s ease; }
-  .upset-index-fill.super { background: linear-gradient(90deg, #ff4444, #ff8844); }
-  .upset-index-fill.major { background: linear-gradient(90deg, #ff8844, #ffaa00); }
-  .upset-index-fill.mild { background: linear-gradient(90deg, #ffaa00, #88aaff); }
-  .upset-index-fill.normal { background: linear-gradient(90deg, #44cc44, #88dd88); }
-  .upset-index-value { font-size: 14px; font-weight: 700; color: #fff; font-family: 'Cascadia Code',monospace; min-width: 30px; }
-
-  .upset-result-analysis { font-size: 13px; color: var(--text-dim); line-height: 1.7; margin-top: 6px; }
-  .upset-result-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
-  .upset-analysis-tag {
-    font-size: 10px; padding: 2px 10px; border-radius: 8px;
-    background: rgba(255,102,68,0.08); color: #ff8866; border: 1px solid rgba(255,102,68,0.15);
-  }
-  .upset-analysis-tag.green { background: rgba(68,204,68,0.08); color: #66dd66; border-color: rgba(68,204,68,0.15); }
-
-  .upset-risk-card {
-    background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
-    padding: 16px 20px; margin-bottom: 10px; transition: all 0.3s ease;
-    border-left: 3px solid #ff6644;
-  }
-  .upset-risk-card:hover { border-color: rgba(255,102,68,0.3); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
-  .upset-risk-header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
-  .upset-risk-match { font-size: 15px; font-weight: 600; color: #fff; }
-  .upset-risk-time { font-size: 12px; color: var(--text-dim); }
-  .upset-risk-badge {
-    font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 10px; white-space: nowrap;
-    animation: pulse-badge 1.5s infinite;
-  }
-  .upset-risk-badge.hot { background: rgba(255,68,68,0.2); color: #ff6666; }
-  .upset-risk-badge.warm { background: rgba(255,170,0,0.15); color: #ffbb44; }
-  .upset-risk-badge.watch { background: rgba(100,149,237,0.15); color: #88aaff; }
-  .upset-risk-analysis { font-size: 13px; color: var(--text-dim); line-height: 1.7; margin-top: 6px; }
-  .upset-risk-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
-  .upset-risk-factor {
-    font-size: 10px; padding: 2px 10px; border-radius: 8px;
-    background: rgba(255,102,68,0.08); color: #ff8866; border: 1px solid rgba(255,102,68,0.15);
-  }
-
-  /* ===== 爆冷故事卡片 ===== */
-  .story-card {
-    background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px;
-    padding: 20px 22px; margin-bottom: 14px; transition: all 0.3s ease;
-    position: relative; overflow: hidden;
-  }
-  .story-card::before {
-    content:''; position:absolute; top:0; left:0; width:4px; height:100%; border-radius: 2px 0 0 2px;
-  }
-  .story-card.cat-history::before { background: linear-gradient(180deg, #c8a951, #8b6914); }
-  .story-card.cat-current::before { background: linear-gradient(180deg, #ff4444, #ff8844); }
-  .story-card.cat-secret::before { background: linear-gradient(180deg, #aa55ff, #5522cc); }
-  .story-card:hover { border-color: rgba(200,169,81,0.3); box-shadow: 0 6px 24px rgba(0,0,0,0.4); transform: translateY(-2px); }
-
-  .story-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
-  .story-year {
-    font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 10px; white-space: nowrap;
-  }
-  .story-year.history { background: rgba(200,169,81,0.15); color: var(--gold-light); }
-  .story-year.current { background: rgba(255,68,68,0.15); color: #ff6666; animation: pulse-badge 2s infinite; }
-  .story-year.secret { background: rgba(170,85,255,0.15); color: #bb77ff; }
-  .story-title { font-size: 16px; font-weight: 700; color: #fff; line-height: 1.5; }
-  .story-subtitle { font-size: 12px; color: var(--gold-light); margin-bottom: 8px; font-family: 'Cascadia Code',monospace; }
-  .story-body { font-size: 14px; color: var(--text-dim); line-height: 1.9; }
-  .story-highlight {
-    background: rgba(255,102,68,0.06); border: 1px dashed rgba(255,102,68,0.2);
-    border-radius: 8px; padding: 10px 14px; margin: 10px 0;
-    font-size: 13px; color: #ff8866; line-height: 1.7;
-  }
-  .story-fact {
-    background: rgba(200,169,81,0.06); border: 1px solid rgba(200,169,81,0.15);
-    border-radius: 8px; padding: 8px 14px; margin: 8px 0;
-    font-size: 12px; color: var(--gold-light); display: flex; align-items: center; gap: 6px;
-  }
-  .story-fact::before { content: '💡'; }
-  .story-source {
-    font-size: 11px; color: #556; font-style: italic; margin-top: 10px;
-    display: flex; align-items: center; gap: 6px;
-  }
-  .story-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
-  .story-tag {
-    font-size: 10px; padding: 2px 10px; border-radius: 8px;
-    background: rgba(200,169,81,0.08); color: var(--gold-light); border: 1px solid rgba(200,169,81,0.15);
-  }
-  .story-tag.danger { background: rgba(255,68,68,0.08); color: #ff8866; border-color: rgba(255,68,68,0.15); }
-  .story-tag.purple { background: rgba(170,85,255,0.08); color: #bb77ff; border-color: rgba(170,85,255,0.15); }
-
   /* ===== ENHANCED MATCH CARD ===== */
   .team-flag { font-size: 20px; margin: 0 4px; line-height:1; }
   .match-card {
@@ -768,9 +600,55 @@
   .match-card .card-body { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
   .match-meta { display:flex; gap:16px; align-items:center; flex-wrap:wrap; margin-top:8px; font-size:12px; color:var(--text-dim); }
   .match-meta .meta-item { display:flex; align-items:center; gap:4px; }
+
+  /* Music Player */
+  .music-player-btn {
+    position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+    width: 52px; height: 52px; border-radius: 50%;
+    background: linear-gradient(135deg, rgba(200,169,81,0.2), rgba(200,169,81,0.05));
+    border: 2px solid rgba(200,169,81,0.4);
+    color: var(--gold-light); font-size: 22px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(200,169,81,0.15);
+    user-select: none;
+  }
+  .music-player-btn:hover {
+    background: rgba(200,169,81,0.3); border-color: var(--gold);
+    box-shadow: 0 6px 30px rgba(200,169,81,0.25); transform: scale(1.08);
+  }
+  .music-player-btn:active { transform: scale(0.95); }
+  .music-player-btn.playing {
+    border-color: var(--gold); background: rgba(200,169,81,0.25);
+    animation: music-pulse 2s ease-in-out infinite;
+  }
+  .music-player-btn.playing:hover { animation: none; }
+  @keyframes music-pulse {
+    0%,100% { box-shadow: 0 4px 20px rgba(200,169,81,0.15); }
+    50% { box-shadow: 0 4px 35px rgba(200,169,81,0.35); }
+  }
+  .music-player-btn .music-icon { font-size: 22px; line-height: 1; }
+  .music-player-btn.playing .music-icon { animation: music-bounce 0.6s ease-in-out infinite alternate; }
+  @keyframes music-bounce { 0%{transform:translateY(0)} 100%{transform:translateY(-3px)} }
+  .music-tooltip {
+    position: absolute; bottom: 60px; right: 0;
+    background: var(--card-bg); border: 1px solid var(--border);
+    color: var(--text-dim); font-size: 12px; padding: 6px 12px;
+    border-radius: 8px; white-space: nowrap; pointer-events: none;
+    opacity: 0; transform: translateY(4px); transition: all 0.2s ease;
+  }
+  .music-player-btn:hover .music-tooltip { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="./music.mp3" type="audio/mpeg">
+</audio>
+<button class="music-player-btn" id="musicBtn" onclick="toggleMusic()">
+  <span class="music-icon">🎵</span>
+  <span class="music-tooltip">播放背景音乐</span>
+</button>
 
 <div class="header">
   <h1>2026 世界杯竞彩预测</h1>
@@ -865,18 +743,6 @@
     <div class="rumors-grid" id="rumorsGrid"></div>
   </div>
 
-  <!-- 💣 爆冷分析 · 独立栏目 -->
-  <div class="upset-analysis-section" id="upsetAnalysisSection">
-    <div class="upset-analysis-title">💣 爆冷分析 · 算法引擎</div>
-    <div class="upset-analysis-tabs">
-      <button class="upset-tab active" id="tabCompletedUpsets" onclick="switchUpsetTab('completed')">📊 已爆冷榜</button>
-      <button class="upset-tab" id="tabUpsetRisk" onclick="switchUpsetTab('risk')">🔮 爆冷预警</button>
-      <button class="upset-tab" id="tabUpsetStories" onclick="switchUpsetTab('stories')">📖 爆冷故事</button>
-    </div>
-    <div class="upset-stats-row" id="upsetStatsRow"></div>
-    <div id="upsetAnalysisContent"></div>
-  </div>
-
   <!-- 预测按钮 -->
   <div class="predict-section">
     <button class="btn-predict" id="btnPredict" onclick="showPredictions()">⚽ 比赛预测</button>
@@ -929,7 +795,6 @@
 //  如果远程拉取失败（无网络等），自动使用下方内置数据作为备份
 // ============================================================
 const DATA_URL = "./data.json";
-const STORIES_URL = "./stories.json";
 
 // ============================================================
 //  2026 WORLD CUP — COMPLETE MATCH DATABASE
@@ -1066,8 +931,8 @@ const ALL_MATCHES = [
 
   {id:94,date:"2026-07-07",cst_time:"08:00",home:"美国",away:"比利时",group:"KO",stadium:"西雅图",round:"1/8决赛",stadium_tz:-7},
 
-  {id:95,date:"2026-07-08",cst_time:"00:00",home:"阿根廷",away:"埃及",group:"KO",stadium:"阿灵顿",round:"1/8决赛",stadium_tz:-5},
-  {id:96,date:"2026-07-08",cst_time:"04:00",home:"瑞士",away:"哥伦比亚",group:"KO",stadium:"堪萨斯城",round:"1/8决赛",stadium_tz:-5},
+  {id:95,date:"2026-07-08",cst_time:"01:00",home:"待定",away:"待定",group:"KO",stadium:"阿灵顿",round:"1/8决赛",stadium_tz:-5},
+  {id:96,date:"2026-07-08",cst_time:"02:00",home:"待定",away:"待定",group:"KO",stadium:"堪萨斯城",round:"1/8决赛",stadium_tz:-5},
 
   // === QUARTER-FINALS (1/4决赛) 北京时间 ===
   {id:97,date:"2026-07-10",cst_time:"04:00",home:"待定",away:"待定",group:"KO",stadium:"福克斯伯勒",round:"1/4决赛",stadium_tz:-4},
@@ -1514,487 +1379,6 @@ const RANKINGS = {
 };
 
 function getRank(team) { return RANKINGS[team] || 80; }
-
-// ============================================================
-//  爆冷分析算法引擎 — 基于 FIFA 排名 + 赛果自动计算
-// ============================================================
-
-// 全局状态
-let currentUpsetTab = 'completed';
-let currentStoryFilter = 'all';
-
-function switchUpsetTab(tab) {
-  currentUpsetTab = tab;
-  document.getElementById('tabCompletedUpsets').classList.toggle('active', tab === 'completed');
-  document.getElementById('tabUpsetRisk').classList.toggle('active', tab === 'risk');
-  document.getElementById('tabUpsetStories').classList.toggle('active', tab === 'stories');
-  // Show/hide stats row only for algorithm tabs
-  document.getElementById('upsetStatsRow').style.display = (tab === 'stories') ? 'none' : 'grid';
-  renderUpsetAnalysisSection();
-}
-
-// ---- 已完成比赛爆冷指数计算 ----
-function calculateCompletedUpsets() {
-  const upsets = [];
-  for (const [key, result] of Object.entries(COMPLETED_RESULTS)) {
-    const [home, away] = key.split('-');
-    const [hg, ag] = result.split(':').map(Number);
-    const hRank = getRank(home);
-    const aRank = getRank(away);
-
-    if (hRank === 80 && aRank === 80) continue; // skip unknown teams
-
-    const rankDiff = Math.abs(hRank - aRank);
-    let upsetIndex = 0;
-    let upsetType = '';
-    let winner = '';
-    let analysis = '';
-
-    if (hg > ag) {
-      // Home won
-      if (hRank > aRank) {
-        // Lower-ranked home team won = upset!
-        upsetIndex = (hRank - aRank) * 0.8 + (hg - ag) * 5;
-        winner = home;
-        upsetType = 'low_rank_wins';
-        analysis = `排名第${hRank}的${home}击败第${aRank}的${away}，排名差距${hRank - aRank}位！`;
-      } else {
-        // Higher-ranked home team won = expected
-        upsetIndex = 0;
-        winner = home;
-        upsetType = 'expected';
-        const gap = hg - ag;
-        if (aRank - hRank > 20 && gap >= 3) {
-          analysis = `排名第${hRank}的${home}大胜${gap}球，碾压排名第${aRank}的${away}。`;
-        } else if (aRank - hRank > 20) {
-          analysis = `排名第${hRank}的${home}按实力击败排名第${aRank}的${away}，属于常规结果。`;
-        } else {
-          analysis = `排名第${hRank}的${home}击败排名第${aRank}的${away}，排名相近，实力对决。`;
-        }
-      }
-    } else if (ag > hg) {
-      // Away won
-      if (aRank > hRank) {
-        // Lower-ranked away team won = upset!
-        upsetIndex = (aRank - hRank) * 0.8 + (ag - hg) * 5;
-        winner = away;
-        upsetType = 'low_rank_wins';
-        analysis = `排名第${aRank}的${away}客场击败第${hRank}的${home}，排名差距${aRank - hRank}位！`;
-      } else {
-        // Higher-ranked away team won = expected
-        upsetIndex = 0;
-        winner = away;
-        upsetType = 'expected';
-        const gap = ag - hg;
-        if (hRank - aRank > 20 && gap >= 3) {
-          analysis = `排名第${aRank}的${away}客场大胜${gap}球，实力碾压。`;
-        } else {
-          analysis = `排名第${aRank}的${away}客场击败第${hRank}的${home}，属于常规结果。`;
-        }
-      }
-    } else {
-      // Draw
-      if (rankDiff > 15) {
-        // Draw with big ranking gap = mild upset for higher-ranked team
-        upsetIndex = rankDiff * 0.25;
-        upsetType = 'unexpected_draw';
-        const higherTeam = hRank < aRank ? home : away;
-        const lowerTeam = hRank < aRank ? away : home;
-        analysis = `排名第${Math.min(hRank, aRank)}的${higherTeam}被排名第${Math.max(hRank, aRank)}的${lowerTeam}逼平，排名差距${rankDiff}位！`;
-      } else {
-        upsetIndex = 0;
-        upsetType = 'expected_draw';
-        analysis = `排名第${hRank}的${home}与第${aRank}的${away}握手言和，实力接近。`;
-      }
-    }
-
-    // 淘汰赛加成：淘汰赛爆冷更震撼
-    const matchObj = ALL_MATCHES.find(m => `${m.home}-${m.away}` === key || `${m.away}-${m.home}` === key);
-    if (matchObj && matchObj.round.includes('决赛')) {
-      upsetIndex *= 1.3;
-    }
-
-    // Normalize to 0-100 scale (raw upsetIndex can go up to ~60 for biggest upsets)
-    const normalizedIndex = Math.min(100, Math.round(upsetIndex * 1.5));
-
-    upsets.push({
-      key, home, away, hRank, aRank, result, hg, ag,
-      winner, upsetIndex: normalizedIndex, upsetType, analysis,
-      round: matchObj ? matchObj.round : '',
-      date: matchObj ? matchObj.date : '',
-    });
-  }
-
-  // Sort by upsetIndex descending (biggest upsets first)
-  return upsets.sort((a, b) => b.upsetIndex - a.upsetIndex);
-}
-
-// ---- 即将比赛爆冷风险预测 ----
-function calculateUpcomingUpsetRisk() {
-  const cst = getBeijingTime();
-  const upcoming = getUpcomingMatches(cst);
-  const risks = [];
-
-  upcoming.forEach(m => {
-    const hRank = getRank(m.home);
-    const aRank = getRank(m.away);
-    const rankDiff = Math.abs(hRank - aRank);
-
-    // Base upset probability: moderate rankDiff has highest upset potential
-    // Very small diff (< 5) = both teams similar, "upset" is meaningless
-    // Very large diff (> 40) = upset unlikely (but still possible due to context)
-    let baseRisk = 0;
-    if (rankDiff <= 5) baseRisk = 5;
-    else if (rankDiff <= 15) baseRisk = 20;
-    else if (rankDiff <= 25) baseRisk = 35;
-    else if (rankDiff <= 35) baseRisk = 25;
-    else baseRisk = 12;
-
-    // Context modifiers
-    let contextBonus = 0;
-    let factors = [];
-
-    // 1. R3 round: 6-points team likely rotates
-    if (m.round === '小组赛R3') {
-      const hPts = getGroupPts(m.group, m.home);
-      const aPts = getGroupPts(m.group, m.away);
-      if (hPts !== null && aPts !== null) {
-        if (hPts >= 6 && aPts <= 1) {
-          contextBonus += 20; factors.push('6分轮换vs0分死战');
-        } else if (aPts >= 6 && hPts <= 1) {
-          contextBonus += 20; factors.push('0分死战vs6分轮换');
-        } else if (hPts >= 6 || aPts >= 6) {
-          contextBonus += 10; factors.push('已出线可能轮休');
-        }
-        if (hPts <= 1 && aPts <= 1) {
-          contextBonus += 8; factors.push('双方背水一战');
-        }
-      }
-    }
-
-    // 2. Knockout round: higher pressure
-    if (m.round.includes('决赛')) {
-      contextBonus += 5; factors.push('淘汰赛高压');
-    }
-
-    // 3. Host nation advantage for non-host playing away
-    const hostNations = ['美国', '墨西哥', '加拿大'];
-    if (hostNations.includes(m.home) && !hostNations.includes(m.away)) {
-      contextBonus -= 5; // Host is stronger, reduces away upset risk
-      factors.push('主场优势');
-    }
-
-    // 4. Big ranking gap but lower-ranked has must-win motivation
-    const lowerTeam = hRank > aRank ? m.home : m.away;
-    const higherTeam = hRank > aRank ? m.away : m.home;
-    if (rankDiff > 20) {
-      factors.push(`${lowerTeam}(第${Math.max(hRank, aRank)}) vs ${higherTeam}(第${Math.min(hRank, aRank)})`);
-    }
-
-    // Determine the "potential upset team" (lower-ranked team)
-    const upsetTeam = hRank > aRank ? m.home : m.away;
-    const favoredTeam = hRank < aRank ? m.home : m.away;
-
-    const totalRisk = Math.min(100, baseRisk + contextBonus);
-
-    // Risk level
-    let riskLevel, riskLabel;
-    if (totalRisk >= 50) { riskLevel = 'hot'; riskLabel = '🔥 高爆冷风险'; }
-    else if (totalRisk >= 30) { riskLevel = 'warm'; riskLabel = '🟡 爆冷可能'; }
-    else if (totalRisk >= 15) { riskLevel = 'watch'; riskLabel = '🔵 值得关注'; }
-    else { riskLevel = 'safe'; riskLabel = '✅ 常规赛事'; }
-
-    // Generate analysis text
-    let analysis = '';
-    if (totalRisk >= 50) {
-      analysis = `${upsetTeam}(排名第${Math.max(hRank, aRank)})有极高概率爆冷击败${favoredTeam}(排名第${Math.min(hRank, aRank)})。`;
-    } else if (totalRisk >= 30) {
-      analysis = `${upsetTeam}(排名第${Math.max(hRank, aRank)})有一定机会挑战${favoredTeam}(排名第${Math.min(hRank, aRank)})。`;
-    } else if (totalRisk >= 15) {
-      analysis = `${upsetTeam}实力虽弱于${favoredTeam}，但比赛存在不确定因素。`;
-    } else {
-      analysis = `${favoredTeam}(排名第${Math.min(hRank, aRank)})实力明显占优，爆冷概率极低。`;
-    }
-
-    risks.push({
-      match: m, hRank, aRank, rankDiff,
-      upsetTeam, favoredTeam,
-      totalRisk, riskLevel, riskLabel,
-      factors, analysis,
-    });
-  });
-
-  // Sort by risk descending
-  return risks.sort((a, b) => b.totalRisk - a.totalRisk);
-}
-
-// ---- 渲染爆冷分析独立栏目 ----
-// ============================================================
-//  爆冷故事 — 动态加载 stories.json（不再写死在代码里）
-// ============================================================
-
-let UPSET_STORIES = []; // 从 stories.json 动态加载
-
-// Load stories from stories.json (called during init)
-async function loadStories() {
-  try {
-    const resp = await fetch(STORIES_URL + '?t=' + Date.now(), { cache: 'no-store' });
-    if (!resp.ok) throw new Error('HTTP ' + resp.status);
-    const data = await resp.json();
-    if (Array.isArray(data) && data.length > 0) {
-      UPSET_STORIES = data;
-      console.log('[STORIES] Loaded ' + data.length + ' stories from remote');
-    }
-  } catch (err) {
-    console.log('[STORIES] Failed to load stories.json: ' + err.message + ', using empty array');
-  }
-}
-
-// Determine if a story is "fresh" (published within last 3 days)
-function isStoryFresh(storyDateStr) {
-  const cst = getBeijingTime();
-  const nowStr = getCSTDateStr(cst);
-  const storyDate = new Date(storyDateStr);
-  const nowDate = new Date(nowStr);
-  const diffDays = Math.floor((nowDate - storyDate) / (1000 * 60 * 60 * 24));
-  return diffDays <= 3;
-}
-
-function renderStoriesTab(container) {
-  if (UPSET_STORIES.length === 0) {
-    container.innerHTML = '<div class="empty-state"><div class="icon">📖</div><p>爆冷故事正在加载中...</p></div>';
-    return;
-  }
-
-  // Count fresh stories for banner
-  const freshCount = UPSET_STORIES.filter(s => s.date && isStoryFresh(s.date)).length;
-
-  // Fresh content banner
-  let bannerHtml = '';
-  if (freshCount > 0) {
-    bannerHtml = `<div class="fresh-banner" style="background:linear-gradient(90deg,rgba(255,68,68,0.12),rgba(255,136,68,0.12));border:1px solid rgba(255,68,68,0.2);border-radius:10px;padding:8px 16px;margin-bottom:14px;text-align:center;font-size:13px;">
-      🔥 今日新增 <span style="color:#ff6666;font-weight:700;">${freshCount}</span> 条爆冷趣闻 · 点击「🔥 今日新鲜」查看最新内容
-    </div>`;
-  }
-
-  // Category filter buttons - preserve currentStoryFilter across refresh()
-  const isActive = (cat) => currentStoryFilter === cat ? 'active' : '';
-  let html = bannerHtml + `<div style="display:flex;justify-content:center;gap:6px;margin-bottom:16px;flex-wrap:wrap;" class="story-tabs">
-    <button class="upset-tab ${isActive('all')}" onclick="filterStories('all',this)" style="font-size:12px;padding:6px 12px;">全部</button>
-    ${freshCount > 0 ? `<button class="upset-tab ${isActive('fresh')}" onclick="filterStories('fresh',this)" style="font-size:12px;padding:6px 12px;color:#ff6666;border-color:rgba(255,68,68,0.3);">🔥 今日新鲜</button>` : ''}
-    <button class="upset-tab ${isActive('history')}" onclick="filterStories('history',this)" style="font-size:12px;padding:6px 12px;">🏆 历史经典</button>
-    <button class="upset-tab ${isActive('current')}" onclick="filterStories('current',this)" style="font-size:12px;padding:6px 12px;">🔥 本届爆冷</button>
-    <button class="upset-tab ${isActive('secret')}" onclick="filterStories('secret',this)" style="font-size:12px;padding:6px 12px;">🧬 爆冷密码</button>
-  </div>`;
-
-  html += '<div id="storiesContainer">';
-  UPSET_STORIES.forEach((s, i) => {
-    const catClass = s.category === 'history' ? 'cat-history' : s.category === 'current' ? 'cat-current' : 'cat-secret';
-    const yearClass = s.category === 'history' ? 'history' : s.category === 'current' ? 'current' : 'secret';
-    const yearLabel = s.year === '密码' ? '🧬 深度' : s.year;
-    const isFresh = s.date && isStoryFresh(s.date);
-    const freshBadge = isFresh ? '<span class="fresh-badge" style="display:inline-block;background:rgba(255,68,68,0.15);color:#ff6666;font-size:10px;padding:2px 6px;border-radius:8px;margin-left:6px;">NEW</span>' : '';
-    const dateStr = s.date ? s.date.substring(5).replace('-', '/') : '';
-    const dateDisplay = dateStr ? `<span class="story-date" style="color:var(--text-dim);font-size:10px;margin-left:8px;">${dateStr}</span>` : '';
-
-    // Determine visibility based on current filter
-    let hiddenStyle = '';
-    if (currentStoryFilter === 'fresh') {
-      hiddenStyle = isFresh ? '' : 'display:none;';
-    } else if (currentStoryFilter !== 'all') {
-      hiddenStyle = s.category !== currentStoryFilter ? 'display:none;' : '';
-    }
-
-    html += `<div class="story-card ${catClass}" data-cat="${s.category}" data-fresh="${isFresh}" style="${hiddenStyle}">
-      <div class="story-header">
-        <span class="story-year ${yearClass}">${yearLabel}</span>
-        <span class="story-title">${s.title}</span>${freshBadge}${dateDisplay}
-      </div>
-      <div class="story-subtitle">${s.subtitle}</div>
-      <div class="story-body">${s.body}</div>
-      <div class="story-highlight">${s.highlight}</div>
-      ${s.fact ? `<div class="story-fact">${s.fact}</div>` : ''}
-      <div class="story-tags">
-        ${s.tags.map(t => {
-          const cls = t.includes('赔率') || t.includes('概率') || t.includes('冷门') ? 'danger' : t.includes('密码') || t.includes('扩军') || t.includes('规则') ? 'purple' : '';
-          return `<span class="story-tag ${cls}">${t}</span>`;
-        }).join('')}
-      </div>
-      <div class="story-source">📌 来源：${s.source}</div>
-    </div>`;
-  });
-  html += '</div>';
-  container.innerHTML = html;
-}
-
-function filterStories(cat, btn) {
-  currentStoryFilter = cat; // persist across refresh()
-
-  // Toggle active on buttons
-  const btns = btn.parentElement.querySelectorAll('.upset-tab');
-  btns.forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-
-  // Filter cards
-  const cards = document.querySelectorAll('#storiesContainer .story-card');
-  cards.forEach(c => {
-    if (cat === 'all') {
-      c.style.display = '';
-    } else if (cat === 'fresh') {
-      c.style.display = c.dataset.fresh === 'true' ? '' : 'none';
-    } else {
-      c.style.display = c.dataset.cat === cat ? '' : 'none';
-    }
-  });
-}
-
-function renderUpsetAnalysisSection() {
-  const contentEl = document.getElementById('upsetAnalysisContent');
-  const statsEl = document.getElementById('upsetStatsRow');
-  if (!contentEl || !statsEl) return;
-
-  // Calculate stats
-  const completedUpsets = calculateCompletedUpsets();
-  const riskUpsets = calculateUpcomingUpsetRisk();
-
-  const totalCompleted = completedUpsets.length;
-  const realUpsets = completedUpsets.filter(u => u.upsetIndex > 10);
-  const superUpsets = completedUpsets.filter(u => u.upsetIndex >= 60);
-  const avgRisk = riskUpsets.length > 0 ? Math.round(riskUpsets.reduce((s, r) => s + r.totalRisk, 0) / riskUpsets.length) : 0;
-
-  // Stats row
-  statsEl.innerHTML = `
-    <div class="upset-stat-card">
-      <div class="us-icon">🔥</div>
-      <div class="us-value">${superUpsets.length}</div>
-      <div class="us-label">超级爆冷</div>
-    </div>
-    <div class="upset-stat-card">
-      <div class="us-icon">📊</div>
-      <div class="us-value">${realUpsets.length}/${totalCompleted}</div>
-      <div class="us-label">冷门/总场次</div>
-    </div>
-    <div class="upset-stat-card">
-      <div class="us-icon">🔮</div>
-      <div class="us-value">${avgRisk}%</div>
-      <div class="us-label">平均爆冷风险</div>
-    </div>
-  `;
-
-  if (currentUpsetTab === 'completed') {
-    renderCompletedUpsetsTab(contentEl, completedUpsets, totalCompleted);
-  } else if (currentUpsetTab === 'risk') {
-    renderRiskUpsetsTab(contentEl, riskUpsets);
-  } else {
-    renderStoriesTab(contentEl);
-  }
-}
-
-function renderCompletedUpsetsTab(container, upsets, totalCompleted) {
-  // Show top 8 upsets (upsetIndex > 0)
-  const displayUpsets = upsets.filter(u => u.upsetIndex > 0).slice(0, 8);
-
-  if (displayUpsets.length === 0) {
-    container.innerHTML = '<div style="text-align:center;color:var(--text-dim);font-size:13px;padding:20px;">暂无爆冷数据，所有结果均为常规赛果</div>';
-    return;
-  }
-
-  let html = '';
-  displayUpsets.forEach(u => {
-    let levelClass = 'normal';
-    let badgeClass = 'normal';
-    let badgeText = '常规结果';
-    let barClass = 'normal';
-
-    if (u.upsetIndex >= 60) { levelClass = 'super'; badgeClass = 'super'; badgeText = '🔥 超级爆冷'; barClass = 'super'; }
-    else if (u.upsetIndex >= 30) { levelClass = 'major'; badgeClass = 'major'; badgeText = '🟡 冷门'; barClass = 'major'; }
-    else if (u.upsetIndex >= 10) { levelClass = 'mild'; badgeClass = 'mild'; badgeText = '🔵 小冷'; barClass = 'mild'; }
-
-    const flag1 = getFlag(u.home);
-    const flag2 = getFlag(u.away);
-
-    // Determine winner side styling
-    let winnerTag = '';
-    if (u.hg > u.ag) winnerTag = `<span class="upset-analysis-tag green">${u.home}胜</span>`;
-    else if (u.ag > u.hg) winnerTag = `<span class="upset-analysis-tag green">${u.away}胜</span>`;
-    else winnerTag = `<span class="upset-analysis-tag">平局</span>`;
-
-    const rankTag = `<span class="upset-analysis-tag">${u.home}#${u.hRank} vs ${u.away}#${u.aRank}</span>`;
-    const roundTag = u.round ? `<span class="upset-analysis-tag">${u.round}</span>` : '';
-
-    html += `
-    <div class="upset-result-card level-${levelClass}">
-      <div class="upset-result-header">
-        <span class="upset-result-match">${flag1} ${u.home} vs ${flag2} ${u.away}</span>
-        <span class="upset-result-score">${u.result}</span>
-        <span class="upset-result-badge ${badgeClass}">${badgeText}</span>
-      </div>
-      <div class="upset-index-bar">
-        <span style="font-size:11px;color:var(--text-dim);">爆冷指数</span>
-        <div class="upset-index-track">
-          <div class="upset-index-fill ${barClass}" style="width:${u.upsetIndex}%"></div>
-        </div>
-        <span class="upset-index-value">${u.upsetIndex}</span>
-      </div>
-      <div class="upset-result-analysis">${u.analysis}</div>
-      <div class="upset-result-tags">${winnerTag}${rankTag}${roundTag}</div>
-    </div>`;
-  });
-
-  // Add a summary note
-  const totalUpsets = upsets.filter(u => u.upsetIndex > 10).length;
-  const upsetRate = totalCompleted > 0 ? Math.round(totalUpsets / totalCompleted * 100) : 0;
-  html += `
-  <div style="text-align:center;color:var(--text-dim);font-size:12px;padding:12px;margin-top:8px;border-top:1px solid var(--border);">
-    📈 本届世界杯冷门率 ${upsetRate}%（${totalUpsets}场冷门 / ${totalCompleted}场已完赛） · 算法基于FIFA排名差距自动计算
-  </div>`;
-
-  container.innerHTML = html;
-}
-
-function renderRiskUpsetsTab(container, risks) {
-  if (risks.length === 0) {
-    container.innerHTML = '<div style="text-align:center;color:var(--text-dim);font-size:13px;padding:20px;">暂无即将进行的比赛，无法计算爆冷风险</div>';
-    return;
-  }
-
-  // Only show risks > 15 (worth mentioning)
-  const displayRisks = risks.filter(r => r.totalRisk > 5).slice(0, 6);
-
-  let html = '';
-  displayRisks.forEach(r => {
-    const flag1 = getFlag(r.match.home);
-    const flag2 = getFlag(r.match.away);
-
-    const factorTags = r.factors.map(f => `<span class="upset-risk-factor">#${f}</span>`).join('');
-
-    html += `
-    <div class="upset-risk-card">
-      <div class="upset-risk-header">
-        <span class="upset-risk-match">${flag1} ${r.match.home} vs ${flag2} ${r.match.away}</span>
-        <span class="upset-risk-time">${r.match.date.substring(5)} ${r.match.cst_time}</span>
-        <span class="upset-risk-badge ${r.riskLevel}">${r.riskLabel}</span>
-      </div>
-      <div class="upset-index-bar">
-        <span style="font-size:11px;color:var(--text-dim);">爆冷概率</span>
-        <div class="upset-index-track">
-          <div class="upset-index-fill ${r.riskLevel === 'hot' ? 'super' : r.riskLevel === 'warm' ? 'major' : r.riskLevel === 'watch' ? 'mild' : 'normal'}" style="width:${r.totalRisk}%"></div>
-        </div>
-        <span class="upset-index-value">${r.totalRisk}%</span>
-      </div>
-      <div class="upset-risk-analysis">${r.analysis}</div>
-      <div class="upset-risk-tags">${factorTags}</div>
-    </div>`;
-  });
-
-  // Bottom note
-  html += `
-  <div style="text-align:center;color:var(--text-dim);font-size:12px;padding:12px;margin-top:8px;border-top:1px solid var(--border);">
-    🧮 算法因子：排名差距权重40% + 轮次形势30% + 主场因素10% + 历史规律20% · 仅供娱乐参考
-  </div>`;
-
-  container.innerHTML = html;
-}
 
 // ============================================================
 //  PREDICTION ENGINE
@@ -2896,9 +2280,6 @@ function refresh() {
   updateCountdown();
   updateStats();
 
-  // 爆冷分析独立栏目始终渲染（不随视图切换隐藏）
-  renderUpsetAnalysisSection();
-
   if (currentView === 'results') {
     // Results view: show latest completed match results
     const resultsDates = getLatestResultsDates(5);
@@ -3026,7 +2407,6 @@ async function manualRefresh() {
 
   try {
     await loadRemoteData();
-    await loadStories();
     refresh();
 
     // Success
@@ -3051,6 +2431,52 @@ async function manualRefresh() {
   }
 }
 
+// ========== Music Player ==========
+let musicPlaying = false;
+function toggleMusic() {
+  const audio = document.getElementById('bgMusic');
+  const btn = document.getElementById('musicBtn');
+  const tooltip = btn.querySelector('.music-tooltip');
+  if (!audio) return;
+  if (musicPlaying) {
+    audio.pause();
+    musicPlaying = false;
+    btn.classList.remove('playing');
+    btn.querySelector('.music-icon').textContent = '🎵';
+    tooltip.textContent = '播放背景音乐';
+  } else {
+    audio.play().then(() => {
+      musicPlaying = true;
+      btn.classList.add('playing');
+      btn.querySelector('.music-icon').textContent = '🎶';
+      tooltip.textContent = '暂停背景音乐';
+    }).catch(() => {
+      tooltip.textContent = '点击页面后再次尝试';
+    });
+  }
+}
+
+// Auto-play on first user interaction (browser policy requires user gesture)
+let musicAutoStarted = false;
+function tryAutoStartMusic() {
+  if (musicAutoStarted) return;
+  const audio = document.getElementById('bgMusic');
+  const btn = document.getElementById('musicBtn');
+  if (!audio) return;
+  musicAutoStarted = true;
+  audio.play().then(() => {
+    musicPlaying = true;
+    btn.classList.add('playing');
+    btn.querySelector('.music-icon').textContent = '🎶';
+    btn.querySelector('.music-tooltip').textContent = '暂停背景音乐';
+  }).catch(() => {
+    // Browser blocked autoplay, user can click the button manually
+    musicAutoStarted = false;
+  });
+}
+document.addEventListener('click', tryAutoStartMusic, { once: false });
+document.addEventListener('touchstart', tryAutoStartMusic, { once: false });
+
 // Bootstrap
 (async function init() {
   const dot = document.getElementById('dataDot');
@@ -3060,7 +2486,6 @@ async function manualRefresh() {
 
   try {
     await loadRemoteData();
-    await loadStories();
     refresh();
     if (dot) dot.className = 'status-dot ok';
     if (status) status.textContent = '数据就绪';
