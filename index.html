@@ -157,7 +157,7 @@
     font-size: 22px; font-weight: 700; color: #fff; min-width: 56px;
     font-family: 'Cascadia Code','Fira Code',monospace;
   }
-  .match-teams { font-size: 18px; font-weight: 600; flex: 1; }
+  .match-teams { font-size: 18px; font-weight: 600; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .match-score {
     font-size: 22px; font-weight: 700; color: var(--gold-light);
     font-family: 'Cascadia Code','Fira Code',monospace; min-width: 50px; text-align: right;
@@ -415,7 +415,8 @@
     .card-top { gap: 6px; }
     .team-flag { font-size: 16px; margin: 0 2px; }
     .match-time { font-size: 16px; min-width: 42px; }
-    .match-teams { font-size: 14px; }
+    .card-top { flex-wrap: nowrap; overflow-x: hidden; }
+    .match-teams { font-size: 14px; flex: 1 1 auto; min-width: 0; }
     .match-score { font-size: 18px; min-width: 38px; }
     .match-group { font-size: 10px; padding: 2px 8px; }
     .match-meta { font-size: 11px; gap: 8px; }
@@ -493,7 +494,8 @@
     .hero-text h2 { font-size: 14px !important; }
     .hero-trophy { font-size: 28px !important; }
     .match-time { font-size: 14px; min-width: 36px; }
-    .match-teams { font-size: 12px; }
+    .card-top { flex-wrap: nowrap; overflow-x: hidden; }
+    .match-teams { font-size: 12px; flex: 1 1 auto; min-width: 0; }
     .match-score { font-size: 16px; min-width: 32px; }
     .countdown-num { font-size: 18px; }
     .countdown-item { padding: 6px 8px; min-width: 44px; }
@@ -1518,6 +1520,7 @@ function getRank(team) { return RANKINGS[team] || 80; }
 
 // 全局状态
 let currentUpsetTab = 'completed';
+let currentStoryFilter = 'all';
 
 function switchUpsetTab(tab) {
   currentUpsetTab = tab;
@@ -1868,12 +1871,13 @@ const UPSET_STORIES = [
 ];
 
 function renderStoriesTab(container) {
-  // Category filter buttons
+  // Category filter buttons - preserve currentStoryFilter across refresh()
+  const isActive = (cat) => currentStoryFilter === cat ? 'active' : '';
   let html = `<div style="display:flex;justify-content:center;gap:8px;margin-bottom:16px;" class="story-tabs">
-    <button class="upset-tab active" onclick="filterStories('all',this)" style="font-size:12px;padding:6px 16px;">全部</button>
-    <button class="upset-tab" onclick="filterStories('history',this)" style="font-size:12px;padding:6px 16px;">🏆 历史经典</button>
-    <button class="upset-tab" onclick="filterStories('current',this)" style="font-size:12px;padding:6px 16px;">🔥 本届爆冷</button>
-    <button class="upset-tab" onclick="filterStories('secret',this)" style="font-size:12px;padding:6px 16px;">🧬 爆冷密码</button>
+    <button class="upset-tab ${isActive('all')}" onclick="filterStories('all',this)" style="font-size:12px;padding:6px 16px;">全部</button>
+    <button class="upset-tab ${isActive('history')}" onclick="filterStories('history',this)" style="font-size:12px;padding:6px 16px;">🏆 历史经典</button>
+    <button class="upset-tab ${isActive('current')}" onclick="filterStories('current',this)" style="font-size:12px;padding:6px 16px;">🔥 本届爆冷</button>
+    <button class="upset-tab ${isActive('secret')}" onclick="filterStories('secret',this)" style="font-size:12px;padding:6px 16px;">🧬 爆冷密码</button>
   </div>`;
 
   html += '<div id="storiesContainer">';
@@ -1881,8 +1885,9 @@ function renderStoriesTab(container) {
     const catClass = s.category === 'history' ? 'cat-history' : s.category === 'current' ? 'cat-current' : 'cat-secret';
     const yearClass = s.category === 'history' ? 'history' : s.category === 'current' ? 'current' : 'secret';
     const yearLabel = s.year === '密码' ? '🧬 深度' : s.year;
+    const hiddenStyle = currentStoryFilter !== 'all' && s.category !== currentStoryFilter ? 'display:none;' : '';
 
-    html += `<div class="story-card ${catClass}" data-cat="${s.category}">
+    html += `<div class="story-card ${catClass}" data-cat="${s.category}" style="${hiddenStyle}">
       <div class="story-header">
         <span class="story-year ${yearClass}">${yearLabel}</span>
         <span class="story-title">${s.title}</span>
@@ -1905,6 +1910,8 @@ function renderStoriesTab(container) {
 }
 
 function filterStories(cat, btn) {
+  currentStoryFilter = cat; // persist across refresh()
+
   // Toggle active on buttons
   const btns = btn.parentElement.querySelectorAll('.upset-tab');
   btns.forEach(b => b.classList.remove('active'));
