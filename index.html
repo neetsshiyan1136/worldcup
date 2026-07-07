@@ -1701,13 +1701,13 @@ function renderUpsetAnalysisSection() {
   `;
 
   if (currentUpsetTab === 'completed') {
-    renderCompletedUpsetsTab(contentEl, completedUpsets);
+    renderCompletedUpsetsTab(contentEl, completedUpsets, totalCompleted);
   } else {
     renderRiskUpsetsTab(contentEl, riskUpsets);
   }
 }
 
-function renderCompletedUpsetsTab(container, upsets) {
+function renderCompletedUpsetsTab(container, upsets, totalCompleted) {
   // Show top 8 upsets (upsetIndex > 0)
   const displayUpsets = upsets.filter(u => u.upsetIndex > 0).slice(0, 8);
 
