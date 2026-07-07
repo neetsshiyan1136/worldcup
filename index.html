@@ -1794,6 +1794,9 @@ function updateCountdown() {
     const key2 = `${m.away}-${m.home}`;
     if (COMPLETED_RESULTS[key1] || COMPLETED_RESULTS[key2]) continue;
 
+    // Skip unconfirmed opponent matches (TBD placeholders)
+    if (m.home === '待定' || m.away === '待定') continue;
+
     // Skip matches that started > 150 min ago but have no result (likely expired)
     const matchDate = new Date(m.date + 'T' + m.cst_time + ':00+08:00');
     const diffMin = Math.floor((matchDate - cst) / 60000);
