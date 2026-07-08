@@ -888,6 +888,10 @@ function renderUpsetHistory() {
   const container = document.getElementById('upsetTabHistory');
   if (!container) return;
   // 基于 data.json 实际已完赛比赛 + FIFA 排名差距自动计算冷门
+  // 真正冷门 = 结果反常 + 排名差距大
+  //   - 平局（双方排名差距 > 20）
+  //   - 弱队赢强队（胜方排名数字 > 败方排名数字 + 差距 > 15）
+  // 强队赢弱队（排名靠前的赢排名靠后的）不算冷门
   const results = (typeof COMPLETED_RESULTS !== 'undefined') ? COMPLETED_RESULTS : {};
   const games = Object.keys(results);
   const coldList = [];
@@ -901,16 +905,18 @@ function renderUpsetHistory() {
     const wRank = COLD_RANK_MAP[winner || home];
     const lRank = COLD_RANK_MAP[loser || away];
     if (!wRank || !lRank) return;
-    // 排名差距：低排名战胜高排名（差距 > 10）才算冷门
     if (isDraw) {
+      // 平局：排名差距越大越冷
       const gap = Math.abs(wRank - lRank);
       if (gap > 20) {
         coldList.push({ key, score: results[key], home, away, winner: home, isDraw: true, gap, index: Math.min(30 + gap / 2, 60) });
       }
     } else {
-      const gap = lRank - wRank;
-      if (gap > 8) {
-        coldList.push({ key, score: results[key], home, away, winner, gap, index: Math.min(30 + gap / 2, 80) });
+      // 弱队赢强队（wRank 数字 > lRank 数字）才算冷门
+      const gap = wRank - lRank; // 弱队排名 - 强队排名
+      if (gap > 15) {
+        // gap 越大越冷：50 + gap/2, 上限 95
+        coldList.push({ key, score: results[key], home, away, winner, gap, index: Math.min(50 + gap / 2, 95) });
       }
     }
   });
