@@ -766,6 +766,17 @@
   </div>
 
   <!-- 预测按钮 -->
+  <div class="upset-section" id="upsetSection">
+      <div class="upset-tabs-bar">
+        <div class="upset-tab active" data-tab="history" onclick="switchUpsetTab('history', this)">📊 已爆冷榜</div>
+        <div class="upset-tab" data-tab="warning" onclick="switchUpsetTab('warning', this)">🔮 爆冷预警</div>
+        <div class="upset-tab" data-tab="story" onclick="switchUpsetTab('story', this)">📖 爆冷故事</div>
+      </div>
+      <div class="upset-tab-content" id="upsetTabHistory"></div>
+      <div class="upset-tab-content" id="upsetTabWarning" style="display:none"></div>
+      <div class="upset-tab-content" id="upsetTabStory" style="display:none"></div>
+    </div>
+
   <div class="predict-section">
     <button class="btn-predict" id="btnPredict" onclick="showPredictions()">⚽ 比赛预测</button>
   </div>
@@ -812,16 +823,7 @@
     </div>
   </div>
 
-    <div class="upset-section" id="upsetSection">
-      <div class="upset-tabs-bar">
-        <div class="upset-tab active" data-tab="history" onclick="switchUpsetTab('history', this)">📊 已爆冷榜</div>
-        <div class="upset-tab" data-tab="warning" onclick="switchUpsetTab('warning', this)">🔮 爆冷预警</div>
-        <div class="upset-tab" data-tab="story" onclick="switchUpsetTab('story', this)">📖 爆冷故事</div>
-      </div>
-      <div class="upset-tab-content" id="upsetTabHistory"></div>
-      <div class="upset-tab-content" id="upsetTabWarning" style="display:none"></div>
-      <div class="upset-tab-content" id="upsetTabStory" style="display:none"></div>
-    </div>
+    
 
   
 
@@ -2422,6 +2424,10 @@ async function loadRemoteData() {
     }
 
     console.log('[DATA] ✅ 远程数据加载成功，更新时间：' + (remote.lastUpdated || '未知'));
+    // 远程数据更新后，重渲染爆冷榜（基于最新 COMPLETED_RESULTS）
+    if (typeof renderUpsetHistory === 'function') {
+      try { renderUpsetHistory(); } catch (e) { console.warn('[DATA] ⚠️ renderUpsetHistory 失败:', e.message); }
+    }
   } catch (err) {
     console.warn('[DATA] ⚠️ 远程拉取失败，使用内置数据:', err.message);
   }
@@ -2499,7 +2505,9 @@ function renderUpsetHistory() {
     if (isDraw) {
       const gap = Math.abs(wRank - lRank);
       if (gap > 20) {
-        coldList.push({ key, score: results[key], home, away, winner: home, isDraw: true, gap, index: Math.min(30 + gap / 2, 60) });
+        // 平局冷门：弱队（排名靠后）逼平强队（排名靠前）
+        const upsetWinner = wRank > lRank ? home : away;
+        coldList.push({ key, score: results[key], home, away, winner: upsetWinner, isDraw: true, gap, index: Math.min(30 + gap / 2, 60) });
       }
     } else {
       const gap = wRank - lRank;
@@ -2522,7 +2530,7 @@ function renderUpsetHistory() {
         '<div class="cold-emoji">' + emoji + '</div>' +
         '<div class="cold-info">' +
           '<div class="cold-title">' + c.home + ' vs ' + c.away + ' <span class="story-tag">' + levelLabel + '</span></div>' +
-          '<div class="cold-desc">排名第' + (COLD_RANK_MAP[c.winner] || '?') + '的' + c.winner + (c.isDraw ? '逼平' : '击败') + '排名第' + (COLD_RANK_MAP[c.isDraw ? c.away : (c.winner === c.home ? c.away : c.home)] || '?') + '的' + (c.isDraw ? c.away : (c.winner === c.home ? c.away : c.home)) + '，排名差距' + c.gap + '位</div>' +
+          '<div class="cold-desc">排名第' + (COLD_RANK_MAP[c.winner] || '?') + '的' + c.winner + (c.isDraw ? '逼平' : '击败') + '排名第' + (COLD_RANK_MAP[c.isDraw ? (c.winner === c.home ? c.away : c.home) : (c.winner === c.home ? c.away : c.home)] || '?') + '的' + (c.isDraw ? (c.winner === c.home ? c.away : c.home) : (c.winner === c.home ? c.away : c.home)) + '，排名差距' + c.gap + '位</div>' +
         '</div>' +
         '<div class="cold-score">' + c.score + '</div>' +
         '</div>';
