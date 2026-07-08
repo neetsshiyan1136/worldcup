@@ -712,6 +712,16 @@
     <div class="analysis-section" id="analysisSection"></div>
     <!-- 爆冷猜测 -->
     
+    
+
+    
+
+    <div class="visitor-wall-section" id="visitorWallSection" style="display:none; margin-top:16px;">
+      <div class="section-title" style="font-size:14px;margin-bottom:8px;">💬 游客热评</div>
+      <div id="visitorWallContent"></div>
+    </div>
+  </div>
+
     <div class="upset-section" id="upsetSection">
       <div class="upset-tabs-bar">
         <div class="upset-tab active" data-tab="history" onclick="switchUpsetTab('history', this)">📊 已爆冷榜</div>
@@ -723,13 +733,7 @@
       <div class="upset-tab-content" id="upsetTabStory" style="display:none"></div>
     </div>
 
-    
-
-    <div class="visitor-wall-section" id="visitorWallSection" style="display:none; margin-top:16px;">
-      <div class="section-title" style="font-size:14px;margin-bottom:8px;">💬 游客热评</div>
-      <div id="visitorWallContent"></div>
-    </div>
-  </div>
+  
 
   <div class="disclaimer">
     ⚠️ 本软件预测基于FIFA排名、小组积分形势及历史数据的规则引擎推算，仅供娱乐参考，不构成投注建议。<br>
@@ -2381,7 +2385,6 @@ function initUpsetTabs() {
 
 
 (async function init() {
-  initUpsetTabs();
   const dot = document.getElementById('dataDot');
   const status = document.getElementById('dataStatus');
   if (dot) dot.className = 'status-dot warn';
