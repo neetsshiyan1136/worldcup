@@ -2381,6 +2381,7 @@ function initUpsetTabs() {
 
 
 (async function init() {
+  initUpsetTabs();
   const dot = document.getElementById('dataDot');
   const status = document.getElementById('dataStatus');
   if (dot) dot.className = 'status-dot warn';
