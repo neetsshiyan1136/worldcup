@@ -597,6 +597,9 @@
     .visitor-comment { padding: 10px 12px; margin-bottom: 8px; }
     .vc-head { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
     .vc-text { font-size: 12px; color: var(--text-dim); line-height: 1.6; }
+
+  /* 隐藏助攻王：API 无助攻数据源 */
+  #statAssistKing, #statAssistKingSub, [id*="assist"] { display: none !important; }
 </style>
 </head>
 <body>
@@ -2187,7 +2190,10 @@ async function loadRemoteData() {
     // Merge remote data into live variables
     if (remote.completedResults) Object.assign(COMPLETED_RESULTS, remote.completedResults);
     if (remote.halftimeResults) Object.assign(HALFTIME_RESULTS, remote.halftimeResults);
-    if (remote.matchScorers) Object.assign(MATCH_SCORERS, remote.matchScorers);
+    if (remote.matchScorers) // 只补充内置没有的射手数据（保留中文原名，不被英文覆盖）
+    for (const [k,v] of Object.entries(remote.matchScorers)) {
+      if (!MATCH_SCORERS[k] || MATCH_SCORERS[k].length === 0) MATCH_SCORERS[k] = v;
+    };
     if (remote.matchAssists) Object.assign(MATCH_ASSISTS, remote.matchAssists);
     if (remote.groupStandings) Object.assign(GROUP_STANDINGS, remote.groupStandings);
     if (remote.upsetAnalysis) Object.assign(UPSET_ANALYSIS, remote.upsetAnalysis);
