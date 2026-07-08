@@ -2200,11 +2200,21 @@ async function loadRemoteData() {
     if (remote.visitorComments) { VISITOR_COMMENTS.length = 0; VISITOR_COMMENTS.push(...remote.visitorComments); }
     if (remote.upsetRumors) Object.assign(UPSET_RUMORS, remote.upsetRumors);
     if (remote.teamRumors) Object.assign(TEAM_RUMORS, remote.teamRumors);
+    // 爆冷故事: 从 data.json 加载（覆盖硬编码）
+    if (remote.upsetStories && Array.isArray(remote.upsetStories)) {
+      window.__allStoriesRemote = remote.upsetStories;
+    }
 
     console.log('[DATA] ✅ 远程数据加载成功，更新时间：' + (remote.lastUpdated || '未知'));
     // 远程数据更新后，重渲染爆冷榜（基于最新 COMPLETED_RESULTS）
     if (typeof renderUpsetHistory === 'function') {
       try { renderUpsetHistory(); } catch (e) { console.warn('[DATA] ⚠️ renderUpsetHistory 失败:', e.message); }
+    }
+    if (typeof renderUpsetStories === 'function') {
+      try { renderUpsetStories(); } catch (e) { console.warn('[DATA] ⚠️ renderUpsetStories 失败:', e.message); }
+    }
+    if (typeof renderUpsetWarnings === 'function') {
+      try { renderUpsetWarnings(); } catch (e) { console.warn('[DATA] ⚠️ renderUpsetWarnings 失败:', e.message); }
     }
   } catch (err) {
     console.warn('[DATA] ⚠️ 远程拉取失败，使用内置数据:', err.message);
@@ -2362,7 +2372,7 @@ function renderUpsetStories() {
     { k: 'tournament', l: '本届爆冷' },
     { k: 'all', l: '全部' }
   ];
-  const stories = [
+  const defaultStories = [
     // ===== 今日 NEW (2026-07-08) =====
     { title: '阿根廷让二追三 3-2 埃及', date: '2026-07-08', tag: '今日', isNew: true, desc: '阿根廷在 0-2 落后情况下连扳三球，淘汰埃及晋级 1/4 决赛。梅西梅开二度，劳塔罗·马丁内斯绝杀。萨拉赫的埃及队差一点把卫冕冠军拉下马。' },
     { title: '瑞士点球 4-3 哥伦比亚', date: '2026-07-08', tag: '今日', isNew: true, desc: '常规时间 0-0 战平，瑞士门将索默神扑 2 个点球，最终点球大战 4-3 淘汰哥伦比亚晋级 1/4 决赛。索默赛后获评全场 MVP。' },
@@ -2379,6 +2389,7 @@ function renderUpsetStories() {
     { title: '2002 韩国连克意西进四强', date: '2002-06-22', tag: '历史', isNew: false, desc: '2002 韩日世界杯，韩国队凭借东道主优势连克意大利、西班牙闯入四强，创造亚洲球队世界杯最佳战绩。希丁克执教封神。' },
     { title: '2014 哥斯达黎加死亡之组突围', date: '2014-06-29', tag: '历史', isNew: false, desc: '2014 巴西世界杯，哥斯达黎加与乌拉圭、意大利、英格兰同组，小组赛 2-1 击败乌拉圭、0-0 逼平法国，最终小组第一出线。1/4 决赛点球惜败荷兰。' }
   ];
+  const stories = (typeof window.__allStoriesRemote !== 'undefined' && window.__allStoriesRemote.length > 0) ? window.__allStoriesRemote : defaultStories;
   let filtered = stories;
   if (filter === 'today') filtered = stories.filter(s => s.isNew);
   else if (filter === 'history') filtered = stories.filter(s => s.tag === '历史');
