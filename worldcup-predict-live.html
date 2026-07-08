@@ -529,121 +529,78 @@
   .match-card .card-body { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
   .match-meta { display:flex; gap:16px; align-items:center; flex-wrap:wrap; margin-top:8px; font-size:12px; color:var(--text-dim); }
   .match-meta .meta-item { display:flex; align-items:center; gap:4px; }
-</style>
-</head>
-<body>
 
-<div class="header">
-  <h1>2026 世界杯竞彩预测</h1>
-  <div class="badge"><span class="live-dot"></span> 动态版 · 实时更新</div>
-</div>
+    .upset-tabs-bar {
+      display: flex; gap: 8px; justify-content: center; margin: 12px 0;
+      border-bottom: 1px solid var(--border); padding-bottom: 8px;
+    }
+    .upset-tab {
+      padding: 6px 16px; border-radius: 18px; cursor: pointer;
+      background: rgba(30,42,58,0.5); color: var(--text-dim);
+      font-size: 13px; letter-spacing: 1px; transition: all 0.25s ease;
+    }
+    .upset-tab:hover { color: var(--text); border-color: var(--border); }
+    .upset-tab.active {
+      background: linear-gradient(135deg, rgba(255,68,68,0.18), rgba(255,170,0,0.08));
+      color: #ff8866; font-weight: 600; box-shadow: 0 0 8px rgba(255,68,68,0.15);
+    }
+    .upset-tab-content { padding-top: 8px; }
+    .cold-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 12px; border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .cold-row:hover { background: rgba(200,169,81,0.04); }
+    .cold-row:last-child { border-bottom: none; }
+    .cold-rank { font-size: 18px; font-weight: 700; color: var(--gold); min-width: 28px; font-family: 'Cascadia Code', monospace; }
+    .cold-info { flex: 1; min-width: 0; }
+    .cold-title { font-size: 13px; color: #fff; font-weight: 600; margin-bottom: 2px; }
+    .cold-desc { font-size: 11px; color: var(--text-dim); }
+    .cold-score { font-size: 16px; font-weight: 700; color: var(--gold-light); font-family: 'Cascadia Code', monospace; }
+    .cold-index { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+    .cold-emoji { font-size: 16px; min-width: 22px; text-align: center; }
 
-<div class="container">
-
-  <!-- Hero 横幅 -->
-  <div class="hero-banner">
-    <span class="hero-trophy">🏆</span>
-    <div class="hero-text">
-      <h2>2026 美加墨世界杯</h2>
-      <div class="hero-subtitle">FIFA World Cup 2026 · 小组赛第三轮激战正酣</div>
-      <div class="hero-tags">
-        <span class="hero-tag">⚡ 实时数据</span>
-        <span class="hero-tag">🎯 AI预测</span>
-        <span class="hero-tag">📡 情报追踪</span>
+    .story-card {
+      background: rgba(30,42,58,0.4); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 14px; margin-bottom: 10px;
+      transition: all 0.25s ease;
+    }
+    .story-card:hover { border-color: rgba(200,169,81,0.3); }
+    .story-card.new {
+      border-color: rgba(255,68,68,0.3);
+      box-shadow: 0 0 12px rgba(255,68,68,0.08);
+    }
+    .story-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+    .story-date { font-size: 11px; color: var(--text-dim); font-family: 'Cascadia Code', monospace; }
+    .story-new-tag {
+      display: inline-block; background: var(--red); color: #fff;
+      font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 6px;
+    }
+    .story-tag {
+      display: inline-block; font-size: 10px; padding: 1px 8px;
+      border-radius: 8px; background: rgba(200,169,81,0.1); color: var(--gold-light);
+    }
+    .story-title { font-size: 14px; color: #fff; font-weight: 600; margin-bottom: 6px; }
+    .story-desc { font-size: 12px; color: var(--text-dim); line-height: 1.7; }
+    .story-filter {
+      display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px;
+      justify-content: center;
+    }
+    .story-filter-btn {
+      font-size: 11px; padding: 4px 12px; border-radius: 14px;
+      background: rgba(30,42,58,0.5); color: var(--text-dim);
+      cursor: pointer; border: 1px solid transparent;
+    }
+    .story-filter-btn.active { color: #ff8866; border-color: rgba(255,68,68,0.3); background: rgba(255,68,68,0.08); }
+</style><div class="upset-tabs-bar">
+        <div class="upset-tab active" data-tab="history" onclick="switchUpsetTab('history', this)">📊 已爆冷榜</div>
+        <div class="upset-tab" data-tab="warning" onclick="switchUpsetTab('warning', this)">🔮 爆冷预警</div>
+        <div class="upset-tab" data-tab="story" onclick="switchUpsetTab('story', this)">📖 爆冷故事</div>
       </div>
+      <div class="upset-tab-content" id="upsetTabHistory"></div>
+      <div class="upset-tab-content" id="upsetTabWarning" style="display:none"></div>
+      <div class="upset-tab-content" id="upsetTabStory" style="display:none"></div>
     </div>
-  </div>
-
-  <div class="status-bar">
-    <div class="status-item"><span class="status-dot ok" id="dataDot"></span><span id="dataStatus">数据就绪</span></div>
-    <div class="status-item" id="matchCount">共 0 场比赛</div>
-    <span class="last-update-time" id="lastUpdateTime"></span>
-    <button class="refresh-btn" id="refreshBtn" onclick="manualRefresh()" title="拉取最新数据">
-      <span class="refresh-icon">🔄</span> 刷新数据
-    </button>
-  </div>
-
-  <!-- 视图切换 -->
-  <div class="view-bar">
-    <button class="view-btn active" id="btnUpcoming" onclick="switchView('upcoming')">📅 明日赛程</button>
-    <button class="view-btn" id="btnResults" onclick="switchView('results')">📊 上期赛果 <span class="btn-badge">NEW</span></button>
-  </div>
-
-  <!-- 统计面板 -->
-  <div class="stats-grid">
-    <div class="stat-card accent-gold">
-      <span class="stat-icon">⏱</span>
-      <div class="stat-value" id="statNextMatch">--</div>
-      <div class="stat-label">距下一场</div>
-    </div>
-    <div class="stat-card accent-blue">
-      <span class="stat-icon">🏟</span>
-      <div class="stat-value" id="statMatchesPlayed">--</div>
-      <div class="stat-label">已完赛场次</div>
-    </div>
-    <div class="stat-card accent-green">
-      <span class="stat-icon">⚽</span>
-      <div class="stat-value" id="statTotalGoals">--</div>
-      <div class="stat-label">赛事总进球</div>
-    </div>
-    <div class="stat-card accent-red">
-      <span class="stat-icon">👑</span>
-      <div class="stat-value" id="statTopScorer">--</div>
-      <div class="stat-label">射手王</div>
-      <div class="stat-sub" id="statTopScorerSub"></div>
-    </div>
-    <div class="stat-card accent-orange">
-      <span class="stat-icon">🎯</span>
-      <div class="stat-value" id="statAssistKing">--</div>
-      <div class="stat-label">助攻王</div>
-      <div class="stat-sub" id="statAssistKingSub"></div>
-    </div>
-    <div class="stat-card accent-purple">
-      <span class="stat-icon">🧤</span>
-      <div class="stat-value" id="statCleanSheets">--</div>
-      <div class="stat-label">零封门神</div>
-      <div class="stat-sub" id="statCleanSheetsSub"></div>
-    </div>
-  </div>
-
-  <!-- 倒计时详情 -->
-  <div class="countdown-row" id="countdownRow">
-    <div class="countdown-item"><div class="countdown-num" id="cdH">00</div><div class="countdown-label">小时</div></div>
-    <div class="countdown-item"><div class="countdown-num" id="cdM">00</div><div class="countdown-label">分钟</div></div>
-    <div class="countdown-item"><div class="countdown-num" id="cdS">00</div><div class="countdown-label">秒</div></div>
-  </div>
-  <div class="next-info" style="margin-bottom:6px;">
-    <span class="next-date" id="nextDateLabel">--</span>
-  </div>
-
-  <!-- 赛事列表 -->
-  <div class="section-title" id="sectionLabel">📅 即将进行</div>
-  <div id="matchList"></div>
-
-  <!-- 捕风捉影 小道消息 -->
-  <div class="rumors-section" id="rumorsSection">
-    <div class="rumors-title">🃏 捕风捉影 · 小道消息</div>
-    <div class="rumors-grid" id="rumorsGrid"></div>
-  </div>
-
-  <!-- 预测按钮 -->
-  <div class="predict-section">
-    <button class="btn-predict" id="btnPredict" onclick="showPredictions()">⚽ 比赛预测</button>
-  </div>
-
-  <!-- 预测面板 -->
-  <div class="prediction-panel" id="predictionPanel">
-    <div class="pred-table-wrap">
-      <table class="pred-table">
-        <thead>
-          <tr><th>时间</th><th>对阵</th><th>胜平负预测</th><th>进球数预测</th><th>比分预测</th><th>信心</th></tr>
-        </thead>
-        <tbody id="predBody"></tbody>
-      </table>
-    </div>
-    <div class="analysis-section" id="analysisSection"></div>
-    <!-- 爆冷猜测 -->
-    <div class="upset-section" id="upsetSection"></div>
   </div>
 
   <div class="disclaimer">
@@ -786,17 +743,17 @@ const ALL_MATCHES = [
   {id:89,date:"2026-07-05",cst_time:"01:00",home:"加拿大",away:"摩洛哥",group:"KO",stadium:"休斯顿",round:"1/8决赛",stadium_tz:-5},
   {id:90,date:"2026-07-05",cst_time:"05:00",home:"巴拉圭",away:"法国",group:"KO",stadium:"新泽西·大都会人寿",round:"1/8决赛",stadium_tz:-4},
   {id:91,date:"2026-07-06",cst_time:"04:00",home:"巴西",away:"挪威",group:"KO",stadium:"新泽西·大都会人寿",round:"1/8决赛",stadium_tz:-4},
-  {id:92,date:"2026-07-06",cst_time:"08:00",home:"墨西哥",away:"待定",group:"KO",stadium:"墨西哥城·阿兹特克",round:"1/8决赛",stadium_tz:-6},
-  {id:93,date:"2026-07-07",cst_time:"02:00",home:"待定",away:"待定",group:"KO",stadium:"福克斯伯勒",round:"1/8决赛",stadium_tz:-4},
-  {id:94,date:"2026-07-07",cst_time:"08:00",home:"待定",away:"待定",group:"KO",stadium:"西雅图",round:"1/8决赛",stadium_tz:-7},
-  {id:95,date:"2026-07-08",cst_time:"01:00",home:"待定",away:"待定",group:"KO",stadium:"阿灵顿",round:"1/8决赛",stadium_tz:-5},
-  {id:96,date:"2026-07-08",cst_time:"02:00",home:"待定",away:"待定",group:"KO",stadium:"堪萨斯城",round:"1/8决赛",stadium_tz:-5},
+  {id:92,date:"2026-07-06",cst_time:"08:00",home:"墨西哥",away:"英格兰",group:"KO",stadium:"墨西哥城·阿兹特克",round:"1/8决赛",stadium_tz:-6},
+  {id:93,date:"2026-07-07",cst_time:"02:00",home:"葡萄牙",away:"西班牙",group:"KO",stadium:"福克斯伯勒",round:"1/8决赛",stadium_tz:-4},
+  {id:94,date:"2026-07-07",cst_time:"08:00",home:"美国",away:"比利时",group:"KO",stadium:"西雅图",round:"1/8决赛",stadium_tz:-7},
+  {id:95,date:"2026-07-08",cst_time:"00:00",home:"阿根廷",away:"埃及",group:"KO",stadium:"亚特兰大·梅赛德斯-奔驰",round:"1/8决赛",stadium_tz:-4},
+  {id:96,date:"2026-07-08",cst_time:"04:00",home:"瑞士",away:"哥伦比亚",group:"KO",stadium:"温哥华·BC Place",round:"1/8决赛",stadium_tz:-7},
 
   // === QUARTER-FINALS (1/4决赛) 北京时间 ===
-  {id:97,date:"2026-07-10",cst_time:"04:00",home:"待定",away:"待定",group:"KO",stadium:"福克斯伯勒",round:"1/4决赛",stadium_tz:-4},
-  {id:98,date:"2026-07-11",cst_time:"03:00",home:"待定",away:"待定",group:"KO",stadium:"洛杉矶·SoFi体育场",round:"1/4决赛",stadium_tz:-7},
-  {id:99,date:"2026-07-12",cst_time:"05:00",home:"待定",away:"待定",group:"KO",stadium:"迈阿密",round:"1/4决赛",stadium_tz:-4},
-  {id:100,date:"2026-07-12",cst_time:"09:00",home:"待定",away:"待定",group:"KO",stadium:"堪萨斯城",round:"1/4决赛",stadium_tz:-5},
+  {id:97,date:"2026-07-10",cst_time:"04:00",home:"法国",away:"摩洛哥",group:"KO",stadium:"波士顿·吉列体育场",round:"1/4决赛",stadium_tz:-4},
+  {id:98,date:"2026-07-11",cst_time:"03:00",home:"西班牙",away:"比利时",group:"KO",stadium:"洛杉矶·SoFi体育场",round:"1/4决赛",stadium_tz:-7},
+  {id:99,date:"2026-07-12",cst_time:"05:00",home:"挪威",away:"英格兰",group:"KO",stadium:"迈阿密·硬石体育场",round:"1/4决赛",stadium_tz:-4},
+  {id:100,date:"2026-07-12",cst_time:"09:00",home:"阿根廷",away:"瑞士",group:"KO",stadium:"堪萨斯城·箭头",round:"1/4决赛",stadium_tz:-5},
 
   // === SEMI-FINALS (半决赛) 北京时间 ===
   {id:101,date:"2026-07-15",cst_time:"03:00",home:"待定",away:"待定",group:"KO",stadium:"阿灵顿",round:"半决赛",stadium_tz:-5},
@@ -913,6 +870,151 @@ function shuffleArray(arr) {
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
   return arr;
+}
+
+function switchUpsetTab(tab, el) {
+  document.querySelectorAll('.upset-tab').forEach(t => t.classList.remove('active'));
+  if (el) el.classList.add('active');
+  ['history', 'warning', 'story'].forEach(t => {
+    const c = document.getElementById('upsetTab' + t.charAt(0).toUpperCase() + t.slice(1));
+    if (c) c.style.display = t === tab ? 'block' : 'none';
+  });
+}
+
+const COLD_RANK_MAP = {"墨西哥":15,"南非":60,"韩国":23,"捷克":36,"加拿大":48,"波黑":74,"卡塔尔":37,"瑞士":19,"巴西":5,"摩洛哥":14,"海地":89,"苏格兰":39,"德国":9,"厄瓜多尔":57,"科特迪瓦":41,"库拉索":86,"日本":18,"瑞典":27,"突尼斯":28,"荷兰":7,"美国":11,"土耳其":26,"澳大利亚":24,"巴拉圭":53,"西班牙":8,"佛得角":56,"比利时":3,"埃及":33,"沙特阿拉伯":56,"乌拉圭":13,"伊朗":20,"新西兰":92,"法国":2,"塞内加尔":17,"伊拉克":58,"挪威":36,"阿根廷":1,"阿尔及利亚":30,"奥地利":22,"约旦":64,"葡萄牙":6,"刚果(金)":45,"英格兰":4,"克罗地亚":12,"加纳":71,"巴拿马":45,"乌兹别克斯坦":62,"哥伦比亚":16};
+const QF_WARNINGS = [{"match":"法国-摩洛哥","level":"hot","label":"🔥 高爆冷风险","icon":"🔥","index":75,"desc":"摩洛哥本届防守仅丢5球，淘汰赛阶段3-0血洗加拿大、点球淘汰哥伦比亚；法国淘汰赛2-0巴拉圭但状态不稳，姆巴佩依赖症明显"},{"match":"西班牙-比利时","level":"hot","label":"🔥 高爆冷风险","icon":"🔥","index":65,"desc":"比利时淘汰赛4-1血洗美国，卢卡库+德布劳内状态爆棚；西班牙16强仅1-0小胜葡萄牙，'无效控球'问题被放大"},{"match":"挪威-英格兰","level":"warm","label":"🟡 中度爆冷可能","icon":"⚡","index":50,"desc":"挪威本届大黑马，淘汰赛2-1巴西！哈兰德+厄德高组合无解；英格兰3-1刚果(金)但防线存疑"},{"match":"阿根廷-瑞士","level":"watch","label":"🔵 值得关注","icon":"👀","index":35,"desc":"阿根廷淘汰赛均丢2球，萨拉赫逆袭的剧本可能重演；瑞士点球大战后体能和心态存疑"}];
+const TODAY_STORIES = [{"date":"07/08","title":"阿根廷让二追三！3-2 绝杀埃及晋级八强","desc":"上半场埃及亚西尔头球破门，梅西点球被扑，下半场埃及再下一城0-2领先。第79分钟起罗梅罗头球、梅西扳平、恩佐补时头球绝杀，13分钟连入3球完成足坛罕见让二追三！这是本届世界杯最具戏剧性的逆转。","tag":"本屆爆冷","emoji":"🔥"},{"date":"07/08","title":"瑞士点球4-3淘汰哥伦比亚——索默封神","desc":"120分钟0-0闷战，瑞士门将索默两次扑出点球（埃斯科巴尔和卡多纳），瑞士点球4-3晋级八强。这是索默国家队第3次扑出点球，他赛后说'这是团队的胜利'。","tag":"本屆爆冷","emoji":"🧤"},{"date":"07/07","title":"巴西爆冷1-2不敌挪威——哈兰德降维打击","desc":"挪威客场2-1击败五星巴西！哈兰德助攻梅开二度，FIFA排名第36的挪威客场掀翻排名第5的巴西。冷门指数58，排名差距31位。","tag":"本屆爆冷","emoji":"⚡"},{"date":"07/07","title":"墨西哥2-3英格兰——阿兹特克主场失守","desc":"墨西哥在阿兹特克球场2-3惜败英格兰，FIFA排名第15的墨西哥不敌排名第4的英格兰。值得一提的是，这是三狮军团历史上首次在阿兹特克击败墨西哥！","tag":"本屆爆冷","emoji":"🏟"}];
+
+function renderUpsetHistory() {
+  const container = document.getElementById('upsetTabHistory');
+  if (!container) return;
+  // 基于 data.json 实际已完赛比赛 + FIFA 排名差距自动计算冷门
+  const results = (typeof COMPLETED_RESULTS !== 'undefined') ? COMPLETED_RESULTS : {};
+  const games = Object.keys(results);
+  const coldList = [];
+  games.forEach(key => {
+    const [home, away] = key.split('-');
+    const [hs, as] = results[key].split(':').map(Number);
+    let winner = null, loser = null, isDraw = false;
+    if (hs > as) { winner = home; loser = away; }
+    else if (as > hs) { winner = away; loser = home; }
+    else { isDraw = true; }
+    const wRank = COLD_RANK_MAP[winner || home];
+    const lRank = COLD_RANK_MAP[loser || away];
+    if (!wRank || !lRank) return;
+    // 排名差距：低排名战胜高排名（差距 > 10）才算冷门
+    if (isDraw) {
+      const gap = Math.abs(wRank - lRank);
+      if (gap > 20) {
+        coldList.push({ key, score: results[key], home, away, winner: home, isDraw: true, gap, index: Math.min(30 + gap / 2, 60) });
+      }
+    } else {
+      const gap = lRank - wRank;
+      if (gap > 8) {
+        coldList.push({ key, score: results[key], home, away, winner, gap, index: Math.min(30 + gap / 2, 80) });
+      }
+    }
+  });
+  coldList.sort((a, b) => b.index - a.index);
+
+  if (coldList.length === 0) {
+    container.innerHTML = '<div style="text-align:center;color:var(--text-dim);font-size:13px;padding:8px;">本届暂无明显冷门</div>';
+    return;
+  }
+
+  // 关键冷门（优先显示最近 + 高指数）
+  const top = coldList.slice(0, 12);
+  let html = '<div style="text-align:center;color:var(--text-dim);font-size:11px;margin-bottom:8px;">共 ' + coldList.length + ' 场冷门 · 基于FIFA排名差距自动计算</div>';
+  top.forEach((c, i) => {
+    const emoji = c.index > 50 ? '🔥' : c.index > 30 ? '🟡' : '🔵';
+    const levelLabel = c.index > 50 ? '超级爆冷' : c.index > 30 ? '冷门' : '小冷';
+    const loserName = c.isDraw ? c.away : (c.winner === c.home ? c.away : c.home);
+    const loserRank = COLD_RANK_MAP[loserName];
+    const teamEmojis = (typeof TEAM_FLAGS !== 'undefined') ? TEAM_FLAGS : {};
+    html += '<div class="cold-row">' +
+      '<div class="cold-rank">' + (i+1) + '</div>' +
+      '<div class="cold-emoji">' + emoji + '</div>' +
+      '<div class="cold-info">' +
+        '<div class="cold-title">' + (teamEmojis[c.home]||'🏳') + ' ' + c.home + ' vs ' + c.away + ' ' + (teamEmojis[c.away]||'🏳') + ' <span class="story-tag">' + levelLabel + '</span></div>' +
+        '<div class="cold-desc">排名第' + COLD_RANK_MAP[c.winner] + '的' + c.winner + (c.isDraw ? '逼平' : '击败') + '排名第' + loserRank + '的' + loserName + '，排名差距' + c.gap + '位</div>' +
+      '</div>' +
+      '<div style="text-align:right"><div class="cold-score">' + c.score + '</div><div class="cold-index">爆冷指数 ' + Math.round(c.index) + '</div></div>' +
+    '</div>';
+  });
+  container.innerHTML = html;
+}
+
+function renderUpsetWarnings() {
+  const container = document.getElementById('upsetTabWarning');
+  if (!container) return;
+  let html = '<div style="text-align:center;color:var(--text-dim);font-size:11px;margin-bottom:10px;">🔥 1/4决赛爆冷风险预警</div>';
+  QF_WARNINGS.forEach(w => {
+    const [home, away] = w.match.split('-');
+    const teamEmojis = (typeof TEAM_FLAGS !== 'undefined') ? TEAM_FLAGS : {};
+    html += '<div class="story-card ' + (w.level === 'hot' ? 'new' : '') + '">' +
+      '<div class="story-header">' +
+        '<span class="cold-emoji">' + w.icon + '</span>' +
+        '<span class="story-title" style="font-size:13px;">' + (teamEmojis[home]||'🏳') + ' ' + home + ' vs ' + away + ' ' + (teamEmojis[away]||'🏳') + '</span>' +
+        '<span class="story-tag" style="background:rgba(255,68,68,0.12);color:#ff8866;">' + w.label + '</span>' +
+        '<span style="margin-left:auto;font-size:11px;color:var(--gold);">指数 ' + w.index + '</span>' +
+      '</div>' +
+      '<div class="story-desc">' + w.desc + '</div>' +
+    '</div>';
+  });
+  container.innerHTML = html;
+}
+
+let currentStoryFilter = 'all';
+function renderUpsetStories() {
+  const container = document.getElementById('upsetTabStory');
+  if (!container) return;
+  let all = [{"year":1950,"title":"洗碗工击败英格兰——足球史上第一冷门","date":"07/07","desc":"美国业余球员击败英格兰，全场进球者均为业余打工仔","new":true,"type":"history"},{"year":1953,"title":"匈牙利 6-3 英格兰——温布利神话破灭","date":"历史","desc":"普斯卡什领衔的匈牙利黄金队击败三狮军团，开创现代足球新纪元","new":false,"type":"history"},{"year":1966,"title":"朝鲜 1-0 意大利——世界杯最大冷门","date":"历史","desc":"朴承一进球，朝鲜队淘汰两届冠军意大利进入八强","new":false,"type":"history"},{"year":1990,"title":"喀麦隆 1-0 阿根廷——卫冕冠军揭幕战出局","date":"历史","desc":"38岁米拉大叔梅开二度，卫冕冠军首战告负","new":false,"type":"history"},{"year":2002,"title":"塞内加尔 1-1 法国——揭幕战爆冷","date":"历史","desc":"首次参赛的塞内加尔逼平卫冕冠军法国","new":false,"type":"history"},{"year":2014,"title":"哥斯达黎加小组第一——死亡之组奇迹","date":"历史","desc":"哥斯达黎加力压乌拉圭意大利英格兰，D组头名出线","new":false,"type":"history"},{"year":2018,"title":"韩国 2-0 德国——卫冕冠军小组出局","date":"历史","desc":"孙兴慜长途奔袭破门，德国0-2败给韩国，小组出局","new":false,"type":"history"}].concat(
+    TODAY_STORIES.map(s => ({...s, type: 'today'}))
+  );
+  // 过滤
+  let list = all;
+  if (currentStoryFilter === 'today') list = all.filter(s => s.date === '07/08' || s.date === '07/07' && s.tag === '本屆爆冷');
+  else if (currentStoryFilter === 'history') list = all.filter(s => s.type === 'history');
+  else if (currentStoryFilter === 'edition') list = all.filter(s => s.tag === '本屆爆冷');
+  // 密码filter (隐藏)
+
+  const filters = [
+    { k: 'all', l: '全部' },
+    { k: 'today', l: '🔥 今日新鲜' },
+    { k: 'history', l: '🏆 历史经典' },
+    { k: 'edition', l: '📍 本屆爆冷' }
+  ];
+  let html = '<div class="story-filter">';
+  filters.forEach(f => {
+    html += '<div class="story-filter-btn ' + (currentStoryFilter === f.k ? 'active' : '') + '" onclick="currentStoryFilter=\''+f.k+'\';renderUpsetStories();">' + f.l + '</div>';
+  });
+  html += '</div>';
+
+  if (list.length === 0) {
+    html += '<div style="text-align:center;color:var(--text-dim);font-size:13px;padding:20px;">暂无该分类的故事</div>';
+  } else {
+    list.forEach(s => {
+      const isNew = s.new || s.type === 'today';
+      html += '<div class="story-card' + (isNew ? ' new' : '') + '">' +
+        '<div class="story-header">' +
+          '<span class="story-date">' + (s.year || s.date) + '</span>' +
+          (isNew ? '<span class="story-new-tag">NEW</span>' : '') +
+          '<span class="story-tag">' + (s.tag || '历史') + '</span>' +
+          (s.emoji ? '<span class="cold-emoji">' + s.emoji + '</span>' : '') +
+        '</div>' +
+        '<div class="story-title">' + s.title + '</div>' +
+        '<div class="story-desc">' + s.desc + '</div>' +
+      '</div>';
+    });
+  }
+  container.innerHTML = html;
+}
+
+// 初始化三个 tab
+function initUpsetTabs() {
+  renderUpsetHistory();
+  renderUpsetWarnings();
+  renderUpsetStories();
 }
 
 function renderUpsets(matches) {
@@ -2151,6 +2253,7 @@ async function manualRefresh() {
 
 // Bootstrap
 (async function init() {
+  initUpsetTabs();
   const dot = document.getElementById('dataDot');
   const status = document.getElementById('dataStatus');
   if (dot) dot.className = 'status-dot warn';
