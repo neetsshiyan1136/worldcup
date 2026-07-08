@@ -2421,6 +2421,10 @@ async function loadRemoteData() {
     if (remote.upsetRumors && !Array.isArray(remote.upsetRumors)) {
       Object.assign(UPSET_RUMORS, remote.upsetRumors);
     }
+    // 爆冷故事: 从 data.json 加载（覆盖硬编码 defaultStories）
+    if (remote.upsetStories && Array.isArray(remote.upsetStories)) {
+      window.__allStoriesRemote = remote.upsetStories;
+    }
     // teamRumors: merge team objects
     if (remote.teamRumors && typeof remote.teamRumors === 'object' && !Array.isArray(remote.teamRumors)) {
       for (const [team, rumors] of Object.entries(remote.teamRumors)) {
@@ -2433,6 +2437,13 @@ async function loadRemoteData() {
     // 远程数据更新后，重渲染爆冷榜（基于最新 COMPLETED_RESULTS）
     if (typeof renderUpsetHistory === 'function') {
       try { renderUpsetHistory(); } catch (e) { console.warn('[DATA] ⚠️ renderUpsetHistory 失败:', e.message); }
+    }
+    // 远程软数据更新后，重渲染爆冷故事 + 预警
+    if (typeof renderUpsetStories === 'function') {
+      try { renderUpsetStories(); } catch (e) { console.warn('[DATA] ⚠️ renderUpsetStories 失败:', e.message); }
+    }
+    if (typeof renderUpsetWarnings === 'function') {
+      try { renderUpsetWarnings(); } catch (e) { console.warn('[DATA] ⚠️ renderUpsetWarnings 失败:', e.message); }
     }
   } catch (err) {
     console.warn('[DATA] ⚠️ 远程拉取失败，使用内置数据:', err.message);
