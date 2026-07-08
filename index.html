@@ -668,6 +668,9 @@
     .visitor-comment { padding: 10px 12px; margin-bottom: 8px; }
     .vc-head { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
     .vc-text { font-size: 12px; color: var(--text-dim); line-height: 1.6; }
+
+  /* 隐藏助攻王：API 无助攻数据源 */
+  #statAssistKing, #statAssistKingSub, [id*="assist"] { display: none !important; }
 </style>
 </head>
 <body>
@@ -2391,7 +2394,10 @@ async function loadRemoteData() {
     // Merge remote data into live variables
     if (remote.completedResults) Object.assign(COMPLETED_RESULTS, remote.completedResults);
     if (remote.halftimeResults) Object.assign(HALFTIME_RESULTS, remote.halftimeResults);
-    if (remote.matchScorers) Object.assign(MATCH_SCORERS, remote.matchScorers);
+    if (remote.matchScorers) // 只补充内置没有的射手数据（保留中文原名，不被英文覆盖）
+    for (const [k,v] of Object.entries(remote.matchScorers)) {
+      if (!MATCH_SCORERS[k] || MATCH_SCORERS[k].length === 0) MATCH_SCORERS[k] = v;
+    };
     if (remote.matchAssists) Object.assign(MATCH_ASSISTS, remote.matchAssists);
 
     // groupStandings: data.json uses array format [{team, pts,...}], convert to object {teamName: {pts,...}}
@@ -2590,7 +2596,8 @@ function renderUpsetStories() {
     { k: 'tournament', l: '本届爆冷' },
     { k: 'all', l: '全部' }
   ];
-  const allStories = [
+  // 爆冷故事数据源：优先用 data.json 远程加载，回退到内置默认
+  const defaultStories = [
     // ===== 今日 NEW (2026-07-08) =====
     { title: '阿根廷让二追三 3-2 埃及', date: '2026-07-08', tag: '今日', isNew: true, desc: '阿根廷在 0-2 落后情况下连扳三球，淘汰埃及晋级 1/4 决赛。梅西梅开二度，劳塔罗·马丁内斯绝杀。萨拉赫的埃及队差一点把卫冕冠军拉下马。' },
     { title: '瑞士点球 4-3 哥伦比亚', date: '2026-07-08', tag: '今日', isNew: true, desc: '常规时间 0-0 战平，瑞士门将索默神扑 2 个点球，最终点球大战 4-3 淘汰哥伦比亚晋级 1/4 决赛。索默赛后获评全场 MVP。' },
@@ -2607,6 +2614,8 @@ function renderUpsetStories() {
     { title: '2002 韩国连克意西进四强', date: '2002-06-22', tag: '历史', isNew: false, desc: '2002 韩日世界杯，韩国队凭借东道主优势连克意大利、西班牙闯入四强，创造亚洲球队世界杯最佳战绩。希丁克执教封神。' },
     { title: '2014 哥斯达黎加死亡之组突围', date: '2014-06-29', tag: '历史', isNew: false, desc: '2014 巴西世界杯，哥斯达黎加与乌拉圭、意大利、英格兰同组，小组赛 2-1 击败乌拉圭、0-0 逼平法国，最终小组第一出线。1/4 决赛点球惜败荷兰。' }
   ];
+  const allStories = (typeof window.__allStoriesRemote !== 'undefined' && window.__allStoriesRemote.length > 0)
+    ? window.__allStoriesRemote : defaultStories;
   let filtered = allStories;
   if (filter === 'today') filtered = allStories.filter(s => s.isNew);
   else if (filter === 'history') filtered = allStories.filter(s => s.tag === '历史');
