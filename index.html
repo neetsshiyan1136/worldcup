@@ -2833,7 +2833,7 @@ function getAllRumors(matches) {
 function openRumorModal() {
   const grid = document.getElementById('rumorModalGrid');
   if (!grid) return;
-  const all = getAllRumors(getUpcomingMatches());
+  const all = getAllRumors(getUpcomingMatches(getBeijingTime()));
   const countEl = document.getElementById('rumorModalCount');
   if (countEl) countEl.textContent = '共 ' + all.length + ' 条情报（置顶优先显示）';
   grid.innerHTML = all.map(r => {
