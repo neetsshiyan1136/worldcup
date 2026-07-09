@@ -2029,23 +2029,29 @@ function getTeamRumors(team) {
 }
 
 function generateRumors(matches) {
-  if (!matches || matches.length === 0) return [];
-
+  // 当前比赛日的球队
   const dayTeams = new Set();
-  matches.forEach(m => { dayTeams.add(m.home); dayTeams.add(m.away); });
+  if (matches) matches.forEach(m => { dayTeams.add(m.home); dayTeams.add(m.away); });
 
   const allRumors = [];
+  // 1) 用户撰写的真实传闻（teamRumors）优先纳入，确保常驻显示（含已出局球队）
+  Object.keys(TEAM_RUMORS).forEach(team => {
+    (TEAM_RUMORS[team] || []).forEach(r => allRumors.push({ ...r, team, __authored: true }));
+  });
+  // 2) 当前比赛日的模板传闻作为补充
   dayTeams.forEach(team => {
-    getTeamRumors(team).forEach(r => allRumors.push({...r, team}));
+    getTeamRumors(team).forEach(r => allRumors.push({ ...r, team, __authored: false }));
   });
 
-  // Shuffle and pick 6
+  // 打乱
   for (let i = allRumors.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [allRumors[i], allRumors[j]] = [allRumors[j], allRumors[i]];
   }
-
-  return allRumors.slice(0, 6);
+  // 优先保留用户撰写传闻，模板补充至 6 条
+  const authored = allRumors.filter(r => r.__authored);
+  const templated = allRumors.filter(r => !r.__authored);
+  return [...authored, ...templated].slice(0, 6);
 }
 
 function renderRumors(matches) {
