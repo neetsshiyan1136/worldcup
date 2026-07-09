@@ -2252,10 +2252,15 @@ function generateRumors(matches) {
     const j = Math.floor(Math.random() * (i + 1));
     [allRumors[i], allRumors[j]] = [allRumors[j], allRumors[i]];
   }
-  // 优先保留用户撰写传闻，模板补充至 6 条
+  // 用户置顶传闻（pinned）永远显示，其余随机填充至 6 条
   const authored = allRumors.filter(r => r.__authored);
   const templated = allRumors.filter(r => !r.__authored);
-  return [...authored, ...templated].slice(0, 6);
+  const pinned = authored.filter(r => r.pinned);
+  const normal = authored.filter(r => !r.pinned);
+  const rest = [...normal, ...templated];
+  // 置顶条数若超过 6 则截取前 6，否则置顶 + 补充满 6
+  if (pinned.length >= 6) return pinned.slice(0, 6);
+  return [...pinned, ...rest].slice(0, 6);
 }
 
 function renderRumors(matches) {
