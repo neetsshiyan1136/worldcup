@@ -671,9 +671,55 @@
 
   /* 隐藏助攻王：API 无助攻数据源 */
   #statAssistKing, #statAssistKingSub, [id*="assist"] { display: none !important; }
+
+  /* Music Player */
+  .music-player-btn {
+    position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+    width: 52px; height: 52px; border-radius: 50%;
+    background: linear-gradient(135deg, rgba(200,169,81,0.2), rgba(200,169,81,0.05));
+    border: 2px solid rgba(200,169,81,0.4);
+    color: var(--gold-light); font-size: 22px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(200,169,81,0.15);
+    user-select: none;
+  }
+  .music-player-btn:hover {
+    background: rgba(200,169,81,0.3); border-color: var(--gold);
+    box-shadow: 0 6px 30px rgba(200,169,81,0.25); transform: scale(1.08);
+  }
+  .music-player-btn:active { transform: scale(0.95); }
+  .music-player-btn.playing {
+    border-color: var(--gold); background: rgba(200,169,81,0.25);
+    animation: music-pulse 2s ease-in-out infinite;
+  }
+  .music-player-btn.playing:hover { animation: none; }
+  @keyframes music-pulse {
+    0%,100% { box-shadow: 0 4px 20px rgba(200,169,81,0.15); }
+    50% { box-shadow: 0 4px 35px rgba(200,169,81,0.35); }
+  }
+  .music-player-btn .music-icon { font-size: 22px; line-height: 1; }
+  .music-player-btn.playing .music-icon { animation: music-bounce 0.6s ease-in-out infinite alternate; }
+  @keyframes music-bounce { 0%{transform:translateY(0)} 100%{transform:translateY(-3px)} }
+  .music-tooltip {
+    position: absolute; bottom: 60px; right: 0;
+    background: var(--card-bg); border: 1px solid var(--border);
+    color: var(--text-dim); font-size: 12px; padding: 6px 12px;
+    border-radius: 8px; white-space: nowrap; pointer-events: none;
+    opacity: 0; transform: translateY(4px); transition: all 0.2s ease;
+  }
+  .music-player-btn:hover .music-tooltip { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
+<!-- Background Music -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="./music.mp3" type="audio/mpeg">
+</audio>
+<button class="music-player-btn" id="musicBtn" onclick="toggleMusic()">
+  <span class="music-icon">🎵</span>
+  <span class="music-tooltip">播放背景音乐</span>
+</button>
+
 
 <div class="header">
   <h1>2026 世界杯竞彩预测</h1>
@@ -2695,6 +2741,53 @@ function initUpsetTabs() {
   setInterval(refresh, 1000);
   setInterval(loadRemoteData, 300000);
 })();
+
+// ========== Music Player ==========
+let musicPlaying = false;
+function toggleMusic() {
+  const audio = document.getElementById('bgMusic');
+  const btn = document.getElementById('musicBtn');
+  const tooltip = btn.querySelector('.music-tooltip');
+  if (!audio) return;
+  if (musicPlaying) {
+    audio.pause();
+    musicPlaying = false;
+    btn.classList.remove('playing');
+    btn.querySelector('.music-icon').textContent = '🎵';
+    tooltip.textContent = '播放背景音乐';
+  } else {
+    audio.play().then(() => {
+      musicPlaying = true;
+      btn.classList.add('playing');
+      btn.querySelector('.music-icon').textContent = '🎶';
+      tooltip.textContent = '暂停背景音乐';
+    }).catch(() => {
+      tooltip.textContent = '点击页面后再次尝试';
+    });
+  }
+}
+
+// Auto-play on first user interaction (browser policy requires user gesture)
+let musicAutoStarted = false;
+function tryAutoStartMusic() {
+  if (musicAutoStarted) return;
+  const audio = document.getElementById('bgMusic');
+  const btn = document.getElementById('musicBtn');
+  if (!audio) return;
+  musicAutoStarted = true;
+  audio.play().then(() => {
+    musicPlaying = true;
+    btn.classList.add('playing');
+    btn.querySelector('.music-icon').textContent = '🎶';
+    btn.querySelector('.music-tooltip').textContent = '暂停背景音乐';
+  }).catch(() => {
+    // Browser blocked autoplay, user can click the button manually
+    musicAutoStarted = false;
+  });
+}
+document.addEventListener('click', tryAutoStartMusic, { once: false });
+document.addEventListener('touchstart', tryAutoStartMusic, { once: false });
+
 </script>
 
 </body>
