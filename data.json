@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-12T00:38:26+08:00",
+  "lastUpdated": "2026-07-12T17:30:05+08:00",
   "completedResults": {
     "墨西哥-南非": "2:0",
     "韩国-捷克": "2:1",
@@ -98,7 +98,9 @@
     "阿根廷-埃及": "3:2",
     "瑞士-哥伦比亚": "0:0",
     "法国-摩洛哥": "2:0",
-    "西班牙-比利时": "2:1"
+    "西班牙-比利时": "2:1",
+    "挪威-英格兰": "1:2",
+    "阿根廷-瑞士": "3:1"
   },
   "halftimeResults": {
     "波黑-卡塔尔": "1:1",
@@ -1483,6 +1485,40 @@
       {
         "name": "Sharl D Ktlar",
         "team": "比利时",
+        "goals": 1
+      }
+    ],
+    "挪威-英格兰": [
+      {
+        "name": "Andrias Shldrvp",
+        "team": "挪威",
+        "goals": 1
+      },
+      {
+        "name": "Jvd Blingham",
+        "team": "英格兰",
+        "goals": 2
+      }
+    ],
+    "阿根廷-瑞士": [
+      {
+        "name": "Alexis Mac Allister",
+        "team": "阿根廷",
+        "goals": 1
+      },
+      {
+        "name": "Khvlin Alvarz",
+        "team": "阿根廷",
+        "goals": 1
+      },
+      {
+        "name": "Lautaro Martínez",
+        "team": "阿根廷",
+        "goals": 1
+      },
+      {
+        "name": "Dn Andvi",
+        "team": "瑞士",
         "goals": 1
       }
     ]
