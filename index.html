@@ -157,7 +157,7 @@
     font-size: 22px; font-weight: 700; color: #fff; min-width: 56px;
     font-family: 'Cascadia Code','Fira Code',monospace;
   }
-  .match-teams { font-size: 18px; font-weight: 600; flex: 1; }
+  .match-teams { font-size: 18px; font-weight: 600; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .match-score {
     font-size: 22px; font-weight: 700; color: var(--gold-light);
     font-family: 'Cascadia Code','Fira Code',monospace; min-width: 50px; text-align: right;
@@ -415,7 +415,8 @@
     .card-top { gap: 6px; }
     .team-flag { font-size: 16px; margin: 0 2px; }
     .match-time { font-size: 16px; min-width: 42px; }
-    .match-teams { font-size: 14px; }
+    .card-top { flex-wrap: nowrap; overflow-x: hidden; }
+    .match-teams { font-size: 14px; flex: 1 1 auto; min-width: 0; }
     .match-score { font-size: 18px; min-width: 38px; }
     .match-group { font-size: 10px; padding: 2px 8px; }
     .match-meta { font-size: 11px; gap: 8px; }
@@ -462,6 +463,27 @@
     .visitor-wall-title { font-size: 12px; }
     .visitor-comment { padding: 8px 10px; margin-bottom: 6px; }
     .visitor-comment .vc-text { font-size: 11px; }
+    /* Upset Analysis */
+    .upset-analysis-title { font-size: 13px; gap: 8px; }
+    .upset-analysis-title::before, .upset-analysis-title::after { width: 20px; }
+    .upset-analysis-tabs { gap: 6px; }
+    .upset-tab { font-size: 12px; padding: 6px 14px; }
+    .upset-stats-row { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .upset-stat-card { padding: 10px 8px; }
+    .upset-stat-card .us-value { font-size: 18px; }
+    .upset-result-card { padding: 12px 14px; margin-bottom: 8px; }
+    .upset-result-match { font-size: 13px; }
+    .upset-result-analysis { font-size: 12px; }
+    .upset-risk-card { padding: 12px 14px; margin-bottom: 8px; }
+    .upset-risk-match { font-size: 13px; }
+    .upset-risk-analysis { font-size: 12px; }
+    /* Story cards */
+    .story-card { padding: 14px 16px; margin-bottom: 10px; }
+    .story-title { font-size: 14px; }
+    .story-body { font-size: 13px; }
+    .story-highlight { font-size: 12px; padding: 8px 12px; }
+    .story-fact { font-size: 11px; }
+    .story-tabs { flex-wrap: wrap; }
     /* Disclaimer */
     .disclaimer { font-size: 10px; padding: 14px 12px; }
   }
@@ -472,7 +494,8 @@
     .hero-text h2 { font-size: 14px !important; }
     .hero-trophy { font-size: 28px !important; }
     .match-time { font-size: 14px; min-width: 36px; }
-    .match-teams { font-size: 12px; }
+    .card-top { flex-wrap: nowrap; overflow-x: hidden; }
+    .match-teams { font-size: 12px; flex: 1 1 auto; min-width: 0; }
     .match-score { font-size: 16px; min-width: 32px; }
     .countdown-num { font-size: 18px; }
     .countdown-item { padding: 6px 8px; min-width: 44px; }
@@ -590,6 +613,151 @@
   .upset-rumor .ur-tag { display:inline-block; font-size:9px; font-weight:700; background:rgba(255,102,68,0.15); color:#ff8866; padding:2px 8px; border-radius:8px; margin-right:6px; }
   .upset-rumor .ur-source { color: #556; font-style:italic; margin-left:6px; }
 
+  /* ===== 爆冷分析独立栏目 ===== */
+  .upset-analysis-section { margin: 24px 0 8px; }
+  .upset-analysis-title {
+    font-size: 16px; color: #ff6644; letter-spacing: 3px; text-align: center;
+    margin-bottom: 16px; display: flex; align-items: center; gap: 12px; justify-content: center;
+  }
+  .upset-analysis-title::before, .upset-analysis-title::after { content:''; width:40px; height:1px; background: linear-gradient(90deg, transparent, rgba(255,102,68,0.5)); }
+
+  .upset-analysis-tabs {
+    display: flex; justify-content: center; gap: 8px; margin-bottom: 16px;
+  }
+  .upset-tab {
+    background: var(--card-bg); border: 1px solid var(--border);
+    color: var(--text-dim); font-size: 13px; padding: 8px 20px;
+    border-radius: 20px; cursor: pointer; transition: all 0.3s ease; font-family: inherit;
+  }
+  .upset-tab:hover { border-color: rgba(255,102,68,0.3); color: var(--text); }
+  .upset-tab.active {
+    background: rgba(255,68,68,0.12); border-color: rgba(255,102,68,0.5); color: #ff6644; font-weight: 600;
+  }
+
+  .upset-stats-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px;
+  }
+  .upset-stat-card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px 14px; text-align: center; transition: all 0.3s ease;
+  }
+  .upset-stat-card:hover { border-color: rgba(255,102,68,0.3); }
+  .upset-stat-card .us-icon { font-size: 20px; }
+  .upset-stat-card .us-value { font-size: 22px; font-weight: 700; color: #fff; }
+  .upset-stat-card .us-label { font-size: 11px; color: var(--text-dim); }
+
+  .upset-result-card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px 20px; margin-bottom: 10px; transition: all 0.3s ease;
+    position: relative; overflow: hidden;
+  }
+  .upset-result-card::before {
+    content:''; position:absolute; top:0; left:0; width:4px; height:100%;
+    border-radius: 2px 0 0 2px;
+  }
+  .upset-result-card.level-super::before { background: linear-gradient(180deg, #ff4444, #ff8844); }
+  .upset-result-card.level-major::before { background: linear-gradient(180deg, #ff8844, #ffaa00); }
+  .upset-result-card.level-mild::before { background: linear-gradient(180deg, #ffaa00, #88aaff); }
+  .upset-result-card:hover { border-color: rgba(255,102,68,0.3); box-shadow: 0 4px 16px rgba(0,0,0,0.3); transform: translateY(-1px); }
+
+  .upset-result-header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+  .upset-result-match { font-size: 15px; font-weight: 600; color: #fff; }
+  .upset-result-score { font-size: 14px; font-weight: 700; color: var(--gold-light); font-family: 'Cascadia Code',monospace; }
+  .upset-result-badge {
+    font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 10px; white-space: nowrap;
+  }
+  .upset-result-badge.super { background: rgba(255,68,68,0.2); color: #ff6666; animation: pulse-badge 1.5s infinite; }
+  .upset-result-badge.major { background: rgba(255,170,0,0.15); color: #ffbb44; }
+  .upset-result-badge.mild { background: rgba(100,149,237,0.15); color: #88aaff; }
+  .upset-result-badge.normal { background: rgba(200,169,81,0.1); color: var(--gold-light); }
+
+  .upset-index-bar { display: flex; align-items: center; gap: 8px; margin: 8px 0; }
+  .upset-index-track { width: 100px; height: 8px; background: #1e2a3a; border-radius: 4px; overflow: hidden; }
+  .upset-index-fill { height: 100%; border-radius: 4px; transition: width 0.8s ease; }
+  .upset-index-fill.super { background: linear-gradient(90deg, #ff4444, #ff8844); }
+  .upset-index-fill.major { background: linear-gradient(90deg, #ff8844, #ffaa00); }
+  .upset-index-fill.mild { background: linear-gradient(90deg, #ffaa00, #88aaff); }
+  .upset-index-fill.normal { background: linear-gradient(90deg, #44cc44, #88dd88); }
+  .upset-index-value { font-size: 14px; font-weight: 700; color: #fff; font-family: 'Cascadia Code',monospace; min-width: 30px; }
+
+  .upset-result-analysis { font-size: 13px; color: var(--text-dim); line-height: 1.7; margin-top: 6px; }
+  .upset-result-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .upset-analysis-tag {
+    font-size: 10px; padding: 2px 10px; border-radius: 8px;
+    background: rgba(255,102,68,0.08); color: #ff8866; border: 1px solid rgba(255,102,68,0.15);
+  }
+  .upset-analysis-tag.green { background: rgba(68,204,68,0.08); color: #66dd66; border-color: rgba(68,204,68,0.15); }
+
+  .upset-risk-card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px 20px; margin-bottom: 10px; transition: all 0.3s ease;
+    border-left: 3px solid #ff6644;
+  }
+  .upset-risk-card:hover { border-color: rgba(255,102,68,0.3); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+  .upset-risk-header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+  .upset-risk-match { font-size: 15px; font-weight: 600; color: #fff; }
+  .upset-risk-time { font-size: 12px; color: var(--text-dim); }
+  .upset-risk-badge {
+    font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 10px; white-space: nowrap;
+    animation: pulse-badge 1.5s infinite;
+  }
+  .upset-risk-badge.hot { background: rgba(255,68,68,0.2); color: #ff6666; }
+  .upset-risk-badge.warm { background: rgba(255,170,0,0.15); color: #ffbb44; }
+  .upset-risk-badge.watch { background: rgba(100,149,237,0.15); color: #88aaff; }
+  .upset-risk-analysis { font-size: 13px; color: var(--text-dim); line-height: 1.7; margin-top: 6px; }
+  .upset-risk-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .upset-risk-factor {
+    font-size: 10px; padding: 2px 10px; border-radius: 8px;
+    background: rgba(255,102,68,0.08); color: #ff8866; border: 1px solid rgba(255,102,68,0.15);
+  }
+
+  /* ===== 爆冷故事卡片 ===== */
+  .story-card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px;
+    padding: 20px 22px; margin-bottom: 14px; transition: all 0.3s ease;
+    position: relative; overflow: hidden;
+  }
+  .story-card::before {
+    content:''; position:absolute; top:0; left:0; width:4px; height:100%; border-radius: 2px 0 0 2px;
+  }
+  .story-card.cat-history::before { background: linear-gradient(180deg, #c8a951, #8b6914); }
+  .story-card.cat-current::before { background: linear-gradient(180deg, #ff4444, #ff8844); }
+  .story-card.cat-secret::before { background: linear-gradient(180deg, #aa55ff, #5522cc); }
+  .story-card:hover { border-color: rgba(200,169,81,0.3); box-shadow: 0 6px 24px rgba(0,0,0,0.4); transform: translateY(-2px); }
+
+  .story-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .story-year {
+    font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 10px; white-space: nowrap;
+  }
+  .story-year.history { background: rgba(200,169,81,0.15); color: var(--gold-light); }
+  .story-year.current { background: rgba(255,68,68,0.15); color: #ff6666; animation: pulse-badge 2s infinite; }
+  .story-year.secret { background: rgba(170,85,255,0.15); color: #bb77ff; }
+  .story-title { font-size: 16px; font-weight: 700; color: #fff; line-height: 1.5; }
+  .story-subtitle { font-size: 12px; color: var(--gold-light); margin-bottom: 8px; font-family: 'Cascadia Code',monospace; }
+  .story-body { font-size: 14px; color: var(--text-dim); line-height: 1.9; }
+  .story-highlight {
+    background: rgba(255,102,68,0.06); border: 1px dashed rgba(255,102,68,0.2);
+    border-radius: 8px; padding: 10px 14px; margin: 10px 0;
+    font-size: 13px; color: #ff8866; line-height: 1.7;
+  }
+  .story-fact {
+    background: rgba(200,169,81,0.06); border: 1px solid rgba(200,169,81,0.15);
+    border-radius: 8px; padding: 8px 14px; margin: 8px 0;
+    font-size: 12px; color: var(--gold-light); display: flex; align-items: center; gap: 6px;
+  }
+  .story-fact::before { content: '💡'; }
+  .story-source {
+    font-size: 11px; color: #556; font-style: italic; margin-top: 10px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .story-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+  .story-tag {
+    font-size: 10px; padding: 2px 10px; border-radius: 8px;
+    background: rgba(200,169,81,0.08); color: var(--gold-light); border: 1px solid rgba(200,169,81,0.15);
+  }
+  .story-tag.danger { background: rgba(255,68,68,0.08); color: #ff8866; border-color: rgba(255,68,68,0.15); }
+  .story-tag.purple { background: rgba(170,85,255,0.08); color: #bb77ff; border-color: rgba(170,85,255,0.15); }
+
   /* ===== ENHANCED MATCH CARD ===== */
   .team-flag { font-size: 20px; margin: 0 4px; line-height:1; }
   .match-card {
@@ -600,77 +768,6 @@
   .match-card .card-body { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
   .match-meta { display:flex; gap:16px; align-items:center; flex-wrap:wrap; margin-top:8px; font-size:12px; color:var(--text-dim); }
   .match-meta .meta-item { display:flex; align-items:center; gap:4px; }
-
-    .upset-tabs-bar {
-      display: flex; gap: 8px; justify-content: center; margin: 12px 0;
-      border-bottom: 1px solid var(--border); padding-bottom: 8px;
-    }
-    .upset-tab {
-      padding: 6px 16px; border-radius: 18px; cursor: pointer;
-      background: rgba(30,42,58,0.5); color: var(--text-dim);
-      font-size: 13px; letter-spacing: 1px; transition: all 0.25s ease;
-    }
-    .upset-tab:hover { color: var(--text); border-color: var(--border); }
-    .upset-tab.active {
-      background: linear-gradient(135deg, rgba(255,68,68,0.18), rgba(255,170,0,0.08));
-      color: #ff8866; font-weight: 600; box-shadow: 0 0 8px rgba(255,68,68,0.15);
-    }
-    .upset-tab-content { padding-top: 8px; }
-    .cold-row {
-      display: flex; align-items: center; gap: 10px;
-      padding: 10px 12px; border-bottom: 1px solid var(--border);
-      transition: background 0.2s;
-    }
-    .cold-row:hover { background: rgba(200,169,81,0.04); }
-    .cold-row:last-child { border-bottom: none; }
-    .cold-rank { font-size: 18px; font-weight: 700; color: var(--gold); min-width: 28px; font-family: 'Cascadia Code', monospace; }
-    .cold-info { flex: 1; min-width: 0; }
-    .cold-title { font-size: 13px; color: #fff; font-weight: 600; margin-bottom: 2px; }
-    .cold-desc { font-size: 11px; color: var(--text-dim); }
-    .cold-score { font-size: 16px; font-weight: 700; color: var(--gold-light); font-family: 'Cascadia Code', monospace; }
-    .cold-index { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
-    .cold-emoji { font-size: 16px; min-width: 22px; text-align: center; }
-    .story-card {
-      background: rgba(30,42,58,0.4); border: 1px solid var(--border);
-      border-radius: 10px; padding: 12px 14px; margin-bottom: 10px;
-      transition: all 0.25s ease;
-    }
-    .story-card:hover { border-color: rgba(200,169,81,0.3); }
-    .story-card.new {
-      border-color: rgba(255,68,68,0.3);
-      box-shadow: 0 0 12px rgba(255,68,68,0.08);
-    }
-    .story-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
-    .story-date { font-size: 11px; color: var(--text-dim); font-family: 'Cascadia Code', monospace; }
-    .story-new-tag {
-      display: inline-block; background: var(--red); color: #fff;
-      font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 6px;
-    }
-    .story-tag {
-      display: inline-block; font-size: 10px; padding: 1px 8px;
-      border-radius: 8px; background: rgba(200,169,81,0.1); color: var(--gold-light);
-    }
-    .story-title { font-size: 14px; color: #fff; font-weight: 600; margin-bottom: 6px; }
-    .story-desc { font-size: 12px; color: var(--text-dim); line-height: 1.7; }
-    .story-filter {
-      display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px;
-      justify-content: center;
-    }
-    .story-filter-btn {
-      font-size: 11px; padding: 4px 12px; border-radius: 14px;
-      background: rgba(30,42,58,0.5); color: var(--text-dim);
-      cursor: pointer; border: 1px solid transparent;
-    }
-    .story-filter-btn.active { color: #ff8866; border-color: rgba(255,68,68,0.3); background: rgba(255,68,68,0.08); }
-    .analysis-section { margin-top: 14px; }
-    .analysis-card { padding: 12px 14px; margin-bottom: 10px; }
-    .key-point { padding: 8px 10px; margin: 6px 0; font-size: 12px; }
-    .visitor-comment { padding: 10px 12px; margin-bottom: 8px; }
-    .vc-head { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
-    .vc-text { font-size: 12px; color: var(--text-dim); line-height: 1.6; }
-
-  /* 隐藏助攻王：API 无助攻数据源 */
-  #statAssistKing, #statAssistKingSub, [id*="assist"] { display: none !important; }
 
   /* Music Player */
   .music-player-btn {
@@ -708,32 +805,10 @@
     opacity: 0; transform: translateY(4px); transition: all 0.2s ease;
   }
   .music-player-btn:hover .music-tooltip { opacity: 1; transform: translateY(0); }
-
-  .rumor-viewmore-btn {
-    display: block; width: 100%; margin-top: 14px; padding: 11px;
-    background: rgba(200,169,81,0.08); border: 1px dashed var(--gold-dim);
-    border-radius: 12px; color: var(--gold-light); font-size: 13px; font-weight: 600;
-    cursor: pointer; transition: all 0.2s; text-align: center;
-  }
-  .rumor-viewmore-btn:hover { background: rgba(200,169,81,0.16); border-color: var(--gold); }
-  .rumor-modal-count { font-size: 12px; color: var(--text-dim); margin: 2px 0 10px; }
-  .rumor-modal-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
-  .rumor-modal-card {
-    position: relative; padding: 14px 16px; border-radius: 12px;
-    background: rgba(30,43,56,0.5); border: 1px solid var(--border);
-  }
-  .rumor-modal-card .rumor-team {
-    font-size: 12px; color: var(--gold-light); font-weight: 600; margin-bottom: 8px;
-  }
-  .rumor-modal-card .rumor-modal-text { font-size: 13px; color: var(--text); line-height: 1.7; }
-  .rumor-modal-card .rumor-modal-source {
-    font-size: 10px; color: var(--text-dim); margin-top: 8px; font-style: italic;
-  }
-  .rumor-modal-card .rumor-emoji { float: right; font-size: 24px; opacity: 0.5; margin-left: 8px; }
-
-  </style>
+</style>
 </head>
 <body>
+
 <!-- Background Music -->
 <audio id="bgMusic" loop preload="auto">
   <source src="./music.mp3" type="audio/mpeg">
@@ -742,7 +817,6 @@
   <span class="music-icon">🎵</span>
   <span class="music-tooltip">播放背景音乐</span>
 </button>
-
 
 <div class="header">
   <h1>2026 世界杯竞彩预测</h1>
@@ -776,7 +850,7 @@
 
   <!-- 视图切换 -->
   <div class="view-bar">
-    <button class="view-btn active" id="btnUpcoming" onclick="switchView('upcoming')">📅 明日赛程</button>
+    <button class="view-btn active" id="btnUpcoming" onclick="switchView('upcoming')">📅 最近赛事</button>
     <button class="view-btn" id="btnResults" onclick="switchView('results')">📊 上期赛果 <span class="btn-badge">NEW</span></button>
   </div>
 
@@ -802,12 +876,6 @@
       <div class="stat-value" id="statTopScorer">--</div>
       <div class="stat-label">射手王</div>
       <div class="stat-sub" id="statTopScorerSub"></div>
-    </div>
-    <div class="stat-card accent-orange">
-      <span class="stat-icon">🎯</span>
-      <div class="stat-value" id="statAssistKing">--</div>
-      <div class="stat-label">助攻王</div>
-      <div class="stat-sub" id="statAssistKingSub"></div>
     </div>
     <div class="stat-card accent-purple">
       <span class="stat-icon">🧤</span>
@@ -835,21 +903,21 @@
   <div class="rumors-section" id="rumorsSection">
     <div class="rumors-title">🃏 捕风捉影 · 小道消息</div>
     <div class="rumors-grid" id="rumorsGrid"></div>
-    <button class="rumor-viewmore-btn" id="rumorViewMoreBtn" onclick="openRumorModal()">📜 浏览更多小道消息 →</button>
+  </div>
+
+  <!-- 💣 爆冷分析 · 独立栏目 -->
+  <div class="upset-analysis-section" id="upsetAnalysisSection">
+    <div class="upset-analysis-title">💣 爆冷分析 · 算法引擎</div>
+    <div class="upset-analysis-tabs">
+      <button class="upset-tab active" id="tabCompletedUpsets" onclick="switchUpsetTab('completed')">📊 已爆冷榜</button>
+      <button class="upset-tab" id="tabUpsetRisk" onclick="switchUpsetTab('risk')">🔮 爆冷预警</button>
+      <button class="upset-tab" id="tabUpsetStories" onclick="switchUpsetTab('stories')">📖 爆冷故事</button>
+    </div>
+    <div class="upset-stats-row" id="upsetStatsRow"></div>
+    <div id="upsetAnalysisContent"></div>
   </div>
 
   <!-- 预测按钮 -->
-  <div class="upset-section" id="upsetSection">
-      <div class="upset-tabs-bar">
-        <div class="upset-tab active" data-tab="history" onclick="switchUpsetTab('history', this)">📊 已爆冷榜</div>
-        <div class="upset-tab" data-tab="warning" onclick="switchUpsetTab('warning', this)">🔮 爆冷预警</div>
-        <div class="upset-tab" data-tab="story" onclick="switchUpsetTab('story', this)">📖 爆冷故事</div>
-      </div>
-      <div class="upset-tab-content" id="upsetTabHistory"></div>
-      <div class="upset-tab-content" id="upsetTabWarning" style="display:none"></div>
-      <div class="upset-tab-content" id="upsetTabStory" style="display:none"></div>
-    </div>
-
   <div class="predict-section">
     <button class="btn-predict" id="btnPredict" onclick="showPredictions()">⚽ 比赛预测</button>
   </div>
@@ -885,20 +953,8 @@
     </div>
     <div class="analysis-section" id="analysisSection"></div>
     <!-- 爆冷猜测 -->
-    
-    
-
-    
-
-    <div class="visitor-wall-section" id="visitorWallSection" style="display:none; margin-top:16px;">
-      <div class="section-title" style="font-size:14px;margin-bottom:8px;">💬 游客热评</div>
-      <div id="visitorWallContent"></div>
-    </div>
+    <div class="upset-section" id="upsetSection"></div>
   </div>
-
-    
-
-  
 
   <div class="disclaimer">
     ⚠️ 本软件预测基于FIFA排名、小组积分形势及历史数据的规则引擎推算，仅供娱乐参考，不构成投注建议。<br>
@@ -913,6 +969,7 @@
 //  如果远程拉取失败（无网络等），自动使用下方内置数据作为备份
 // ============================================================
 const DATA_URL = "./data.json";
+const STORIES_URL = "./stories.json";
 
 // ============================================================
 //  2026 WORLD CUP — COMPLETE MATCH DATABASE
@@ -1030,29 +1087,37 @@ const ALL_MATCHES = [
   {id:84,date:"2026-07-03",cst_time:"03:00",home:"西班牙",away:"奥地利",group:"KO",stadium:"洛杉矶·SoFi体育场",round:"1/16决赛",stadium_tz:-7},
   {id:83,date:"2026-07-03",cst_time:"07:00",home:"葡萄牙",away:"克罗地亚",group:"KO",stadium:"多伦多",round:"1/16决赛",stadium_tz:-4},
   {id:85,date:"2026-07-03",cst_time:"11:00",home:"瑞士",away:"阿尔及利亚",group:"KO",stadium:"温哥华",round:"1/16决赛",stadium_tz:-7},
-  {id:88,date:"2026-07-04",cst_time:"02:00",home:"澳大利亚",away:"埃及",group:"KO",stadium:"阿灵顿",round:"1/16决赛",stadium_tz:-5},
+  {id:88,date:"2026-07-04",cst_time:"02:00",home:"待定",away:"待定",group:"KO",stadium:"费城",round:"1/8决赛",stadium_tz:-4},
+
   {id:86,date:"2026-07-04",cst_time:"06:00",home:"阿根廷",away:"佛得角",group:"KO",stadium:"迈阿密",round:"1/16决赛",stadium_tz:-4},
-  {id:87,date:"2026-07-04",cst_time:"09:30",home:"哥伦比亚",away:"加纳",group:"KO",stadium:"堪萨斯城",round:"1/16决赛",stadium_tz:-5},
+  {id:87,date:"2026-07-04",cst_time:"09:30",home:"哥伦比亚",away:"加纳",group:"KO",stadium:"达拉斯",round:"1/8决赛",stadium_tz:-5},
+
 
   // === ROUND OF 16 (1/8决赛) 北京时间 ===
   {id:89,date:"2026-07-05",cst_time:"01:00",home:"加拿大",away:"摩洛哥",group:"KO",stadium:"休斯顿",round:"1/8决赛",stadium_tz:-5},
-  {id:90,date:"2026-07-05",cst_time:"05:00",home:"巴拉圭",away:"法国",group:"KO",stadium:"新泽西·大都会人寿",round:"1/8决赛",stadium_tz:-4},
-  {id:91,date:"2026-07-06",cst_time:"04:00",home:"巴西",away:"挪威",group:"KO",stadium:"新泽西·大都会人寿",round:"1/8决赛",stadium_tz:-4},
-  {id:92,date:"2026-07-06",cst_time:"08:00",home:"墨西哥",away:"待定",group:"KO",stadium:"墨西哥城·阿兹特克",round:"1/8决赛",stadium_tz:-6},
-  {id:93,date:"2026-07-07",cst_time:"02:00",home:"葡萄牙",away:"西班牙",group:"KO",stadium:"福克斯伯勒",round:"1/8决赛",stadium_tz:-4},
+
+  {id:90,date:"2026-07-05",cst_time:"05:00",home:"巴拉圭",away:"法国",group:"KO",stadium:"新泽西大都会人寿",round:"1/8决赛",stadium_tz:-4},
+
+  {id:91,date:"2026-07-06",cst_time:"04:00",home:"巴西",away:"挪威",group:"KO",stadium:"新泽西大都会人寿",round:"1/8决赛",stadium_tz:-4},
+
+  {id:92,date:"2026-07-06",cst_time:"09:00",home:"墨西哥",away:"英格兰",group:"KO",stadium:"墨西哥城阿兹特克",round:"1/8决赛",stadium_tz:-6},
+
+  {id:93,date:"2026-07-07",cst_time:"03:00",home:"葡萄牙",away:"西班牙",group:"KO",stadium:"拉斯维加斯",round:"1/8决赛",stadium_tz:-4},
+
   {id:94,date:"2026-07-07",cst_time:"08:00",home:"美国",away:"比利时",group:"KO",stadium:"西雅图",round:"1/8决赛",stadium_tz:-7},
-  {id:95,date:"2026-07-08",cst_time:"00:00",home:"阿根廷",away:"埃及",group:"KO",stadium:"亚特兰大",round:"1/8决赛",stadium_tz:-4},
-  {id:96,date:"2026-07-08",cst_time:"04:00",home:"瑞士",away:"哥伦比亚",group:"KO",stadium:"温哥华",round:"1/8决赛",stadium_tz:-7},
+
+  {id:95,date:"2026-07-08",cst_time:"00:00",home:"阿根廷",away:"埃及",group:"KO",stadium:"阿灵顿",round:"1/8决赛",stadium_tz:-5},
+  {id:96,date:"2026-07-08",cst_time:"04:00",home:"瑞士",away:"哥伦比亚",group:"KO",stadium:"堪萨斯城",round:"1/8决赛",stadium_tz:-5},
 
   // === QUARTER-FINALS (1/4决赛) 北京时间 ===
-  {id:97,date:"2026-07-10",cst_time:"04:00",home:"法国",away:"摩洛哥",group:"KO",stadium:"波士顿·吉列",round:"1/4决赛",stadium_tz:-4},
-  {id:98,date:"2026-07-11",cst_time:"03:00",home:"西班牙",away:"比利时",group:"KO",stadium:"洛杉矶·SoFi体育场",round:"1/4决赛",stadium_tz:-7},
-  {id:99,date:"2026-07-12",cst_time:"05:00",home:"挪威",away:"英格兰",group:"KO",stadium:"迈阿密·硬石",round:"1/4决赛",stadium_tz:-4},
-  {id:100,date:"2026-07-12",cst_time:"09:00",home:"阿根廷",away:"瑞士",group:"KO",stadium:"堪萨斯城·箭头",round:"1/4决赛",stadium_tz:-5},
+  {id:97,date:"2026-07-10",cst_time:"04:00",home:"待定",away:"待定",group:"KO",stadium:"福克斯伯勒",round:"1/4决赛",stadium_tz:-4},
+  {id:98,date:"2026-07-11",cst_time:"03:00",home:"待定",away:"待定",group:"KO",stadium:"洛杉矶·SoFi体育场",round:"1/4决赛",stadium_tz:-7},
+  {id:99,date:"2026-07-12",cst_time:"05:00",home:"待定",away:"待定",group:"KO",stadium:"迈阿密",round:"1/4决赛",stadium_tz:-4},
+  {id:100,date:"2026-07-12",cst_time:"09:00",home:"待定",away:"待定",group:"KO",stadium:"堪萨斯城",round:"1/4决赛",stadium_tz:-5},
 
   // === SEMI-FINALS (半决赛) 北京时间 ===
-  {id:101,date:"2026-07-15",cst_time:"03:00",home:"待定",away:"待定",group:"KO",stadium:"阿灵顿",round:"半决赛",stadium_tz:-5},
-  {id:102,date:"2026-07-16",cst_time:"03:00",home:"待定",away:"待定",group:"KO",stadium:"亚特兰大",round:"半决赛",stadium_tz:-4},
+  {id:101,date:"2026-07-15",cst_time:"03:00",home:"法国",away:"西班牙",group:"KO",stadium:"阿灵顿",round:"半决赛",stadium_tz:-5},
+  {id:102,date:"2026-07-16",cst_time:"03:00",home:"英格兰",away:"阿根廷",group:"KO",stadium:"亚特兰大",round:"半决赛",stadium_tz:-4},
 
   // === THIRD PLACE + FINAL (季军赛+决赛) 北京时间 ===
   {id:103,date:"2026-07-19",cst_time:"05:00",home:"待定",away:"待定",group:"KO",stadium:"迈阿密",round:"季军赛",stadium_tz:-4},
@@ -1445,7 +1510,6 @@ function updatePlayerStats(totalGoals, completedCount) {
   }
 
   const topScorers = toLeaderboard(goalCount, '球');
-  const topAssisters = toLeaderboard(assistCount, '次');
   const topKeepers = toLeaderboard(csCount, '场零封');
 
   // Update DOM
@@ -1454,13 +1518,6 @@ function updatePlayerStats(totalGoals, completedCount) {
   if (elScorer && elScorerSub && topScorers.length) {
     elScorer.textContent = topScorers[0].val + '球';
     elScorerSub.textContent = topScorers[0].flag + ' ' + topScorers[0].name + ' · ' + topScorers[0].team;
-  }
-
-  const elAssist = document.getElementById('statAssistKing');
-  const elAssistSub = document.getElementById('statAssistKingSub');
-  if (elAssist && elAssistSub && topAssisters.length) {
-    elAssist.textContent = topAssisters[0].val + '次';
-    elAssistSub.textContent = topAssisters[0].flag + ' ' + topAssisters[0].name + ' · ' + topAssisters[0].team;
   }
 
   const elKeeper = document.getElementById('statCleanSheets');
@@ -1489,6 +1546,487 @@ const RANKINGS = {
 };
 
 function getRank(team) { return RANKINGS[team] || 80; }
+
+// ============================================================
+//  爆冷分析算法引擎 — 基于 FIFA 排名 + 赛果自动计算
+// ============================================================
+
+// 全局状态
+let currentUpsetTab = 'completed';
+let currentStoryFilter = 'all';
+
+function switchUpsetTab(tab) {
+  currentUpsetTab = tab;
+  document.getElementById('tabCompletedUpsets').classList.toggle('active', tab === 'completed');
+  document.getElementById('tabUpsetRisk').classList.toggle('active', tab === 'risk');
+  document.getElementById('tabUpsetStories').classList.toggle('active', tab === 'stories');
+  // Show/hide stats row only for algorithm tabs
+  document.getElementById('upsetStatsRow').style.display = (tab === 'stories') ? 'none' : 'grid';
+  renderUpsetAnalysisSection();
+}
+
+// ---- 已完成比赛爆冷指数计算 ----
+function calculateCompletedUpsets() {
+  const upsets = [];
+  for (const [key, result] of Object.entries(COMPLETED_RESULTS)) {
+    const [home, away] = key.split('-');
+    const [hg, ag] = result.split(':').map(Number);
+    const hRank = getRank(home);
+    const aRank = getRank(away);
+
+    if (hRank === 80 && aRank === 80) continue; // skip unknown teams
+
+    const rankDiff = Math.abs(hRank - aRank);
+    let upsetIndex = 0;
+    let upsetType = '';
+    let winner = '';
+    let analysis = '';
+
+    if (hg > ag) {
+      // Home won
+      if (hRank > aRank) {
+        // Lower-ranked home team won = upset!
+        upsetIndex = (hRank - aRank) * 0.8 + (hg - ag) * 5;
+        winner = home;
+        upsetType = 'low_rank_wins';
+        analysis = `排名第${hRank}的${home}击败第${aRank}的${away}，排名差距${hRank - aRank}位！`;
+      } else {
+        // Higher-ranked home team won = expected
+        upsetIndex = 0;
+        winner = home;
+        upsetType = 'expected';
+        const gap = hg - ag;
+        if (aRank - hRank > 20 && gap >= 3) {
+          analysis = `排名第${hRank}的${home}大胜${gap}球，碾压排名第${aRank}的${away}。`;
+        } else if (aRank - hRank > 20) {
+          analysis = `排名第${hRank}的${home}按实力击败排名第${aRank}的${away}，属于常规结果。`;
+        } else {
+          analysis = `排名第${hRank}的${home}击败排名第${aRank}的${away}，排名相近，实力对决。`;
+        }
+      }
+    } else if (ag > hg) {
+      // Away won
+      if (aRank > hRank) {
+        // Lower-ranked away team won = upset!
+        upsetIndex = (aRank - hRank) * 0.8 + (ag - hg) * 5;
+        winner = away;
+        upsetType = 'low_rank_wins';
+        analysis = `排名第${aRank}的${away}客场击败第${hRank}的${home}，排名差距${aRank - hRank}位！`;
+      } else {
+        // Higher-ranked away team won = expected
+        upsetIndex = 0;
+        winner = away;
+        upsetType = 'expected';
+        const gap = ag - hg;
+        if (hRank - aRank > 20 && gap >= 3) {
+          analysis = `排名第${aRank}的${away}客场大胜${gap}球，实力碾压。`;
+        } else {
+          analysis = `排名第${aRank}的${away}客场击败第${hRank}的${home}，属于常规结果。`;
+        }
+      }
+    } else {
+      // Draw
+      if (rankDiff > 15) {
+        // Draw with big ranking gap = mild upset for higher-ranked team
+        upsetIndex = rankDiff * 0.25;
+        upsetType = 'unexpected_draw';
+        const higherTeam = hRank < aRank ? home : away;
+        const lowerTeam = hRank < aRank ? away : home;
+        analysis = `排名第${Math.min(hRank, aRank)}的${higherTeam}被排名第${Math.max(hRank, aRank)}的${lowerTeam}逼平，排名差距${rankDiff}位！`;
+      } else {
+        upsetIndex = 0;
+        upsetType = 'expected_draw';
+        analysis = `排名第${hRank}的${home}与第${aRank}的${away}握手言和，实力接近。`;
+      }
+    }
+
+    // 淘汰赛加成：淘汰赛爆冷更震撼
+    const matchObj = ALL_MATCHES.find(m => `${m.home}-${m.away}` === key || `${m.away}-${m.home}` === key);
+    if (matchObj && matchObj.round.includes('决赛')) {
+      upsetIndex *= 1.3;
+    }
+
+    // Normalize to 0-100 scale (raw upsetIndex can go up to ~60 for biggest upsets)
+    const normalizedIndex = Math.min(100, Math.round(upsetIndex * 1.5));
+
+    upsets.push({
+      key, home, away, hRank, aRank, result, hg, ag,
+      winner, upsetIndex: normalizedIndex, upsetType, analysis,
+      round: matchObj ? matchObj.round : '',
+      date: matchObj ? matchObj.date : '',
+    });
+  }
+
+  // Sort by upsetIndex descending (biggest upsets first)
+  return upsets.sort((a, b) => b.upsetIndex - a.upsetIndex);
+}
+
+// ---- 即将比赛爆冷风险预测 ----
+function calculateUpcomingUpsetRisk() {
+  const cst = getBeijingTime();
+  const upcoming = getUpcomingMatches(cst);
+  const risks = [];
+
+  upcoming.forEach(m => {
+    const hRank = getRank(m.home);
+    const aRank = getRank(m.away);
+    const rankDiff = Math.abs(hRank - aRank);
+
+    // Base upset probability: moderate rankDiff has highest upset potential
+    // Very small diff (< 5) = both teams similar, "upset" is meaningless
+    // Very large diff (> 40) = upset unlikely (but still possible due to context)
+    let baseRisk = 0;
+    if (rankDiff <= 5) baseRisk = 5;
+    else if (rankDiff <= 15) baseRisk = 20;
+    else if (rankDiff <= 25) baseRisk = 35;
+    else if (rankDiff <= 35) baseRisk = 25;
+    else baseRisk = 12;
+
+    // Context modifiers
+    let contextBonus = 0;
+    let factors = [];
+
+    // 1. R3 round: 6-points team likely rotates
+    if (m.round === '小组赛R3') {
+      const hPts = getGroupPts(m.group, m.home);
+      const aPts = getGroupPts(m.group, m.away);
+      if (hPts !== null && aPts !== null) {
+        if (hPts >= 6 && aPts <= 1) {
+          contextBonus += 20; factors.push('6分轮换vs0分死战');
+        } else if (aPts >= 6 && hPts <= 1) {
+          contextBonus += 20; factors.push('0分死战vs6分轮换');
+        } else if (hPts >= 6 || aPts >= 6) {
+          contextBonus += 10; factors.push('已出线可能轮休');
+        }
+        if (hPts <= 1 && aPts <= 1) {
+          contextBonus += 8; factors.push('双方背水一战');
+        }
+      }
+    }
+
+    // 2. Knockout round: higher pressure
+    if (m.round.includes('决赛')) {
+      contextBonus += 5; factors.push('淘汰赛高压');
+    }
+
+    // 3. Host nation advantage for non-host playing away
+    const hostNations = ['美国', '墨西哥', '加拿大'];
+    if (hostNations.includes(m.home) && !hostNations.includes(m.away)) {
+      contextBonus -= 5; // Host is stronger, reduces away upset risk
+      factors.push('主场优势');
+    }
+
+    // 4. Big ranking gap but lower-ranked has must-win motivation
+    const lowerTeam = hRank > aRank ? m.home : m.away;
+    const higherTeam = hRank > aRank ? m.away : m.home;
+    if (rankDiff > 20) {
+      factors.push(`${lowerTeam}(第${Math.max(hRank, aRank)}) vs ${higherTeam}(第${Math.min(hRank, aRank)})`);
+    }
+
+    // Determine the "potential upset team" (lower-ranked team)
+    const upsetTeam = hRank > aRank ? m.home : m.away;
+    const favoredTeam = hRank < aRank ? m.home : m.away;
+
+    const totalRisk = Math.min(100, baseRisk + contextBonus);
+
+    // Risk level
+    let riskLevel, riskLabel;
+    if (totalRisk >= 50) { riskLevel = 'hot'; riskLabel = '🔥 高爆冷风险'; }
+    else if (totalRisk >= 30) { riskLevel = 'warm'; riskLabel = '🟡 爆冷可能'; }
+    else if (totalRisk >= 15) { riskLevel = 'watch'; riskLabel = '🔵 值得关注'; }
+    else { riskLevel = 'safe'; riskLabel = '✅ 常规赛事'; }
+
+    // Generate analysis text
+    let analysis = '';
+    if (totalRisk >= 50) {
+      analysis = `${upsetTeam}(排名第${Math.max(hRank, aRank)})有极高概率爆冷击败${favoredTeam}(排名第${Math.min(hRank, aRank)})。`;
+    } else if (totalRisk >= 30) {
+      analysis = `${upsetTeam}(排名第${Math.max(hRank, aRank)})有一定机会挑战${favoredTeam}(排名第${Math.min(hRank, aRank)})。`;
+    } else if (totalRisk >= 15) {
+      analysis = `${upsetTeam}实力虽弱于${favoredTeam}，但比赛存在不确定因素。`;
+    } else {
+      analysis = `${favoredTeam}(排名第${Math.min(hRank, aRank)})实力明显占优，爆冷概率极低。`;
+    }
+
+    risks.push({
+      match: m, hRank, aRank, rankDiff,
+      upsetTeam, favoredTeam,
+      totalRisk, riskLevel, riskLabel,
+      factors, analysis,
+    });
+  });
+
+  // Sort by risk descending
+  return risks.sort((a, b) => b.totalRisk - a.totalRisk);
+}
+
+// ---- 渲染爆冷分析独立栏目 ----
+// ============================================================
+//  爆冷故事 — 动态加载 stories.json（不再写死在代码里）
+// ============================================================
+
+let UPSET_STORIES = []; // 从 stories.json 动态加载
+
+// Load stories from stories.json (called during init)
+async function loadStories() {
+  try {
+    const resp = await fetch(STORIES_URL + '?t=' + Date.now(), { cache: 'no-store' });
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const data = await resp.json();
+    if (Array.isArray(data) && data.length > 0) {
+      UPSET_STORIES = data;
+      console.log('[STORIES] Loaded ' + data.length + ' stories from remote');
+    }
+  } catch (err) {
+    console.log('[STORIES] Failed to load stories.json: ' + err.message + ', using empty array');
+  }
+}
+
+// Determine if a story is "fresh" (published within last 3 days)
+function isStoryFresh(storyDateStr) {
+  const cst = getBeijingTime();
+  const nowStr = getCSTDateStr(cst);
+  const storyDate = new Date(storyDateStr);
+  const nowDate = new Date(nowStr);
+  const diffDays = Math.floor((nowDate - storyDate) / (1000 * 60 * 60 * 24));
+  return diffDays <= 3;
+}
+
+function renderStoriesTab(container) {
+  if (UPSET_STORIES.length === 0) {
+    container.innerHTML = '<div class="empty-state"><div class="icon">📖</div><p>爆冷故事正在加载中...</p></div>';
+    return;
+  }
+
+  // Count fresh stories for banner
+  const freshCount = UPSET_STORIES.filter(s => s.date && isStoryFresh(s.date)).length;
+
+  // Fresh content banner
+  let bannerHtml = '';
+  if (freshCount > 0) {
+    bannerHtml = `<div class="fresh-banner" style="background:linear-gradient(90deg,rgba(255,68,68,0.12),rgba(255,136,68,0.12));border:1px solid rgba(255,68,68,0.2);border-radius:10px;padding:8px 16px;margin-bottom:14px;text-align:center;font-size:13px;">
+      🔥 今日新增 <span style="color:#ff6666;font-weight:700;">${freshCount}</span> 条爆冷趣闻 · 点击「🔥 今日新鲜」查看最新内容
+    </div>`;
+  }
+
+  // Category filter buttons - preserve currentStoryFilter across refresh()
+  const isActive = (cat) => currentStoryFilter === cat ? 'active' : '';
+  let html = bannerHtml + `<div style="display:flex;justify-content:center;gap:6px;margin-bottom:16px;flex-wrap:wrap;" class="story-tabs">
+    <button class="upset-tab ${isActive('all')}" onclick="filterStories('all',this)" style="font-size:12px;padding:6px 12px;">全部</button>
+    ${freshCount > 0 ? `<button class="upset-tab ${isActive('fresh')}" onclick="filterStories('fresh',this)" style="font-size:12px;padding:6px 12px;color:#ff6666;border-color:rgba(255,68,68,0.3);">🔥 今日新鲜</button>` : ''}
+    <button class="upset-tab ${isActive('history')}" onclick="filterStories('history',this)" style="font-size:12px;padding:6px 12px;">🏆 历史经典</button>
+    <button class="upset-tab ${isActive('current')}" onclick="filterStories('current',this)" style="font-size:12px;padding:6px 12px;">🔥 本届爆冷</button>
+    <button class="upset-tab ${isActive('secret')}" onclick="filterStories('secret',this)" style="font-size:12px;padding:6px 12px;">🧬 爆冷密码</button>
+  </div>`;
+
+  html += '<div id="storiesContainer">';
+  UPSET_STORIES.forEach((s, i) => {
+    const catClass = s.category === 'history' ? 'cat-history' : s.category === 'current' ? 'cat-current' : 'cat-secret';
+    const yearClass = s.category === 'history' ? 'history' : s.category === 'current' ? 'current' : 'secret';
+    const yearLabel = s.year === '密码' ? '🧬 深度' : s.year;
+    const isFresh = s.date && isStoryFresh(s.date);
+    const freshBadge = isFresh ? '<span class="fresh-badge" style="display:inline-block;background:rgba(255,68,68,0.15);color:#ff6666;font-size:10px;padding:2px 6px;border-radius:8px;margin-left:6px;">NEW</span>' : '';
+    const dateStr = s.date ? s.date.substring(5).replace('-', '/') : '';
+    const dateDisplay = dateStr ? `<span class="story-date" style="color:var(--text-dim);font-size:10px;margin-left:8px;">${dateStr}</span>` : '';
+
+    // Determine visibility based on current filter
+    let hiddenStyle = '';
+    if (currentStoryFilter === 'fresh') {
+      hiddenStyle = isFresh ? '' : 'display:none;';
+    } else if (currentStoryFilter !== 'all') {
+      hiddenStyle = s.category !== currentStoryFilter ? 'display:none;' : '';
+    }
+
+    html += `<div class="story-card ${catClass}" data-cat="${s.category}" data-fresh="${isFresh}" style="${hiddenStyle}">
+      <div class="story-header">
+        <span class="story-year ${yearClass}">${yearLabel}</span>
+        <span class="story-title">${s.title}</span>${freshBadge}${dateDisplay}
+      </div>
+      <div class="story-subtitle">${s.subtitle}</div>
+      <div class="story-body">${s.body}</div>
+      <div class="story-highlight">${s.highlight}</div>
+      ${s.fact ? `<div class="story-fact">${s.fact}</div>` : ''}
+      <div class="story-tags">
+        ${s.tags.map(t => {
+          const cls = t.includes('赔率') || t.includes('概率') || t.includes('冷门') ? 'danger' : t.includes('密码') || t.includes('扩军') || t.includes('规则') ? 'purple' : '';
+          return `<span class="story-tag ${cls}">${t}</span>`;
+        }).join('')}
+      </div>
+      <div class="story-source">📌 来源：${s.source}</div>
+    </div>`;
+  });
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+function filterStories(cat, btn) {
+  currentStoryFilter = cat; // persist across refresh()
+
+  // Toggle active on buttons
+  const btns = btn.parentElement.querySelectorAll('.upset-tab');
+  btns.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  // Filter cards
+  const cards = document.querySelectorAll('#storiesContainer .story-card');
+  cards.forEach(c => {
+    if (cat === 'all') {
+      c.style.display = '';
+    } else if (cat === 'fresh') {
+      c.style.display = c.dataset.fresh === 'true' ? '' : 'none';
+    } else {
+      c.style.display = c.dataset.cat === cat ? '' : 'none';
+    }
+  });
+}
+
+function renderUpsetAnalysisSection() {
+  const contentEl = document.getElementById('upsetAnalysisContent');
+  const statsEl = document.getElementById('upsetStatsRow');
+  if (!contentEl || !statsEl) return;
+
+  // Calculate stats
+  const completedUpsets = calculateCompletedUpsets();
+  const riskUpsets = calculateUpcomingUpsetRisk();
+
+  const totalCompleted = completedUpsets.length;
+  const realUpsets = completedUpsets.filter(u => u.upsetIndex > 10);
+  const superUpsets = completedUpsets.filter(u => u.upsetIndex >= 60);
+  const avgRisk = riskUpsets.length > 0 ? Math.round(riskUpsets.reduce((s, r) => s + r.totalRisk, 0) / riskUpsets.length) : 0;
+
+  // Stats row
+  statsEl.innerHTML = `
+    <div class="upset-stat-card">
+      <div class="us-icon">🔥</div>
+      <div class="us-value">${superUpsets.length}</div>
+      <div class="us-label">超级爆冷</div>
+    </div>
+    <div class="upset-stat-card">
+      <div class="us-icon">📊</div>
+      <div class="us-value">${realUpsets.length}/${totalCompleted}</div>
+      <div class="us-label">冷门/总场次</div>
+    </div>
+    <div class="upset-stat-card">
+      <div class="us-icon">🔮</div>
+      <div class="us-value">${avgRisk}%</div>
+      <div class="us-label">平均爆冷风险</div>
+    </div>
+  `;
+
+  if (currentUpsetTab === 'completed') {
+    renderCompletedUpsetsTab(contentEl, completedUpsets, totalCompleted);
+  } else if (currentUpsetTab === 'risk') {
+    renderRiskUpsetsTab(contentEl, riskUpsets);
+  } else {
+    renderStoriesTab(contentEl);
+  }
+}
+
+function renderCompletedUpsetsTab(container, upsets, totalCompleted) {
+  // Show top 8 upsets (upsetIndex > 0)
+  const displayUpsets = upsets.filter(u => u.upsetIndex > 0).slice(0, 8);
+
+  if (displayUpsets.length === 0) {
+    container.innerHTML = '<div style="text-align:center;color:var(--text-dim);font-size:13px;padding:20px;">暂无爆冷数据，所有结果均为常规赛果</div>';
+    return;
+  }
+
+  let html = '';
+  displayUpsets.forEach(u => {
+    let levelClass = 'normal';
+    let badgeClass = 'normal';
+    let badgeText = '常规结果';
+    let barClass = 'normal';
+
+    if (u.upsetIndex >= 60) { levelClass = 'super'; badgeClass = 'super'; badgeText = '🔥 超级爆冷'; barClass = 'super'; }
+    else if (u.upsetIndex >= 30) { levelClass = 'major'; badgeClass = 'major'; badgeText = '🟡 冷门'; barClass = 'major'; }
+    else if (u.upsetIndex >= 10) { levelClass = 'mild'; badgeClass = 'mild'; badgeText = '🔵 小冷'; barClass = 'mild'; }
+
+    const flag1 = getFlag(u.home);
+    const flag2 = getFlag(u.away);
+
+    // Determine winner side styling
+    let winnerTag = '';
+    if (u.hg > u.ag) winnerTag = `<span class="upset-analysis-tag green">${u.home}胜</span>`;
+    else if (u.ag > u.hg) winnerTag = `<span class="upset-analysis-tag green">${u.away}胜</span>`;
+    else winnerTag = `<span class="upset-analysis-tag">平局</span>`;
+
+    const rankTag = `<span class="upset-analysis-tag">${u.home}#${u.hRank} vs ${u.away}#${u.aRank}</span>`;
+    const roundTag = u.round ? `<span class="upset-analysis-tag">${u.round}</span>` : '';
+
+    html += `
+    <div class="upset-result-card level-${levelClass}">
+      <div class="upset-result-header">
+        <span class="upset-result-match">${flag1} ${u.home} vs ${flag2} ${u.away}</span>
+        <span class="upset-result-score">${u.result}</span>
+        <span class="upset-result-badge ${badgeClass}">${badgeText}</span>
+      </div>
+      <div class="upset-index-bar">
+        <span style="font-size:11px;color:var(--text-dim);">爆冷指数</span>
+        <div class="upset-index-track">
+          <div class="upset-index-fill ${barClass}" style="width:${u.upsetIndex}%"></div>
+        </div>
+        <span class="upset-index-value">${u.upsetIndex}</span>
+      </div>
+      <div class="upset-result-analysis">${u.analysis}</div>
+      <div class="upset-result-tags">${winnerTag}${rankTag}${roundTag}</div>
+    </div>`;
+  });
+
+  // Add a summary note
+  const totalUpsets = upsets.filter(u => u.upsetIndex > 10).length;
+  const upsetRate = totalCompleted > 0 ? Math.round(totalUpsets / totalCompleted * 100) : 0;
+  html += `
+  <div style="text-align:center;color:var(--text-dim);font-size:12px;padding:12px;margin-top:8px;border-top:1px solid var(--border);">
+    📈 本届世界杯冷门率 ${upsetRate}%（${totalUpsets}场冷门 / ${totalCompleted}场已完赛） · 算法基于FIFA排名差距自动计算
+  </div>`;
+
+  container.innerHTML = html;
+}
+
+function renderRiskUpsetsTab(container, risks) {
+  if (risks.length === 0) {
+    container.innerHTML = '<div style="text-align:center;color:var(--text-dim);font-size:13px;padding:20px;">暂无即将进行的比赛，无法计算爆冷风险</div>';
+    return;
+  }
+
+  // Only show risks > 15 (worth mentioning)
+  const displayRisks = risks.filter(r => r.totalRisk > 5).slice(0, 6);
+
+  let html = '';
+  displayRisks.forEach(r => {
+    const flag1 = getFlag(r.match.home);
+    const flag2 = getFlag(r.match.away);
+
+    const factorTags = r.factors.map(f => `<span class="upset-risk-factor">#${f}</span>`).join('');
+
+    html += `
+    <div class="upset-risk-card">
+      <div class="upset-risk-header">
+        <span class="upset-risk-match">${flag1} ${r.match.home} vs ${flag2} ${r.match.away}</span>
+        <span class="upset-risk-time">${r.match.date.substring(5)} ${r.match.cst_time}</span>
+        <span class="upset-risk-badge ${r.riskLevel}">${r.riskLabel}</span>
+      </div>
+      <div class="upset-index-bar">
+        <span style="font-size:11px;color:var(--text-dim);">爆冷概率</span>
+        <div class="upset-index-track">
+          <div class="upset-index-fill ${r.riskLevel === 'hot' ? 'super' : r.riskLevel === 'warm' ? 'major' : r.riskLevel === 'watch' ? 'mild' : 'normal'}" style="width:${r.totalRisk}%"></div>
+        </div>
+        <span class="upset-index-value">${r.totalRisk}%</span>
+      </div>
+      <div class="upset-risk-analysis">${r.analysis}</div>
+      <div class="upset-risk-tags">${factorTags}</div>
+    </div>`;
+  });
+
+  // Bottom note
+  html += `
+  <div style="text-align:center;color:var(--text-dim);font-size:12px;padding:12px;margin-top:8px;border-top:1px solid var(--border);">
+    🧮 算法因子：排名差距权重40% + 轮次形势30% + 主场因素10% + 历史规律20% · 仅供娱乐参考
+  </div>`;
+
+  container.innerHTML = html;
+}
 
 // ============================================================
 //  PREDICTION ENGINE
@@ -1904,6 +2442,9 @@ function updateCountdown() {
     const key2 = `${m.away}-${m.home}`;
     if (COMPLETED_RESULTS[key1] || COMPLETED_RESULTS[key2]) continue;
 
+    // Skip unconfirmed opponent matches (TBD placeholders)
+    if (m.home === '待定' || m.away === '待定') continue;
+
     // Skip matches that started > 150 min ago but have no result (likely expired)
     const matchDate = new Date(m.date + 'T' + m.cst_time + ':00+08:00');
     const diffMin = Math.floor((matchDate - cst) / 60000);
@@ -2201,7 +2742,7 @@ let TEAM_RUMORS = {
     {tag:"offfield",emoji:"🏟",text:"温哥华BC Place预计满座6万人，这将是加拿大足球史上最高上座率。特鲁多据传将亲临现场观战。",src:"CBC News"},
   ],
   "苏格兰": [
-    {tag:"locker",emoji:"💪",text:"苏格兰更���室空前团结，罗伯逊在队内会议上直言：'我们没什么可失去的'。全队誓言在巴西身上搏出生机。",src:"队内消息"},
+    {tag:"locker",emoji:"💪",text:"苏格兰更衣室空前团结，罗伯逊在队内会议上直言：'我们没什么可失去的'。全队誓言在巴西身上搏出生机。",src:"队内消息"},
     {tag:"tactics",emoji:"🛡",text:"苏格兰预计摆出5-4-1铁桶阵，蒂尔尼+罗伯逊双翼回收防守，用麦金的远射和麦克托米奈的前插作为唯一进攻手段。",src:"天空体育"},
     {tag:"injury",emoji:"🩹",text:"苏格兰中场核心麦金脚踝仍有不适，但已注射封闭针确保出战。队医警告这可能加重伤势但球员坚持上场。",src:"BBC体育"},
   ],
@@ -2303,34 +2844,23 @@ function getTeamRumors(team) {
 }
 
 function generateRumors(matches) {
-  // 当前比赛日的球队
+  if (!matches || matches.length === 0) return [];
+
   const dayTeams = new Set();
-  if (matches) matches.forEach(m => { dayTeams.add(m.home); dayTeams.add(m.away); });
+  matches.forEach(m => { dayTeams.add(m.home); dayTeams.add(m.away); });
 
   const allRumors = [];
-  // 1) 用户撰写的真实传闻（teamRumors）优先纳入，确保常驻显示（含已出局球队）
-  Object.keys(TEAM_RUMORS).forEach(team => {
-    (TEAM_RUMORS[team] || []).forEach(r => allRumors.push({ ...r, team, __authored: true }));
-  });
-  // 2) 当前比赛日的模板传闻作为补充
   dayTeams.forEach(team => {
-    getTeamRumors(team).forEach(r => allRumors.push({ ...r, team, __authored: false }));
+    getTeamRumors(team).forEach(r => allRumors.push({...r, team}));
   });
 
-  // 打乱
+  // Shuffle and pick 6
   for (let i = allRumors.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [allRumors[i], allRumors[j]] = [allRumors[j], allRumors[i]];
   }
-  // 用户置顶传闻（pinned）永远显示，其余随机填充至 6 条
-  const authored = allRumors.filter(r => r.__authored);
-  const templated = allRumors.filter(r => !r.__authored);
-  const pinned = authored.filter(r => r.pinned);
-  const normal = authored.filter(r => !r.pinned);
-  const rest = [...normal, ...templated];
-  // 置顶条数若超过 6 则截取前 6，否则置顶 + 补充满 6
-  if (pinned.length >= 6) return pinned.slice(0, 6);
-  return [...pinned, ...rest].slice(0, 6);
+
+  return allRumors.slice(0, 6);
 }
 
 function renderRumors(matches) {
@@ -2400,6 +2930,9 @@ function refresh() {
   updateClock();
   updateCountdown();
   updateStats();
+
+  // 爆冷分析独立栏目始终渲染（不随视图切换隐藏）
+  renderUpsetAnalysisSection();
 
   if (currentView === 'results') {
     // Results view: show latest completed match results
@@ -2475,10 +3008,7 @@ async function loadRemoteData() {
     // Merge remote data into live variables
     if (remote.completedResults) Object.assign(COMPLETED_RESULTS, remote.completedResults);
     if (remote.halftimeResults) Object.assign(HALFTIME_RESULTS, remote.halftimeResults);
-    if (remote.matchScorers) // 只补充内置没有的射手数据（保留中文原名，不被英文覆盖）
-    for (const [k,v] of Object.entries(remote.matchScorers)) {
-      if (!MATCH_SCORERS[k] || MATCH_SCORERS[k].length === 0) MATCH_SCORERS[k] = v;
-    };
+    if (remote.matchScorers) Object.assign(MATCH_SCORERS, remote.matchScorers);
     if (remote.matchAssists) Object.assign(MATCH_ASSISTS, remote.matchAssists);
 
     // groupStandings: data.json uses array format [{team, pts,...}], convert to object {teamName: {pts,...}}
@@ -2502,10 +3032,6 @@ async function loadRemoteData() {
     if (remote.upsetRumors && !Array.isArray(remote.upsetRumors)) {
       Object.assign(UPSET_RUMORS, remote.upsetRumors);
     }
-    // 爆冷故事: 从 data.json 加载（覆盖硬编码 defaultStories）
-    if (remote.upsetStories && Array.isArray(remote.upsetStories)) {
-      window.__allStoriesRemote = remote.upsetStories;
-    }
     // teamRumors: merge team objects
     if (remote.teamRumors && typeof remote.teamRumors === 'object' && !Array.isArray(remote.teamRumors)) {
       for (const [team, rumors] of Object.entries(remote.teamRumors)) {
@@ -2515,17 +3041,6 @@ async function loadRemoteData() {
     }
 
     console.log('[DATA] ✅ 远程数据加载成功，更新时间：' + (remote.lastUpdated || '未知'));
-    // 远程数据更新后，重渲染爆冷榜（基于最新 COMPLETED_RESULTS）
-    if (typeof renderUpsetHistory === 'function') {
-      try { renderUpsetHistory(); } catch (e) { console.warn('[DATA] ⚠️ renderUpsetHistory 失败:', e.message); }
-    }
-    // 远程软数据更新后，重渲染爆冷故事 + 预警
-    if (typeof renderUpsetStories === 'function') {
-      try { renderUpsetStories(); } catch (e) { console.warn('[DATA] ⚠️ renderUpsetStories 失败:', e.message); }
-    }
-    if (typeof renderUpsetWarnings === 'function') {
-      try { renderUpsetWarnings(); } catch (e) { console.warn('[DATA] ⚠️ renderUpsetWarnings 失败:', e.message); }
-    }
   } catch (err) {
     console.warn('[DATA] ⚠️ 远程拉取失败，使用内置数据:', err.message);
   }
@@ -2546,6 +3061,7 @@ async function manualRefresh() {
 
   try {
     await loadRemoteData();
+    await loadStories();
     refresh();
 
     // Success
@@ -2569,202 +3085,6 @@ async function manualRefresh() {
     }, 3000);
   }
 }
-
-// Bootstrap
-
-// ===== 爆冷三 tab 模块 =====
-const COLD_RANK_MAP = {'墨西哥':15,'南非':60,'韩国':23,'捷克':36,'加拿大':48,'波黑':74,'卡塔尔':37,'瑞士':19,'巴西':5,'摩洛哥':14,'海地':89,'苏格兰':39,'德国':9,'厄瓜多尔':57,'科特迪瓦':41,'库拉索':86,'日本':18,'瑞典':27,'突尼斯':28,'荷兰':7,'美国':11,'土耳其':26,'澳大利亚':24,'巴拉圭':53,'西班牙':8,'佛得角':56,'比利时':3,'埃及':33,'沙特阿拉伯':56,'乌拉圭':13,'伊朗':20,'新西兰':92,'法国':2,'塞内加尔':17,'伊拉克':58,'挪威':36,'阿根廷':1,'阿尔及利亚':30,'奥地利':22,'约旦':64,'葡萄牙':6,'刚果(金)':45,'英格兰':4,'克罗地亚':12,'加纳':71,'巴拿马':45,'乌兹别克斯坦':62,'哥伦比亚':16};
-let currentStoryFilter = 'today';
-
-function switchUpsetTab(tab, el) {
-  document.querySelectorAll('.upset-tab').forEach(t => t.classList.remove('active'));
-  if (el) el.classList.add('active');
-  document.getElementById('upsetTabHistory').style.display = tab === 'history' ? 'block' : 'none';
-  document.getElementById('upsetTabWarning').style.display = tab === 'warning' ? 'block' : 'none';
-  document.getElementById('upsetTabStory').style.display = tab === 'story' ? 'block' : 'none';
-}
-
-function renderUpsetHistory() {
-  const container = document.getElementById('upsetTabHistory');
-  if (!container) return;
-  const results = (typeof COMPLETED_RESULTS !== 'undefined') ? COMPLETED_RESULTS : {};
-  const games = Object.keys(results);
-  const coldList = [];
-  games.forEach(key => {
-    const [home, away] = key.split('-');
-    const [hs, as] = results[key].split(':').map(Number);
-    let winner = null, isDraw = false;
-    if (hs > as) winner = home;
-    else if (as > hs) winner = away;
-    else isDraw = true;
-    const wRank = COLD_RANK_MAP[winner || home];
-    const lRank = COLD_RANK_MAP[isDraw ? away : (winner === home ? away : home)];
-    if (!wRank || !lRank) return;
-    if (isDraw) {
-      const gap = Math.abs(wRank - lRank);
-      if (gap > 20) {
-        // 平局冷门：弱队（排名靠后）逼平强队（排名靠前）
-        const upsetWinner = wRank > lRank ? home : away;
-        coldList.push({ key, score: results[key], home, away, winner: upsetWinner, isDraw: true, gap, index: Math.min(30 + gap / 2, 60) });
-      }
-    } else {
-      const gap = wRank - lRank;
-      if (gap > 15) {
-        coldList.push({ key, score: results[key], home, away, winner, gap, index: Math.min(50 + gap / 2, 95) });
-      }
-    }
-  });
-  coldList.sort((a, b) => b.index - a.index);
-  const top = coldList.slice(0, 12);
-  let html = '<div style="text-align:center;color:var(--text-dim);font-size:11px;margin-bottom:8px;">共 ' + coldList.length + ' 场冷门 · 基于FIFA排名差距自动计算</div>';
-  if (top.length === 0) {
-    html += '<div style="text-align:center;color:var(--text-dim);padding:20px;">暂无冷门数据</div>';
-  } else {
-    top.forEach((c, i) => {
-      const emoji = c.index > 70 ? '🔥' : c.index > 50 ? '🟡' : '🔵';
-      const levelLabel = c.index > 70 ? '超级爆冷' : c.index > 50 ? '冷门' : '小冷';
-      html += '<div class="cold-row">' +
-        '<div class="cold-rank">' + (i + 1) + '</div>' +
-        '<div class="cold-emoji">' + emoji + '</div>' +
-        '<div class="cold-info">' +
-          '<div class="cold-title">' + c.home + ' vs ' + c.away + ' <span class="story-tag">' + levelLabel + '</span></div>' +
-          '<div class="cold-desc">排名第' + (COLD_RANK_MAP[c.winner] || '?') + '的' + c.winner + (c.isDraw ? '逼平' : '击败') + '排名第' + (COLD_RANK_MAP[c.isDraw ? (c.winner === c.home ? c.away : c.home) : (c.winner === c.home ? c.away : c.home)] || '?') + '的' + (c.isDraw ? (c.winner === c.home ? c.away : c.home) : (c.winner === c.home ? c.away : c.home)) + '，排名差距' + c.gap + '位</div>' +
-        '</div>' +
-        '<div class="cold-score">' + c.score + '</div>' +
-        '</div>';
-    });
-  }
-  container.innerHTML = html;
-}
-
-function renderUpsetWarnings() {
-  const container = document.getElementById('upsetTabWarning');
-  if (!container) return;
-  const upcoming = (typeof ALL_MATCHES !== 'undefined') ? ALL_MATCHES : [];
-  const now = new Date();
-  const warnings = [];
-  upcoming.forEach(m => {
-    const matchDate = new Date(m.date + 'T' + m.cst_time + ':00+08:00');
-    const diffH = (matchDate - now) / 3600000;
-    if (diffH < 0 || diffH > 240) return; // 只看未来 10 天
-    const wRank = COLD_RANK_MAP[m.home];
-    const aRank = COLD_RANK_MAP[m.away];
-    if (!wRank || !aRank) return;
-    const gap = Math.abs(wRank - aRank);
-    if (gap > 15) {
-      const underdog = wRank > aRank ? m.home : m.away;
-      const favorite = wRank > aRank ? m.away : m.home;
-      warnings.push({ match: m, gap, underdog, favorite, level: gap > 30 ? 'hot' : 'warm' });
-    }
-  });
-  warnings.sort((a, b) => b.gap - a.gap);
-  let html = '<div style="text-align:center;color:var(--text-dim);font-size:11px;margin-bottom:8px;">共 ' + warnings.length + ' 场存在爆冷风险</div>';
-  if (warnings.length === 0) {
-    html += '<div style="text-align:center;color:var(--text-dim);padding:20px;">近期比赛无明显爆冷风险</div>';
-  } else {
-    warnings.slice(0, 6).forEach(w => {
-      const emoji = w.level === 'hot' ? '🔥' : '🟡';
-      const label = w.level === 'hot' ? '高爆冷风险' : '中度爆冷可能';
-      html += '<div class="cold-row">' +
-        '<div class="cold-rank">' + emoji + '</div>' +
-        '<div class="cold-info">' +
-          '<div class="cold-title">' + w.match.home + ' vs ' + w.match.away + ' <span class="story-tag">' + label + '</span></div>' +
-          '<div class="cold-desc">' + w.favorite + ' (排名' + (COLD_RANK_MAP[w.favorite] || '?') + ') vs ' + w.underdog + ' (排名' + (COLD_RANK_MAP[w.underdog] || '?') + ')，差距' + w.gap + '位</div>' +
-        '</div>' +
-        '<div class="cold-score">' + w.match.date.slice(5) + '</div>' +
-        '</div>';
-    });
-  }
-  container.innerHTML = html;
-}
-
-function renderUpsetStories() {
-  const container = document.getElementById('upsetTabStory');
-  if (!container) return;
-  const filter = currentStoryFilter;
-  const filters = [
-    { k: 'today', l: '今日新鲜' },
-    { k: 'history', l: '历史经典' },
-    { k: 'tournament', l: '本届爆冷' },
-    { k: 'all', l: '全部' }
-  ];
-  // 爆冷故事数据源：优先用 data.json 远程加载，回退到内置默认
-  const defaultStories = [
-    // ===== 今日 NEW (2026-07-08) =====
-    { title: '阿根廷让二追三 3-2 埃及', date: '2026-07-08', tag: '今日', isNew: true, desc: '阿根廷在 0-2 落后情况下连扳三球，淘汰埃及晋级 1/4 决赛。梅西梅开二度，劳塔罗·马丁内斯绝杀。萨拉赫的埃及队差一点把卫冕冠军拉下马。' },
-    { title: '瑞士点球 4-3 哥伦比亚', date: '2026-07-08', tag: '今日', isNew: true, desc: '常规时间 0-0 战平，瑞士门将索默神扑 2 个点球，最终点球大战 4-3 淘汰哥伦比亚晋级 1/4 决赛。索默赛后获评全场 MVP。' },
-    // ===== 本届冷门 1/8 决赛 =====
-    { title: '巴西 1-2 挪威 爆冷出局', date: '2026-07-06', tag: '冷门', isNew: false, desc: '卫冕热门巴西被挪威 2-1 淘汰，挪威前锋哈兰德梅开二度，巴西止步 1/8 决赛。内马尔赛后宣布退出国家队。' },
-    { title: '摩洛哥 3-0 加拿大 黑马狂奔', date: '2026-07-05', tag: '冷门', isNew: false, desc: '摩洛哥 1/8 决赛 3-0 横扫加拿大，阿什拉夫+马兹拉维两翼齐飞，齐耶赫 1 球 1 助攻。延续 2022 世界杯黑马本色。' },
-    { title: '厄瓜多尔 2-1 德国 巨人杀手', date: '2026-06-26', tag: '冷门', isNew: false, desc: '小组赛厄瓜多尔 2-1 爆冷击败德国，恩纳·瓦伦西亚梅开二度。德国小组赛仅 1 胜，淘汰赛即遭淘汰。' },
-    { title: '南非 1-0 韩国 非洲雄狮觉醒', date: '2026-06-22', tag: '冷门', isNew: false, desc: '小组赛第二轮，南非 1-0 力克韩国，佩罗吉打入全场唯一进球。FIFA 排名 60 位击败 23 位，差距 37 位。' },
-    { title: '波黑 3-1 卡塔尔 东欧铁骑', date: '2026-06-24', tag: '冷门', isNew: false, desc: '小组赛末轮波黑 3-1 大胜东道主卡塔尔，哲科老当益壮打入 1 球。卡塔尔 3 战全败惨遭淘汰。' },
-    { title: '伊朗 2-2 新西兰 太平洋劲旅', date: '2026-06-22', tag: '冷门', isNew: false, desc: '小组赛伊朗 2-2 战平新西兰，新西兰排名 92 位逼平 20 位伊朗。差距 72 位是本届最大冷门平局。' },
-    { title: '沙特 1-1 乌拉圭 中东奇迹再现', date: '2026-06-16', tag: '冷门', isNew: false, desc: '小组赛沙特 1-1 战平南美劲旅乌拉圭，延续 2022 世界杯击败阿根廷的传奇剧本。排名 56 逼平 13，差距 43 位。' },
-    // ===== 历史经典 =====
-    { title: '1950 洗碗工击败英格兰', date: '1950-06-29', tag: '历史', isNew: false, desc: '1950 年巴西世界杯，美国队 1-0 击败英格兰，被认为是世界杯历史上最伟大的冷门之一。当时英格兰是现代足球发源地，美国队球员多为业余甚至有洗碗工。' },
-    { title: '2002 韩国连克意西进四强', date: '2002-06-22', tag: '历史', isNew: false, desc: '2002 韩日世界杯，韩国队凭借东道主优势连克意大利、西班牙闯入四强，创造亚洲球队世界杯最佳战绩。希丁克执教封神。' },
-    { title: '2014 哥斯达黎加死亡之组突围', date: '2014-06-29', tag: '历史', isNew: false, desc: '2014 巴西世界杯，哥斯达黎加与乌拉圭、意大利、英格兰同组，小组赛 2-1 击败乌拉圭、0-0 逼平法国，最终小组第一出线。1/4 决赛点球惜败荷兰。' }
-  ];
-  const allStories = (typeof window.__allStoriesRemote !== 'undefined' && window.__allStoriesRemote.length > 0)
-    ? window.__allStoriesRemote : defaultStories;
-  let filtered = allStories;
-  if (filter === 'today') filtered = allStories.filter(s => s.isNew);
-  else if (filter === 'history') filtered = allStories.filter(s => s.tag === '历史');
-  else if (filter === 'tournament') filtered = allStories.filter(s => s.date.startsWith('2026'));
-  let html = '<div class="story-filter">';
-  filters.forEach(f => {
-    html += '<div class="story-filter-btn ' + (filter === f.k ? 'active' : '') + '" onclick="currentStoryFilter=\'' + f.k + '\';renderUpsetStories();">' + f.l + '</div>';
-  });
-  html += '</div>';
-  if (filtered.length === 0) {
-    html += '<div style="text-align:center;color:var(--text-dim);padding:20px;">暂无故事</div>';
-  } else {
-    filtered.forEach(s => {
-      html += '<div class="story-card' + (s.isNew ? ' new' : '') + '">' +
-        '<div class="story-header">' +
-          '<span class="story-date">' + s.date + '</span>' +
-          '<span class="story-tag">' + s.tag + '</span>' +
-          (s.isNew ? '<span class="story-new-tag">NEW</span>' : '') +
-        '</div>' +
-        '<div class="story-title">' + s.title + '</div>' +
-        '<div class="story-desc">' + s.desc + '</div>' +
-        '</div>';
-    });
-  }
-  container.innerHTML = html;
-}
-
-function initUpsetTabs() {
-  renderUpsetHistory();
-  renderUpsetWarnings();
-  renderUpsetStories();
-}
-
-
-(async function init() {
-  initUpsetTabs();
-  const dot = document.getElementById('dataDot');
-  const status = document.getElementById('dataStatus');
-  if (dot) dot.className = 'status-dot warn';
-  if (status) status.textContent = '正在加载数据...';
-
-  try {
-    await loadRemoteData();
-    refresh();
-    if (dot) dot.className = 'status-dot ok';
-    if (status) status.textContent = '数据就绪';
-    console.log('[INIT] ✅ 页面初始化完成');
-  } catch (err) {
-    refresh();
-    if (dot) dot.className = 'status-dot warn';
-    if (status) status.textContent = '数据加载异常，使用内置数据';
-    console.warn('[INIT] ⚠️ 初始化异常:', err.message);
-  }
-
-  setInterval(refresh, 1000);
-  setInterval(loadRemoteData, 300000);
-})();
 
 // ========== Music Player ==========
 let musicPlaying = false;
@@ -2812,71 +3132,31 @@ function tryAutoStartMusic() {
 document.addEventListener('click', tryAutoStartMusic, { once: false });
 document.addEventListener('touchstart', tryAutoStartMusic, { once: false });
 
+// Bootstrap
+(async function init() {
+  const dot = document.getElementById('dataDot');
+  const status = document.getElementById('dataStatus');
+  if (dot) dot.className = 'status-dot warn';
+  if (status) status.textContent = '正在加载数据...';
 
-// ===== 捕风捉影 二级页面（浏览更多）=====
-function getAllRumors(matches) {
-  const dayTeams = new Set();
-  if (matches) matches.forEach(m => { dayTeams.add(m.home); dayTeams.add(m.away); });
-  const all = [];
-  Object.keys(TEAM_RUMORS).forEach(team => {
-    (TEAM_RUMORS[team] || []).forEach(r => all.push({ ...r, team, __authored: true }));
-  });
-  dayTeams.forEach(team => {
-    getTeamRumors(team).forEach(r => all.push({ ...r, team, __authored: false }));
-  });
-  const pinned = all.filter(r => r.pinned);
-  const normal = all.filter(r => !r.pinned && r.__authored);
-  const templated = all.filter(r => !r.__authored);
-  return [...pinned, ...normal, ...templated];
-}
+  try {
+    await loadRemoteData();
+    await loadStories();
+    refresh();
+    if (dot) dot.className = 'status-dot ok';
+    if (status) status.textContent = '数据就绪';
+    console.log('[INIT] ✅ 页面初始化完成');
+  } catch (err) {
+    refresh();
+    if (dot) dot.className = 'status-dot warn';
+    if (status) status.textContent = '数据加载异常，使用内置数据';
+    console.warn('[INIT] ⚠️ 初始化异常:', err.message);
+  }
 
-function openRumorModal() {
-  const grid = document.getElementById('rumorModalGrid');
-  if (!grid) return;
-  const all = getAllRumors(getUpcomingMatches(getBeijingTime()));
-  const countEl = document.getElementById('rumorModalCount');
-  if (countEl) countEl.textContent = '共 ' + all.length + ' 条情报（置顶优先显示）';
-  grid.innerHTML = all.map(r => {
-    const flag = getFlag(r.team);
-    return '<div class="rumor-modal-card">'
-      + '<div class="rumor-team">' + (flag ? flag + ' ' : '') + r.team + '</div>'
-      + '<span class="rumor-tag ' + r.tag + '">' + (tagLabels[r.tag] || r.tag) + '</span>'
-      + '<span class="rumor-emoji">' + (r.emoji || '🃏') + '</span>'
-      + '<div class="rumor-modal-text">' + r.text + '</div>'
-      + '<div class="rumor-modal-source">📌 来源：' + r.src + (r.pinned ? ' · 📌 置顶' : '') + '</div>'
-      + '</div>';
-  }).join('');
-  document.getElementById('rumorModal').classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeRumorModal() {
-  const m = document.getElementById('rumorModal');
-  if (m) m.classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-document.addEventListener('click', function(e) {
-  const m = document.getElementById('rumorModal');
-  if (m && m.classList.contains('active') && e.target === m) closeRumorModal();
-});
-
+  setInterval(refresh, 1000);
+  setInterval(loadRemoteData, 300000);
+})();
 </script>
-
-
-  <!-- 捕风捉影 全部列表 二级页面 -->
-  <div class="modal-overlay" id="rumorModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>🃏 捕风捉影 · 全部小道消息</h3>
-        <button class="modal-close" onclick="closeRumorModal()">✕</button>
-      </div>
-      <div class="modal-body">
-        <div class="rumor-modal-count" id="rumorModalCount"></div>
-        <div class="rumor-modal-grid" id="rumorModalGrid"></div>
-      </div>
-    </div>
-  </div>
 
 </body>
 </html>
