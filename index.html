@@ -1120,8 +1120,8 @@ const ALL_MATCHES = [
   {id:102,date:"2026-07-16",cst_time:"03:00",home:"英格兰",away:"阿根廷",group:"KO",stadium:"亚特兰大",round:"半决赛",stadium_tz:-4},
 
   // === THIRD PLACE + FINAL (季军赛+决赛) 北京时间 ===
-  {id:103,date:"2026-07-19",cst_time:"05:00",home:"待定",away:"待定",group:"KO",stadium:"迈阿密",round:"季军赛",stadium_tz:-4},
-  {id:104,date:"2026-07-20",cst_time:"03:00",home:"待定",away:"待定",group:"KO",stadium:"新泽西·大都会人寿",round:"决赛",stadium_tz:-4},
+  {id:103,date:"2026-07-19",cst_time:"05:00",home:"法国",away:"英格兰",group:"KO",stadium:"迈阿密",round:"季军赛",stadium_tz:-4},
+  {id:104,date:"2026-07-20",cst_time:"03:00",home:"西班牙",away:"阿根廷",group:"KO",stadium:"新泽西·大都会人寿",round:"决赛",stadium_tz:-4},
 ];
 
 
@@ -2455,7 +2455,18 @@ function updateCountdown() {
   }
 
   if (!upcomingMatch) {
-    document.getElementById('nextDateLabel').textContent = '本届世界杯已全部完赛';
+    // Check if FINAL is still pending (team names known but no result yet)
+    const finalMatch = ALL_MATCHES.find(m => m.round === '决赛');
+    const fk1 = finalMatch ? `${finalMatch.home}-${finalMatch.away}` : '';
+    const fk2 = finalMatch ? `${finalMatch.away}-${finalMatch.home}` : '';
+    const finalDone = finalMatch && (COMPLETED_RESULTS[fk1] || COMPLETED_RESULTS[fk2]);
+
+    if (finalMatch && !finalDone) {
+      document.getElementById('nextDateLabel').innerHTML =
+        '<span style="color:var(--gold);font-weight:700;">🏆 终极对决</span> · ' + finalMatch.home + ' vs ' + finalMatch.away + ' · <span style="color:var(--orange);font-size:13px;">万众期待</span>';
+    } else {
+      document.getElementById('nextDateLabel').textContent = '本届世界杯已全部完赛';
+    }
     document.getElementById('cdH').textContent = '00';
     document.getElementById('cdM').textContent = '00';
     document.getElementById('cdS').textContent = '00';
