@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-19T01:37:58+08:00",
+  "lastUpdated": "2026-07-19T17:28:07+08:00",
   "completedResults": {
     "澳大利亚-土耳其": "2:0",
     "卡塔尔-瑞士": "1:1",
@@ -91,6 +91,7 @@
     "阿尔及利亚-奥地利": "3:3",
     "德国-巴拉圭": "1:1",
     "美国-波黑": "2:0",
+    "法国-英格兰": "4:6",
     "比利时-埃及": "1:1",
     "厄瓜多尔-库拉索": "0:0",
     "瑞士-加拿大": "2:1",
@@ -1399,6 +1400,43 @@
       {
         "name": "Malik Tillman",
         "team": "美国",
+        "goals": 1
+      }
+    ],
+    "法国-英格兰": [
+      {
+        "name": "Kylian Mbappé",
+        "team": "法国",
+        "goals": 2
+      },
+      {
+        "name": "Bradley Barcola",
+        "team": "法国",
+        "goals": 1
+      },
+      {
+        "name": "Ousmane Dembélé",
+        "team": "法国",
+        "goals": 1
+      },
+      {
+        "name": "Dklan Rais",
+        "team": "英格兰",
+        "goals": 1
+      },
+      {
+        "name": "Azri Knsa",
+        "team": "英格兰",
+        "goals": 1
+      },
+      {
+        "name": "Bvkaiv Saka",
+        "team": "英格兰",
+        "goals": 2
+      },
+      {
+        "name": "Jvd Blingham",
+        "team": "英格兰",
         "goals": 1
       }
     ],
